@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3385.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Spring事件监听机制源码解析 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Spring事件监听机制源码解析</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<h2 id="spring事件监听器使用">Spring事件监听器使用</h2> <p>1.Spring事件监听体系包括三个组件：事件、事件监听器，事件广播器。</p> <p><strong>事件</strong>：定义事件类型和事件源，需要继承ApplicationEvent。</p> <pre><code class="language-java">package com.ybe.eventLisitener; import org.springframework.context.ApplicationEvent;  public class OrderEvent extends ApplicationEvent {     private String name;     public OrderEvent(Object source,String name) {         super(source);         this.name = name;     }     public String getName() {         return name;     }     public void setName(String name) {         this.name = name;     } }</code></pre> <p><strong>事件监听器</strong>：用来监听某一类的事件，并且执行具体业务逻辑，需要实现ApplicationListener<t> 接口或者需要用@ListenerEvent(T)注解。好比观察者模式中的观察者。</t></p> <pre><code class="language-java">package com.ybe.eventLisitener; import org.springframework.context.ApplicationListener; import org.springframework.stereotype.Component;  @Component public class OrderEventListener implements ApplicationListener&lt;OrderEvent&gt; {     @Override     public void onApplicationEvent(OrderEvent event) {         if(event.getName().equals("下订单")){             System.out.println("下单已完成...");         }     } }</code></pre> <pre><code class="language-java">package com.ybe.eventLisitener; import org.springframework.context.ApplicationListener; import org.springframework.context.event.EventListener; import org.springframework.stereotype.Component;  @Component public class OrderEventListenerByAnnotation  {      @EventListener(OrderEvent.class)     public void onApplicationEvent(OrderEvent event) {         if(event.getName().equals("下订单")){             System.out.println("下单已完成...");         }     } }</code></pre> <p><strong>事件多播器</strong>：负责广播通知所有监听器，所有的事件监听器都注册在了事件多播器中。好比观察者模式中的被观察者。Spring容器默认生成的是同步事件多播器。可以自定义事件多播器，定义为异步方式。</p> <pre><code class="language-java">import org.springframework.context.event.ApplicationEventMulticaster; import org.springframework.context.event.SimpleApplicationEventMulticaster; import org.springframework.core.task.SimpleAsyncTaskExecutor; import org.springframework.stereotype.Component;  import java.util.Scanner;  @Configuration @ComponentScan(value = "com.ybe") public class Config {     @Bean     public ApplicationEventMulticaster applicationEventMulticaster(){         SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();         eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());         return eventMulticaster;     } }</code></pre> <h2 id="spring事件源码分析">Spring事件源码分析</h2> <h4 id="1创建多播器">1.创建多播器</h4> <p>创建 AnnotationConfigApplicationContext 的过程中，会执行refresh()中的initApplicationEventMulticaster()方法。该方法先获取bean工厂，然后判断工厂是否包含了beanName 为 applicationEventMulticaster的bean。如果包含了，则获取该bean，赋值给applicationEventMulticaster 属性。如果没有，则创建一个 SimpleApplicationEventMulticaster 对象，并且赋值给 applicationEventMulticaster  。实现了源码如下：</p> <pre><code class="language-java">/** 	 * Initialize the ApplicationEventMulticaster. 	 * Uses SimpleApplicationEventMulticaster if none defined in the context. 	 * @see org.springframework.context.event.SimpleApplicationEventMulticaster 	 */ protected void initApplicationEventMulticaster() { 		// 获取当前bean工厂,一般是DefaultListableBeanFactory 		ConfigurableListableBeanFactory beanFactory = getBeanFactory(); 		// 判断容器中是否存在bdName为applicationEventMulticaster的bd，          //也就是说自定义的事件监听多路广播器，必须实现  ApplicationEventMulticaster接口 		if (beanFactory.containsLocalBean(APPLICATION_EVENT_MULTICASTER_BEAN_NAME)) { 			// 如果有，则从bean工厂得到这个bean对象 			this.applicationEventMulticaster = 					beanFactory.getBean(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, ApplicationEventMulticaster.class); 			if (logger.isTraceEnabled()) { 				logger.trace("Using ApplicationEventMulticaster [" + this.applicationEventMulticaster + "]"); 			} 		} 		else { 			// 如果没有，则默认采用SimpleApplicationEventMulticaster 			this.applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory); 			beanFactory.registerSingleton(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, this.applicationEventMulticaster); 			if (logger.isTraceEnabled()) { 				logger.trace("No '" + APPLICATION_EVENT_MULTICASTER_BEAN_NAME + "' bean, using " + 						"[" + this.applicationEventMulticaster.getClass().getSimpleName() + "]"); 			} 		} 	}</code></pre> <h4 id="2注册监听器">2.注册监听器</h4> <p>监听器的注册有两种，通过实现 ApplicationListener接口或者添加@EventListener注解。</p> <h5 id="一通过接口方式注册实现接口-applicationlistener">一.通过接口方式注册。实现接口 ApplicationListener<t>。</t></h5> <p>注册的逻辑实现在refresh()中的registerListeners()方法里面。第一步，先获取当前ApplicationContext中已经添加的 applicationListeners（SpringMVC源码中有用到），遍历添加到多播器中。第二步，获取实现了ApplicationListener接口的listenerBeanNames集合，添加至多播器中。第三步，判断是否有早期事件，如果有则发起广播。</p> <pre><code class="language-java">protected void registerListeners() {       // Register statically specified listeners first.       // 遍历应用程序中存在的监听器集合，并将对应的监听器添加到监听器的多路广播器中       for (ApplicationListener&lt;?&gt; listener : getApplicationListeners()) {          getApplicationEventMulticaster().addApplicationListener(listener);       }        // Do not initialize FactoryBeans here: We need to leave all regular beans       // uninitialized to let post-processors apply to them!       // 从容器中获取所有实现了ApplicationListener接口的bd的bdName       // 放入ApplicationListenerBeans集合中       String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, true, false);       for (String listenerBeanName : listenerBeanNames) {          getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);       }        // Publish early application events now that we finally have a multicaster...       // 此处先发布早期的监听器集合       Set&lt;ApplicationEvent&gt; earlyEventsToProcess = this.earlyApplicationEvents;       this.earlyApplicationEvents = null;       if (!CollectionUtils.isEmpty(earlyEventsToProcess)) {          for (ApplicationEvent earlyEvent : earlyEventsToProcess) {             getApplicationEventMulticaster().multicastEvent(earlyEvent);          }       }    }</code></pre> <p>思考一下，上面的代码中第二步为啥添加的是listenerBeanName？</p> <p>如果监听器是懒加载的话（即有@Lazy 注解）。那么在这个时候创建监听器显然是不对的，这个时候不能创建监听器。所以添加监听器到多播器的具体逻辑放在初始化具体的监听器之后。通过 BeanPostProcessor 的接口实现。具体的实现类是 ApplicationListenerDetector 。这个类是在 refreah()中prepareBeanFactory()方法中添加的。代码如下：</p> <pre><code class="language-java">protected void prepareBeanFactory(ConfigurableListableBeanFactory beanFactory) { 		// Tell the internal bean factory to use the context's class loader etc. 		beanFactory.setBeanClassLoader(getClassLoader()); 		if (!shouldIgnoreSpel) { 			beanFactory.setBeanExpressionResolver(new StandardBeanExpressionResolver(beanFactory.getBeanClassLoader())); 		} 		beanFactory.addPropertyEditorRegistrar(new ResourceEditorRegistrar(this, getEnvironment()));  		// Configure the bean factory with context callbacks. 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this)); 		beanFactory.ignoreDependencyInterface(EnvironmentAware.class); 		beanFactory.ignoreDependencyInterface(EmbeddedValueResolverAware.class); 		beanFactory.ignoreDependencyInterface(ResourceLoaderAware.class); 		beanFactory.ignoreDependencyInterface(ApplicationEventPublisherAware.class); 		beanFactory.ignoreDependencyInterface(MessageSourceAware.class); 		beanFactory.ignoreDependencyInterface(ApplicationContextAware.class); 		beanFactory.ignoreDependencyInterface(ApplicationStartupAware.class);  		// BeanFactory interface not registered as resolvable type in a plain factory. 		// MessageSource registered (and found for autowiring) as a bean. 		beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory); 		beanFactory.registerResolvableDependency(ResourceLoader.class, this); 		beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this); 		beanFactory.registerResolvableDependency(ApplicationContext.class, this);  		// Register early post-processor for detecting inner beans as ApplicationListeners.     	// 添加 监听器后置处理器，在初始化具体的实现了 ApplicationListener 接口的Bean之后，进行调用。调用的是     	// postProcessAfterInitialization()方法。 		beanFactory.addBeanPostProcessor(new ApplicationListenerDetector(this));  		// Detect a LoadTimeWeaver and prepare for weaving, if found. 		if (!NativeDetector.inNativeImage() &amp;&amp; beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) { 			beanFactory.addBeanPostProcessor(new LoadTimeWeaverAwareProcessor(beanFactory)); 			// Set a temporary ClassLoader for type matching. 			beanFactory.setTempClassLoader(new ContextTypeMatchClassLoader(beanFactory.getBeanClassLoader())); 		}  		// Register default environment beans. 		if (!beanFactory.containsLocalBean(ENVIRONMENT_BEAN_NAME)) { 			beanFactory.registerSingleton(ENVIRONMENT_BEAN_NAME, getEnvironment()); 		} 		if (!beanFactory.containsLocalBean(SYSTEM_PROPERTIES_BEAN_NAME)) { 			beanFactory.registerSingleton(SYSTEM_PROPERTIES_BEAN_NAME, getEnvironment().getSystemProperties()); 		} 		if (!beanFactory.containsLocalBean(SYSTEM_ENVIRONMENT_BEAN_NAME)) { 			beanFactory.registerSingleton(SYSTEM_ENVIRONMENT_BEAN_NAME, getEnvironment().getSystemEnvironment()); 		} 		if (!beanFactory.containsLocalBean(APPLICATION_STARTUP_BEAN_NAME)) { 			beanFactory.registerSingleton(APPLICATION_STARTUP_BEAN_NAME, getApplicationStartup()); 		} 	}</code></pre> <h5 id="二通过注解的方式注册eventlistenert">二、通过注解的方式注册。@EventListener(T)。</h5> <p>在创建 AnnotationConfigApplicationContext 的构造方法中，会执行org.springframework.context.annotation.AnnotationConfigUtils#registerAnnotationConfigProcessors(org.springframework.beans.factory.support.BeanDefinitionRegistry, java.lang.Object) 方法。这个方法中会添加两个 beanDefs, 代码如下：</p> <pre><code class="language-java">if (!registry.containsBeanDefinition(EVENT_LISTENER_PROCESSOR_BEAN_NAME)) { 			RootBeanDefinition def = new RootBeanDefinition(EventListenerMethodProcessor.class); 			def.setSource(source); 			beanDefs.add(registerPostProcessor(registry, def, EVENT_LISTENER_PROCESSOR_BEAN_NAME)); }  if (!registry.containsBeanDefinition(EVENT_LISTENER_FACTORY_BEAN_NAME)) { 			RootBeanDefinition def = new RootBeanDefinition(DefaultEventListenerFactory.class); 			def.setSource(source); 			beanDefs.add(registerPostProcessor(registry, def, EVENT_LISTENER_FACTORY_BEAN_NAME)); }</code></pre> <p>EventListenerMethodProcessor：事件监听器的BeanFactory后置处理器，在前期会创建 DefaultEventListenerFactory ，后期在创建好Bean之后，根据 EventListener 属性，调用DefaultEventListenerFactory创建具体的 ApplicationListenerMethodAdapter 。</p> <p>DefaultEventListenerFactory：监听器的创建工厂，用来创建 ApplicationListenerMethodAdapter 。</p> <p>EventListenerMethodProcessor 的类继承图如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/035ac5c44bd5db14083ff2b0f2fa9a22.jpg" alt="Spring事件监听机制源码解析"></p> <p>在refreash的invokeBeanFactoryPostProcessors()中会调用 org.springframework.context.event.EventListenerMethodProcessor#postProcessBeanFactory方法，获取EventListenerFactory 类型的 Bean。代码如下：</p> <pre><code class="language-java">@Override 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) { 		this.beanFactory = beanFactory; 		// 获取或创建 EventListenerFactory 类型的 Bean 		Map&lt;String, EventListenerFactory&gt; beans = beanFactory.getBeansOfType(EventListenerFactory.class, false, false); 		List&lt;EventListenerFactory&gt; factories = new ArrayList&lt;&gt;(beans.values()); 		AnnotationAwareOrderComparator.sort(factories); 		this.eventListenerFactories = factories; 	}</code></pre> <p>在 org.springframework.beans.factory.support.DefaultListableBeanFactory#preInstantiateSingletons 方法中，创建完所有的单例Bean 之后，会遍历所有Bean是否实现了 SmartInitializingSingleton 接口。如果实现接口会执行该 Bean 的 afterSingletonsInstantiated() 方法。代码如下：</p> <pre><code class="language-java">public void preInstantiateSingletons() throws BeansException { 		if (logger.isTraceEnabled()) { 			logger.trace("Pre-instantiating singletons in " + this); 		}  		// Iterate over a copy to allow for init methods which in turn register new bean definitions. 		// While this may not be part of the regular factory bootstrap, it does otherwise work fine. 		// 将所有BeanDefinition的名字创建一个集合 		List&lt;String&gt; beanNames = new ArrayList&lt;&gt;(this.beanDefinitionNames);  		// Trigger initialization of all non-lazy singleton beans... 		// 触发所有非延迟加载单例bean的初始化，遍历集合的对象 		for (String beanName : beanNames) { 			// 合并父类BeanDefinition  			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName); 			// 条件判断，抽象，单例，非懒加载 			if (!bd.isAbstract() &amp;&amp; bd.isSingleton() &amp;&amp; !bd.isLazyInit()) { 				// 判断是否实现了FactoryBean接口 				if (isFactoryBean(beanName)) { 					// 根据&amp;+beanName来获取具体的对象 					Object bean = getBean(FACTORY_BEAN_PREFIX + beanName); 					// 进行类型转换 					if (bean instanceof FactoryBean) { 						FactoryBean&lt;?&gt; factory = (FactoryBean&lt;?&gt;) bean; 						// 判断这个FactoryBean是否希望立即初始化 						boolean isEagerInit; 						if (System.getSecurityManager() != null &amp;&amp; factory instanceof SmartFactoryBean) { 							isEagerInit = AccessController.doPrivileged( 									(PrivilegedAction&lt;Boolean&gt;) ((SmartFactoryBean&lt;?&gt;) factory)::isEagerInit, 									getAccessControlContext()); 						} 						else { 							isEagerInit = (factory instanceof SmartFactoryBean &amp;&amp; 									((SmartFactoryBean&lt;?&gt;) factory).isEagerInit()); 						} 						//  如果希望急切的初始化，则通过beanName获取bean实例 						if (isEagerInit) { 							getBean(beanName); 						} 					} 				} 				else { 					// 如果beanName对应的bean不是FactoryBean，只是普通的bean，通过beanName获取bean实例 					getBean(beanName); 				} 			} 		}  		// Trigger post-initialization callback for all applicable beans... 		// 遍历beanNames，触发所有SmartInitializingSingleton的后初始化回调 		for (String beanName : beanNames) { 			// 获取beanName对应的bean实例 			Object singletonInstance = getSingleton(beanName); 			// 判断singletonInstance是否实现了SmartInitializingSingleton接口 			if (singletonInstance instanceof SmartInitializingSingleton) { 				// 类型转换 				SmartInitializingSingleton smartSingleton = (SmartInitializingSingleton) singletonInstance; 				// 触发SmartInitializingSingleton实现类的afterSingletonsInstantiated方法 				if (System.getSecurityManager() != null) { 					AccessController.doPrivileged((PrivilegedAction&lt;Object&gt;) () -&gt; { 						smartSingleton.afterSingletonsInstantiated(); 						return null; 					}, getAccessControlContext()); 				} 				else { 					smartSingleton.afterSingletonsInstantiated(); 				} 			} 		} 	}</code></pre> <p>org.springframework.context.event.EventListenerMethodProcessor#afterSingletonsInstantiated 中会调用私有方法  processBean()进行 ApplicationEventAdatper 的创建。代码如下：</p> <pre><code class="language-java">	/** 	 * 该方法拿到某个bean的名称和它的目标类，再这个范围上检测@EventListener注解方法，生成和注册 ApplicationListenerMethodAdapter 实例 	 * @param beanName 	 * @param targetType 	 */ 	private void processBean(final String beanName, final Class&lt;?&gt; targetType) { 		if (!this.nonAnnotatedClasses.contains(targetType) &amp;&amp; 				AnnotationUtils.isCandidateClass(targetType, EventListener.class) &amp;&amp; 				!isSpringContainerClass(targetType)) {  			Map&lt;Method, EventListener&gt; annotatedMethods = null; 			try { 				// 检测当前类targetType上使用了注解@EventListener的方法 				annotatedMethods = MethodIntrospector.selectMethods(targetType, 						(MethodIntrospector.MetadataLookup&lt;EventListener&gt;) method -&gt; 								AnnotatedElementUtils.findMergedAnnotation(method, EventListener.class)); 			} 			catch (Throwable ex) { 				// An unresolvable type in a method signature, probably from a lazy bean - let's ignore it. 				if (logger.isDebugEnabled()) { 					logger.debug("Could not resolve methods for bean with name '" + beanName + "'", ex); 				} 			}  			if (CollectionUtils.isEmpty(annotatedMethods)) { 				// 如果当前类targetType中没有任何使用了注解@EventListener的方法，则将该类保存到缓存nonAnnotatedClasses，从而 				// 避免当前处理方法重入该类，避免二次处理 				this.nonAnnotatedClasses.add(targetType); 				if (logger.isTraceEnabled()) { 					logger.trace("No @EventListener annotations found on bean class: " + targetType.getName()); 				} 			} 			else { 				// Non-empty set of methods 				// 如果当前类targetType中有些方法使用了注解@EventListener，那么根据方法上的信息对应的创建和注册ApplicationListener实例 				ConfigurableApplicationContext context = this.applicationContext; 				Assert.state(context != null, "No ApplicationContext set"); 				// 此处使用了this.eventListenerFactories,这些EventListenerFactory是在该类postProcessBeanFactory方法调用时被记录的 				List&lt;EventListenerFactory&gt; factories = this.eventListenerFactories; 				Assert.state(factories != null, "EventListenerFactory List not initialized"); 				for (Method method : annotatedMethods.keySet()) { 					for (EventListenerFactory factory : factories) { 						if (factory.supportsMethod(method)) { 							Method methodToUse = AopUtils.selectInvocableMethod(method, context.getType(beanName)); 							// 如果当前EventListenerFactory支持处理该@EventListener注解的方法，则使用它创建 ApplicationListenerMethodAdapter 							ApplicationListener&lt;?&gt; applicationListener = 									factory.createApplicationListener(beanName, targetType, methodToUse); 							if (applicationListener instanceof ApplicationListenerMethodAdapter) { 								((ApplicationListenerMethodAdapter) applicationListener).init(context, this.evaluator); 							} 							// 将创建的ApplicationListener加入到容器中 							context.addApplicationListener(applicationListener); 							break; 						} 					} 				} 				if (logger.isDebugEnabled()) { 					logger.debug(annotatedMethods.size() + " @EventListener methods processed on bean '" + 							beanName + "': " + annotatedMethods); 				} 			} 		} 	}</code></pre> <h4 id="3多播器广播事件">3.多播器广播事件</h4> <p>可以通过调用 org.springframework.context.support.AbstractApplicationContext#publishEvent(java.lang.Object, org.springframework.core.ResolvableType) 方法进行事件的调用。代码如下：</p> <pre><code class="language-java">/** 	 * 将给定事件发布到所有监听器 	 */ 	protected void publishEvent(Object event, @Nullable ResolvableType eventType) { 		// 如果event为null，抛出异常 		Assert.notNull(event, "Event must not be null");  		// Decorate event as an ApplicationEvent if necessary 		// 装饰事件作为一个应用事件，如果有必要 		ApplicationEvent applicationEvent; 		// 如果event是ApplicationEvent的实例 		if (event instanceof ApplicationEvent) { 			// 将event强转为ApplicationEvent对象 			applicationEvent = (ApplicationEvent) event; 		} 		else { 			// PayloadApplicationEvent：携带任意有效负载的ApplicationEvent。 			// 创建一个新的PayloadApplicationEvent 			applicationEvent = new PayloadApplicationEvent&lt;&gt;(this, event); 			// 如果eventType为 null 			if (eventType == null) { 				// 将applicationEvent转换为PayloadApplicationEvent 象，引用其ResolvableType对象 				eventType = ((PayloadApplicationEvent&lt;?&gt;) applicationEvent).getResolvableType(); 			} 		}  		// Multicast right now if possible - or lazily once the multicaster is initialized 		// 如果可能的话，现在就进行组播——或者在组播初始化后延迟 		// earlyApplicationEvents：在多播程序设置之前发布的ApplicationEvent 		// 如果earlyApplicationEvents不为 null，这种情况只在上下文的多播器还没有初始化的情况下才会成立，会将applicationEvent 		// 添加到earlyApplicationEvents保存起来，待多博器初始化后才继续进行多播到适当的监听器 		if (this.earlyApplicationEvents != null) { 			//将applicationEvent添加到 earlyApplicationEvents 			this.earlyApplicationEvents.add(applicationEvent); 		} 		else { 			// 多播applicationEvent到适当的监听器 			getApplicationEventMulticaster().multicastEvent(applicationEvent, eventType); 		}  		// Publish event via parent context as well... 		// 通过父上下文发布事件 		// 如果parent不为null 		if (this.parent != null) { 			// 如果parent是AbstractApplicationContext的实例 			if (this.parent instanceof AbstractApplicationContext) { 				// 将event多播到所有适合的监听器。如果event不是ApplicationEvent实例，会将其封装成PayloadApplicationEvent对象再进行多播 				((AbstractApplicationContext) this.parent).publishEvent(event, eventType); 			} 			else { 				// 通知与event事件应用程序注册的所有匹配的监听器 				this.parent.publishEvent(event); 			} 		} 	}</code></pre> <p>SimpleApplicationEventMulticaster 中的 multicasEvent，invokeListener，doInvokeListener 三个方法代码如下：</p> <pre><code class="language-java">/** 	 * 将给定事件发布到所有监听器 	 */ 	protected void publishEvent(Object event, @Nullable ResolvableType eventType) { 		// 如果event为null，抛出异常 		Assert.notNull(event, "Event must not be null");  		// Decorate event as an ApplicationEvent if necessary 		// 装饰事件作为一个应用事件，如果有必要 		ApplicationEvent applicationEvent; 		// 如果event是ApplicationEvent的实例 		if (event instanceof ApplicationEvent) { 			// 将event强转为ApplicationEvent对象 			applicationEvent = (ApplicationEvent) event; 		} 		else { 			// PayloadApplicationEvent：携带任意有效负载的ApplicationEvent。 			// 创建一个新的PayloadApplicationEvent 			applicationEvent = new PayloadApplicationEvent&lt;&gt;(this, event); 			// 如果eventType为 null 			if (eventType == null) { 				// 将applicationEvent转换为PayloadApplicationEvent 象，引用其ResolvableType对象 				eventType = ((PayloadApplicationEvent&lt;?&gt;) applicationEvent).getResolvableType(); 			} 		}  		// Multicast right now if possible - or lazily once the multicaster is initialized 		// 如果可能的话，现在就进行组播——或者在组播初始化后延迟 		// earlyApplicationEvents：在多播程序设置之前发布的ApplicationEvent 		// 如果earlyApplicationEvents不为 null，这种情况只在上下文的多播器还没有初始化的情况下才会成立，会将applicationEvent 		// 添加到earlyApplicationEvents保存起来，待多博器初始化后才继续进行多播到适当的监听器 		if (this.earlyApplicationEvents != null) { 			//将applicationEvent添加到 earlyApplicationEvents 			this.earlyApplicationEvents.add(applicationEvent); 		} 		else { 			// 多播applicationEvent到适当的监听器 			getApplicationEventMulticaster().multicastEvent(applicationEvent, eventType); 		}  		// Publish event via parent context as well... 		// 通过父上下文发布事件 		// 如果parent不为null 		if (this.parent != null) { 			// 如果parent是AbstractApplicationContext的实例 			if (this.parent instanceof AbstractApplicationContext) { 				// 将event多播到所有适合的监听器。如果event不是ApplicationEvent实例，会将其封装成PayloadApplicationEvent对象再进行多播 				((AbstractApplicationContext) this.parent).publishEvent(event, eventType); 			} 			else { 				// 通知与event事件应用程序注册的所有匹配的监听器 				this.parent.publishEvent(event); 			} 		} 	}</code></pre> <pre><code class="language-java">	protected void invokeListener(ApplicationListener&lt;?&gt; listener, ApplicationEvent event) { 		// 获取此多播器的当前错误处理程序 		ErrorHandler errorHandler = getErrorHandler(); 		// 如果errorHandler不为null 		if (errorHandler != null) { 			try { 				// 回调listener的onApplicationEvent方法，传入event 				doInvokeListener(listener, event); 			} 			catch (Throwable err) { 				// 交给errorHandler接收处理err 				errorHandler.handleError(err); 			} 		} 		else { 			// 回调listener的onApplicationEvent方法，传入event 			doInvokeListener(listener, event); 		} 	}</code></pre> <pre><code class="language-java">	/** 	 * 回调listener的onApplicationEvent方法，传入 event 	 * @param listener 	 * @param event 	 */ 	@SuppressWarnings({"rawtypes", "unchecked"}) 	private void doInvokeListener(ApplicationListener listener, ApplicationEvent event) { 		try { 			//回调listener的onApplicationEvent方法，传入	        			event:contextrefreshListener:onapplicaitonEvent:FrameworkServlet.this.onApplicationEvent() 			listener.onApplicationEvent(event); 		} 		catch (ClassCastException ex) { 			//获取异常信息 			String msg = ex.getMessage(); 			if (msg == null || matchesClassCastMessage(msg, event.getClass())) { 				// Possibly a lambda-defined listener which we could not resolve the generic event type for 				// -&gt; let's suppress the exception and just log a debug message. 				Log logger = LogFactory.getLog(getClass()); 				if (logger.isTraceEnabled()) { 					logger.trace("Non-matching event type for listener: " + listener, ex); 				} 			} 			else { 				//抛出异常 				throw ex; 			} 		} 	}</code></pre> <h2 id="springmvc中事件使用">SpringMVC中事件使用</h2> <p>SpringMVC中就是通过Spring的事件机制进行九大组件的初始化。</p> <h4 id="1contextrefreshlistener监听器的定义">1.ContextRefreshListener监听器的定义</h4> <p>监听器定义在FrameworkServlet类中，作为内部类。代码如下：</p> <pre><code class="language-java">	private class ContextRefreshListener implements ApplicationListener&lt;ContextRefreshedEvent&gt; {  		@Override 		public void onApplicationEvent(ContextRefreshedEvent event) { 			FrameworkServlet.this.onApplicationEvent(event); 		} 	}</code></pre> <p>监听器的添加在org.springframework.web.servlet.FrameworkServlet#configureAndRefreshWebApplicationContext 中进行。通过SourceFilteringListener进行包装。添加代码如下：</p> <pre><code class="language-java">	// 添加监听器sourceFilteringListener到wac中,实际监听的是ContextRefreshListener所监听的事件，监听ContextRefreshedEvent事件， 		// 当接收到消息之后会调用onApplicationEvent方法，调用onRefresh方法，并将refreshEventReceived标志设置为true，表示已经refresh过 		wac.addApplicationListener(new SourceFilteringListener(wac, new ContextRefreshListener()));</code></pre> <h4 id="2多播器添加已经定义的contextrefreshlistener事件监听器">2.多播器添加已经定义的ContextRefreshListener事件监听器</h4> <p>在refresh中的registerListeners方法进行添加，代码如下：</p> <pre><code class="language-java">		// Register statically specified listeners first. 		// 遍历应用程序中存在的监听器集合，并将对应的监听器添加到监听器的多路广播器中 		for (ApplicationListener&lt;?&gt; listener : getApplicationListeners()) { 			getApplicationEventMulticaster().addApplicationListener(listener); 		}</code></pre> <h4 id="3contextrefreshlistener事件监听器的触发">3.ContextRefreshListener事件监听器的触发</h4> <p>在refresh中的finishRefresh()方法中，会调用publishEvnet(new ContextRefreshedEvent(this))发布事件。进行多播器广播，代码如下</p> <pre><code class="language-java">// 多播applicationEvent到适当的监听器 getApplicationEventMulticaster().multicastEvent(applicationEvent, eventType);</code></pre> <p>最终会调到FrameworkServlet.this.onApplicationEvent(event)。</p> <pre><code class="language-java">	public void onApplicationEvent(ContextRefreshedEvent event) { 		// 标记 refreshEventReceived 为true 		this.refreshEventReceived = true; 		synchronized (this.onRefreshMonitor) { 			// 处理事件中的 ApplicationContext 对象，空实现，子类DispatcherServlet会实现 			onRefresh(event.getApplicationContext()); 		} 	}</code></pre> <pre><code class="language-java">@Override 	protected void onRefresh(ApplicationContext context) { 		initStrategies(context); 	}</code></pre> <pre><code class="language-java">protected void initStrategies(ApplicationContext context) { 		// 初始化 MultipartResolver:主要用来处理文件上传.如果定义过当前类型的bean对象，那么直接获取，如果没有的话，可以为null 		initMultipartResolver(context); 		// 初始化 LocaleResolver:主要用来处理国际化配置,基于URL参数的配置(AcceptHeaderLocaleResolver)，基于session的配置(SessionLocaleResolver)，基于cookie的配置(CookieLocaleResolver) 		initLocaleResolver(context); 		// 初始化 ThemeResolver:主要用来设置主题Theme 		initThemeResolver(context); 		// 初始化 HandlerMapping:映射器，用来将对应的request跟controller进行对应 		initHandlerMappings(context); 		// 初始化 HandlerAdapter:处理适配器，主要包含Http请求处理器适配器，简单控制器处理器适配器，注解方法处理器适配器 		initHandlerAdapters(context); 		// 初始化 HandlerExceptionResolver:基于HandlerExceptionResolver接口的异常处理 		initHandlerExceptionResolvers(context); 		// 初始化 RequestToViewNameTranslator:当controller处理器方法没有返回一个View对象或逻辑视图名称，并且在该方法中没有直接往response的输出流里面写数据的时候，spring将会采用约定好的方式提供一个逻辑视图名称 		initRequestToViewNameTranslator(context); 		// 初始化 ViewResolver: 将ModelAndView选择合适的视图进行渲染的处理器 		initViewResolvers(context); 		// 初始化 FlashMapManager: 提供请求存储属性，可供其他请求使用 		initFlashMapManager(context); 	}</code></pre> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3384.htm">Parquet 之mapreduce</a></p>
+                                                <p>下一个：<a href="/html/category/article-3386.htm">浅谈Vue下的components模板</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3389.htm" title="树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统">树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统</a></li>
+                        <li class="py-2"><a href="/html/category/article-3374.htm" title="C语言多文件编程详解">C语言多文件编程详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3373.htm" title="Centos7服务器上RabbitMQ单机安装_在线工具">Centos7服务器上RabbitMQ单机安装_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3416.htm" title="vue项目实现webpack配置代理,解决跨域问题_vue.js">vue项目实现webpack配置代理,解决跨域问题_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3363.htm" title="父传子、子传父经典案例—微信小程序自定义标题栏全过程">父传子、子传父经典案例—微信小程序自定义标题栏全过程</a></li>
+                        <li class="py-2"><a href="/html/category/article-3390.htm" title="springcloud-的使用alibaba版&#8212;&#8212;Nacos Discovery&#8211;服务治理">springcloud-的使用alibaba版&#8212;&#8212;Nacos Discovery&#8211;服务治理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3379.htm" title="如果我将提供NULL，将返回什么MySQL ASCII()函数？">如果我将提供NULL，将返回什么MySQL ASCII()函数？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

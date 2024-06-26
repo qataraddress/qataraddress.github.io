@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3242.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>kerberos认证python_python confluent kafka客户端配置kerberos认证 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">kerberos认证python_python confluent kafka客户端配置kerberos认证</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>kafka的认证方式一般有如下3种：</p> <p>1.&nbsp;SASL/GSSAPI&nbsp; 从版本0.9.0.0开始支持</p> <p>2.&nbsp;SASL/PLAIN&nbsp; &nbsp;从版本0.10.0.0开始支持</p> <p>3.&nbsp;SASL/SCRAM-SHA-256 以及 SASL/SCRAM-SHA-512&nbsp; &nbsp;从版本0.10.2.0开始支持</p> <p>其中第一种SASL/GSSAPI的认证就是kerberos认证，对于java来说有原生的支持，但是对于python来说配置稍微麻烦一些，下面说一下具体的配置过程，confluent kafka模块底层依赖于librdkafka，这是使用c编写的高性能的kafka客户端库，有好多语言的库都是依赖于这个，所以GSSAPI接口的开启也需要在librdkafka编译的时候支持</p> <p>librdkafka源码：https://github.com/edenhill/librdkafka</p> <p>编译之前需要先安装必要的开发包，否则相关的接口编译不进去</p> <p>首先是openssl库，使用yum安装为：&nbsp;yum -y install openssl openssl-devel&nbsp;，编译openssl只能支持默认的PLAIN还有SCRAM这两种机制，无法支持GSSAPI的机制，还需要编译libsasl2依赖，yum安装命令如下：</p> <p>yum install cyrus-sasl-gssapi cyrus-sasl-devel</p> <p>在ubuntu下使用命令：&nbsp;apt-get install libsasl2-modules-gssapi-mit libsasl2-dev&nbsp;安装libsasl2开发包</p> <p>然后确认一下是否有zlib库，这个是方便对kafka消息压缩使用的，一般都会存在，安装命令：&nbsp;yum install zlib-devel&nbsp;，如果需要更高的性能可以手动编译安装zstd并且启用压缩，这里不再详细叙述</p> <p>上面的库都安装成功就可以开始编译librdkafka源码了，这里源码包为：librdkafka-1.2.1.tar.gz，安装命令如下：</p> <p># 解压包tar -xvzf librdkafka-1.2.1.tar.gz</p> <p>cd librdkafka-1.2.1# 编译源码</p> <p>./configuremake</p> <p>make install</p> <p>上面注意一下在执行命令./configure之后，根据输出确认libssl以及libsasl2是否被开启，如下：</p> <p align="center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/993895dcdb23d25c258edb12299fcb1b.jpg" alt="kerberos认证python_python confluent kafka客户端配置kerberos认证"></p> <p>这里libssl以及libsasl2都显示ok说明是可以的，现在SSL和SASL SCRAM以及SASL GSSAPI都已经支持了，执行configure阶段没指定prefix则默认安装位置为/usr/local，动态库位置就为：/usr/local/lib，需要将这个目录添加到动态库连接列表中，比如加到/etc/ld.so.conf，保存后执行ldconfig生效</p> <p>最后可以编译和安装python的confluent kafka模块，这里安装的版本是1.2.0，安装之后可以运行下面的代码测试：</p> <p>1 #!/usr/bin/env python3</p> <p>2 #coding=utf-8</p> <p>3 from confluent_kafka importProducer4</p> <p>5 defdelivery_report(err, msg):6 """Called once for each message produced to indicate delivery result.7 Triggered by poll() or flush()."""</p> <p>8 if err is notNone:9 print('Message delivery failed: {}'.format(err))10 else:11 print('Message delivered to {} [{}]'.format(msg.topic(), msg.partition()))12</p> <p>13 if __name__ == '__main__':14 producer_conf ={15 "bootstrap.servers": '192.168.0.3:9092,192.168.0.4:9092,192.168.0.5:9092',16 "security.protocol": 'sasl_plaintext',17 'sasl.kerberos.service.name': 'kafka',18 'sasl.kerberos.keytab': '/opt/user.keytab',19 'sasl.kerberos.principal': 'kafkauser',20 }21 p =Producer(producer_conf)22</p> <p>23 p.poll(0)24 p.produce('testTopic', 'confluent kafka test'.encode('utf-8'),25 callback=delivery_report)26</p> <p>27 p.flush()28 print('done')</p> <p>如果生产消息正常就配置成功了，使用GSSAPI只需要配置security.protocol以及keytab的路径即可，其他的认证参数比如用户名和密码在不同的认证机制下配置，更多的配置参数参考文档：https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md</p> <p>librdkafka SASL认证的详细配置流程参考：https://github.com/edenhill/librdkafka/wiki/Using-SASL-with-librdkafka</p> </div></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3241.htm">如何查看项目的vue版本方法</a></p>
+                                                <p>下一个：<a href="/html/category/article-3243.htm">ArrayUtils和Arrays比较常用的方法推荐</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3364.htm" title="如何在idea上部署tomcat&amp;项目">如何在idea上部署tomcat&amp;项目</a></li>
+                        <li class="py-2"><a href="/html/category/article-3385.htm" title="Spring事件监听机制源码解析">Spring事件监听机制源码解析</a></li>
+                        <li class="py-2"><a href="/html/category/article-3413.htm" title="Centos7系统离线安装nginx步骤(亲测，超详细步骤)">Centos7系统离线安装nginx步骤(亲测，超详细步骤)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3401.htm" title="petite-vue源码剖析-沙箱模型">petite-vue源码剖析-沙箱模型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
+                        <li class="py-2"><a href="/html/category/article-3402.htm" title="微信小程序自定义顶部导航栏封装">微信小程序自定义顶部导航栏封装</a></li>
+                        <li class="py-2"><a href="/html/category/article-3372.htm" title="MySQL 索引简介">MySQL 索引简介</a></li>
+                        <li class="py-2"><a href="/html/category/article-3396.htm" title="CentOS7设置固定IP地址详解">CentOS7设置固定IP地址详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3422.htm" title="vue-cli项目添加骨架屏多种方式，自动生成骨架屏">vue-cli项目添加骨架屏多种方式，自动生成骨架屏</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

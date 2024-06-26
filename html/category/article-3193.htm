@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3193.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>.NET混合开发解决方案WebView2的进程模型 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">.NET混合开发解决方案WebView2的进程模型</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="comment_nav_orange"><strong>系列目录<a title="已更新最新开发文章，点击查看详细" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/SavionZhang/p/16193959.html"  target="_blank" rel="nofollow">【已更新最新开发文章，点击查看详细】</a></strong></div> <blockquote> <p><span> WebView2控件应用详解系列博客</span></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/SavionZhang/p/16194142.html"  target="_blank" rel="nofollow">.NET桌面程序集成Web网页开发的十种解决方案</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/SavionZhang/p/16193911.html"  target="_blank" rel="nofollow">.NET混合开发解决方案1 WebView2简介</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/SavionZhang/p/16194897.html"  target="_blank" rel="nofollow">.NET混合开发解决方案2 WebView2与Edge浏览器的区别</a></p> </blockquote> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">　　WebView2 运行时使用与 Microsoft Edge 浏览器相同的进程模型。<br /></span></p> <div id="comment_nav_green"><strong>WebView2 运行时中的进程</strong></div> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"></span><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">WebView2 进程组是 WebView2 运行时进程的集合。 WebView2 进程组包括以下内容：</span></p> <ul> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">单个浏览器进程。</span></li> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">一个或多个渲染器（呈现器）进程。</span></li> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">其他帮助程序进程，例如 GPU 进程和音频服务进程。</span></li> </ul> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f94dd9f4145ccf92fe67d7f3f1390cb8.jpg" alt=".NET混合开发解决方案WebView2的进程模型"></span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">当WebView2应用程序使用WebView2功能时，WebView2进程组中进程的数量和存在可能会发生变化。（但是，WebView2进程组中只有一个特定的浏览器进程。）例如，从同一个 CoreWebView2Environment 市里创建新的WebView2实例，但在源属性中使用不同的域，通常会启动一个新的渲染器进程。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">渲染器进程的数量可能会根据以下情况而变化：</span></p> <ul> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">在WebView2运行时中使用站点隔离功能。请参见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developers.google.com/web/updates/2018/09/inside-browser-part1#site-isolation"  target="_blank" rel="nofollow">每帧渲染器进程-站点隔离</a>。</span></li> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">在使用同一用户数据文件夹的WebView2实例中呈现的不同断开连接的源的数量。</span></li> </ul> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">控制何时创建这些额外进程的逻辑取决于Chromium体系结构，并且超出了 WebView2 运行时的范围。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"></span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">下面是在真实项目中测试的结果</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">（1）电脑关机，重新开机，未运行Edge浏览器，且未运行与WebView2相关的宿主应用程序。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/12dce4d47ddc6841c791f226e2547016.jpg" alt=".NET混合开发解决方案WebView2的进程模型" width="600"/></span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">后台进程中有5个默认Edge进程在运行</span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/2383269f9bf454a372f775676ffb94da.jpg" alt=".NET混合开发解决方案WebView2的进程模型" width="800"/></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">（2）运行“建筑工程施工图AI审查系统”，其中红色框内是使用WebView2组件加载的网页应用</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/e24ebe588c414e93366696d7cedf47d4.jpg" alt=".NET混合开发解决方案WebView2的进程模型" width="1000" loading="lazy"/></span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">任务管理器中，进程“Zjgsgts.Sczj”下启动了7个WebView2的子进程</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c343728912d973e28bf9354701cf5ecf.jpg" alt=".NET混合开发解决方案WebView2的进程模型"></span></p> <p><span style="color: rgba(0, 0, 255, 1); font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">其中某个第1个、第2个进程是渲染器进程，因为三维模型的渲染过程消耗的内存较多。第3、4、5、6、7是GPU进程或者其他帮助类程序进程。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px; color: rgba(0, 0, 255, 1)">而浏览器进程依然为5个，说明其中一个是 WebView2 进程组中的浏览器进程。</span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1b160a76c43548aef1effe739db29cb0.jpg" alt=".NET混合开发解决方案WebView2的进程模型"></p> <div><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">在宿主程序的根目录下多了两个文件夹</span></div> <div><strong><strong><strong><img decoding="async" src="https://img2022.cnblogs.com/blog/142275/202204/142275-20220426175549150-24247159.png" alt=".NET混合开发解决方案WebView2的进程模型"></strong></strong></strong></p> <ul> <li><strong><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">runtimes 目录</span></strong> <ul> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">结构如下图，包含一个WebView2运行时加载器组件&nbsp;&nbsp;WebView2Loader.dll 。</span></li> </ul> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/53c72e0a2fb90b1ba70624bccfdb00be.jpg" alt=".NET混合开发解决方案WebView2的进程模型"></p> <ul> <li><strong><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">&nbsp;Zjgsgtsc.Sczj.exe.WebView2 目录</span></strong> <ul> <li><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">结构图下图，里面包含运行过程中其他的辅助配置信息以及缓存等信息</span></li> </ul> </li> </ul> </div> <div><strong><strong><img decoding="async" src="https://img2022.cnblogs.com/blog/142275/202204/142275-20220426180049287-1049271050.png" alt=".NET混合开发解决方案WebView2的进程模型"></strong></strong></div> <div><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">关于该目录信息，在后续的博客中会详解介绍。</span></div> <div id="comment_nav_green"><strong>WebView2 运行时进程和用户数据文件夹</strong></div> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">　　WebView2 运行时进程集合中的所有进程都绑定到浏览器进程，而浏览器进程又与单个用户数据文件夹相关联。 如果应用程序使用多个用户数据文件夹，将为每个用户数据文件夹创建 WebView2 运行时进程的集合。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/bc390f80c0210ca0155465c7edfdfd3c.jpg" alt=".NET混合开发解决方案WebView2的进程模型"></span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">　　用户数据文件夹可由多个应用程序共享，但请务必考虑对性能和管理的影响，如<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/microsoft-edge/webview2/concepts/user-data-folder?tabs=win32"  target="_blank" rel="nofollow">“管理用户数据”文件夹</a>中所述。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">　　若要使用多个用户数据文件夹，WebView2 应用程序需要创建不同的 CoreWebView2Environment 对象。 WebView2通过配置的对象为给定用户数据文件夹创建CoreWebView2Environment实例。 每个 CoreWebView2Environment 对象都需要使用不同的用户数据文件夹值进行配置。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">　　为给定的用户数据文件夹创建第一个WebView2实例时，将启动与该用户数据文件夹关联的WebView2运行时进程集合的浏览器进程。所有其他进程都将在该浏览器进程的生命周期内进行管理。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">　　CoreWebView2Environment代表一个用户数据文件夹及其相关进程的集合。给定的渲染器进程与单个CoreWebView2实例不关联，因为渲染器进程可以为使用同一用户数据文件夹的多个CoreWebView2实例中的帧提供服务，具体取决于网站隔离。请参见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developers.google.com/web/updates/2018/09/inside-browser-part1#site-isolation"  target="_blank" rel="nofollow">每帧渲染器进程-站点隔离</a></span></p> <div id="comment_nav_green"><strong><strong>处理进程事件和生命周期</strong></strong></div> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">若要对浏览器和渲染器进程中的崩溃和挂起做出反应，请使用 CoreWebView2 的 ProcessFailed 事件。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">若要安全地关闭相关的浏览器和渲染器进程，请使用 CoreWebView2Controller 的 Close 方法。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">若要打开浏览器任务管理器，请调用<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.web.webview2.core.corewebview2.opentaskmanagerwindow?view=webview2-dotnet-1.0.1185.39#microsoft-web-webview2-core-corewebview2-opentaskmanagerwindow"  target="_blank" rel="nofollow">OpenTaskManagerWindows</a> 方法。</span></p> <p><span style="font-family: &quot;Microsoft YaHei&quot;; font-size: 14px">其他事件，请参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.web.webview2.wpf.webview2?view=webview2-dotnet-1.0.1185.39"  target="_blank" rel="nofollow">WebView2 API</a>。</span></p> <div id="comment_nav_orange"><strong>系列目录<a title="已更新最新开发文章，点击查看详细" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/SavionZhang/p/16193959.html"  target="_blank" rel="nofollow">【已更新最新开发文章，点击查看详细】</a></strong></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3192.htm">FP-growth 算法与Python实现</a></p>
+                                                <p>下一个：<a href="/html/category/article-3194.htm">42. Vue组件传值-子组件通过事件调用向父组件传值</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3374.htm" title="C语言多文件编程详解">C语言多文件编程详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3398.htm" title="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3380.htm" title="springboot的依赖管理和自动配置">springboot的依赖管理和自动配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3403.htm" title="数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具">数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3386.htm" title="浅谈Vue下的components模板">浅谈Vue下的components模板</a></li>
+                        <li class="py-2"><a href="/html/category/article-3383.htm" title="Vue简单实现自定义拖拽">Vue简单实现自定义拖拽</a></li>
+                        <li class="py-2"><a href="/html/category/article-3396.htm" title="CentOS7设置固定IP地址详解">CentOS7设置固定IP地址详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

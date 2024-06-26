@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3401.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>petite-vue源码剖析-沙箱模型 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">petite-vue源码剖析-沙箱模型</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>在解析<code>v-if</code>和<code>v-for</code>等指令时我们会看到通过<code>evaluate</code>执行指令值中的JavaScript表达式，而且能够读取当前作用域上的属性。而<code>evaluate</code>的实现如下：</p> <pre><code class="language-ts">const evalCache: Record&lt;string, Function&gt; = Object.create(null)  export const evaluate = (scope: any, exp: string, el?: Node) =&gt;   execute(scope, `return(${exp})`, el)  export const execute = (scope: any, exp: string, el?: Node) =&gt; {   const fn = evalCache[exp] || (evalCache[exp] = toFunction(exp))   try {     return fn(scope, el)   } catch (e) {     if (import.meta.env.DEV) {       console.warn(`Error when evaluating expression "${exp}":`)     }     console.error(e)   } }  const toFunction = (exp: string): Function =&gt; {   try {     return new Function(`$data`, `$el`, `with($data){${exp}}`)   } catch (e) {     console.error(`${(e as Error).message} in expression: ${exp}`)     return () =&gt; {}   } }</code></pre> <p>简化为如下</p> <pre><code class="language-ts">export const evaluate = (scope: any, exp: string, el?: Node) =&gt; {   return (new Function(`$data`, `$el`, `with($data){return(${exp})}`))(scope, el) }</code></pre> <p>而这里就是通过<code>with</code>+<code>new Function</code>构建一个简单的沙箱，为<code>v-if</code>和<code>v-for</code>指令提供一个可控的JavaScript表达式的执行环境。</p> <h2 id="什么是沙箱">什么是沙箱</h2> <p>沙箱(Sandbox)作为一种安全机制，用于提供一个独立的可控的执行环境供未经测试或不受信任的程序运行，并且程序运行不会影响污染外部程序的执行环境(如篡改/劫持window对象及其属性)，也不会影响外部程序的运行。</p> <p>与此同时，沙箱和外部程序可以通过预期的方式进行通信。</p> <p>更细化的功能就是:</p> <ol> <li>拥有独立的全局作用域和全局对象(<code>window</code>)</li> <li>沙箱提供启动、暂停、恢复和停机功能</li> <li>多台沙箱支持并行运行</li> <li>沙箱和主环境、沙箱和沙箱之间可实现安全通信</li> </ol> <h2 id="原生沙箱-iframe">原生沙箱-<code>iframe</code></h2> <p><code>iframe</code>拥有独立的browser context，不单单提供独立的JavaScript执行环境，甚至还拥有独立的HTML和CSS命名空间。</p> <p>通过将<code>iframe</code>的<code>src</code>设置为<code>about:blank</code>即保证同源且不会发生资源加载，那么就可以通过<code>iframe.contentWindow</code>获取与主环境独立的window对象作为沙箱的全局对象，并通过<code>with</code>将全局对象转换为全局作用域。</p> <p>而<code>iframe</code>的缺点：</p> <ol> <li>若我们只需要一个独立的JavaScript执行环境，那么其它特性则不仅仅是累赘，还会带来不必要的性能开销。而且<code>iframe</code>会导致主视窗的onload事件延迟执行；</li> <li>内部程序可以访问浏览器所有API，我们无法控制白名单。(这个可以通过Proxy处理)</li> </ol> <h2 id="沙箱的材料-withproxyevalnew-function">沙箱的材料-<code>with</code>+<code>Proxy</code>+<code>eval/new Function</code></h2> <h3 id="什么是with">什么是<code>with</code>？</h3> <p>JavaScript采用的是语法作用域（或称为静态作用域），而<code>with</code>则让JavaScript拥有部分动态作用域的特性。</p> <p><code>with(obj)</code>会将<code>obj</code>对象作为新的临时作用域添加到当前作用域链的顶端，那么<code>obj</code>的属性将作为当前作用域的绑定，但是和普通的绑定解析一样，若在当前作用域无法解析则会向父作用域查找，直到根作用域也无法解析为止。</p> <pre><code class="language-js">let foo = 'lexical scope' let bar = 'lexical scope'  ;(function() {   // 访问语句源码书写的位置决定这里访问的foo指向'lexical scope'   console.log(foo) })() // 回显 lexical scope  ;(function(dynamicScope) {   with(dynamicScope) {     /**      * 默认访问语句源码书写的位置决定这里访问的foo指向'lexical scope'，      * 但由于该语句位于with的语句体中，因此将改变解析foo绑定的作用域。      */      console.log(foo)     // 由于with创建的临时作用域中没有定义bar，因此会向父作用域查找解析绑定     console.log(bar)   } })({   foo: 'dynamic scope' }) // 回显 dynamic scope // 回显 lexical scope</code></pre> <p>注意：<code>with</code>创建的是临时作用域，和通过函数创建的作用域是不同的。具体表现为当<code>with</code>中调用外部定义的函数，那么在函数体内访问绑定时，由于由<code>with</code>创建的临时作用域将被函数作用域替代，而不是作为函数作用域的父作用域而存在，导致无法访问<code>with</code>创建的作用域中的绑定。这也是为何说<code>with</code>让JavaScript拥有部分动态作用域特性的原因了。</p> <pre><code class="language-js">let foo = 'lexical scope'  function showFoo() {   console.log(foo) }  ;(function(dynamicScope) {   with(dynamicScope) {     showFoo()   } })({   foo: 'dynamic scope' }) // 回显 lexical scope</code></pre> <p>再一次注意：若函数是在<code>with</code>创建的临时作用域内定义的，那么将以该临时作用域作为父作用域</p> <pre><code class="language-js">let foo = 'lexical scope'  ;(function(dynamicScope) {   with(dynamicScope) {     (() =&gt; {       const bar = 'bar'       console.log(bar)       // 其实这里就是采用语法作用域，谁叫函数定义的位置在临时作用域生效的地方呢。       console.log(foo)     })()   } })({   foo: 'dynamic scope' }) // 回显 bar // 回显 dynamic scope</code></pre> <p>另外，在<em>ESM模式</em>或<em>strict模式</em>(使用<code>class</code>定义类会启动启用<em>strict模式</em>)下都禁止使用<code>with</code>语句哦！</p> <ul> <li><code>Error: With statements cannot be used in an ECMAScript module</code></li> <li><code>Uncaught SyntaxError: Strict mode code may not include a with statement</code></li> </ul> <p>但无法阻止通过<code>eval</code>或<code>new Function</code>执行<code>with</code>哦！</p> <h3 id="如何利用proxy防止绑定解析逃逸">如何利用<code>Proxy</code>防止绑定解析逃逸？</h3> <p>通过前面数篇文章的介绍，我想大家对<code>Proxy</code>已经不再陌生了。不过这里我们会用到之前一笔带过的<code>has</code>拦截器，用于拦截<code>with</code>代码中任意变量的访问，也可以设置一个可正常在作用域链查找的绑定白名单，而白名单外的则必须以沙箱创建的作用域上定义维护。</p> <pre><code class="language-js">const whiteList = ['Math', 'Date', 'console'] const createContext = (ctx) =&gt; {   return new Proxy(ctx, {     has(target, key) {       // 由于代理对象作为`with`的参数成为当前作用域对象，因此若返回false则会继续往父作用域查找解析绑定       if (whiteList.includes(key)) {         return target.hasOwnProperty(key)       }        // 返回true则不会往父作用域继续查找解析绑定，但实际上没有对应的绑定，则会返回undefined，而不是报错，因此需要手动抛出异常。       if (!targe.hasOwnProperty(key)) {         throw ReferenceError(`${key} is not defined`)       }        return true     }   }) }  with(createContext({ foo: 'foo' })) {   console.log(foo)   console.log(bar) } // 回显 foo // 抛出 `Uncaught ReferenceError: bar is not defined`</code></pre> <p>到目前为止，我们虽然实现一个基本可用沙箱模型，但致命的是无法将外部程序代码传递沙箱中执行。下面我们通过<code>eval</code>和<code>new Function</code>来实现。</p> <h3 id="邪恶的eval">邪恶的<code>eval</code></h3> <p><code>eval()</code>函数可以执行字符串形式的JavaScript代码，其中代码可以访问<em>闭包作用域</em>及其<em>父作用域</em>直到<em>全局作用域</em>绑定，这会引起代码注入(code injection)的安全问题。</p> <pre><code class="language-js">const bar = 'bar'  function run(arg, script) {   ;(() =&gt; {     const foo = 'foo'     eval(script)   })() }  const script = `   console.log(arg)   console.log(bar)   console.log(foo) ` run('hi', script) // 回显 hi // 回显 bar  // 回显 foo</code></pre> <h3 id="new-function"><code>new Function</code></h3> <p>相对<code>eval</code>，<code>new Function</code>的特点是:</p> <ol> <li><code>new Funciton</code>函数体中的代码只能访问<em>函数入参</em>和<em>全局作用域</em>的绑定；</li> <li>将动态脚本程序解析并实例化为函数对象，后续不用再重新解析就可以至直接执行，性能比<code>eval</code>好。</li> </ol> <pre><code class="language-js">const bar = 'bar'  function run(arg, script) {   ;(() =&gt; {     const foo = 'foo'     ;(new Function('arg', script))(arg)   })() }  const script = `   console.log(arg)   console.log(bar)   console.log(foo) ` run('hi', script) // 回显 hi // 回显 bar  // 回显 Uncaught ReferenceError: foo is not defined</code></pre> <h2 id="沙箱逃逸sandbox-escape">沙箱逃逸(Sandbox Escape)</h2> <p>沙箱逃逸就是沙箱内运行的程序以非合法的方式访问或修改外部程序的执行环境或影响外部程序的正常执行。<br /> 虽然上面我们已经通过Proxy控制沙箱内部程序可访问的作用域链，但仍然有不少突破沙箱的漏洞。</p> <h3 id="通过原型链实现逃逸">通过原型链实现逃逸</h3> <p>JavaScript中constructor属性指向创建当前对象的构造函数，而该属性是存在于原型中，并且是不可靠的。</p> <pre><code class="language-js">function Test(){} const obj = new Test()  console.log(obj.hasOwnProperty('constructor')) // false console.log(obj.__proto__.hasOwnProperty('constructor')) // true</code></pre> <p>逃逸示例：</p> <pre><code class="language-js">// 在沙箱内执行如下代码 ({}).constructor.prototype.toString = () =&gt; {   console.log('Escape!') }  // 外部程序执行环境被污染了 console.log(({}).toString())  // 回显 Escape! // 而期待回显是 [object Object]</code></pre> <h3 id="symbolunscopables"><code>Symbol.unscopables</code></h3> <p><code>Symbol.unscopables</code>作为属性名对应的属性值表示该对象作为<code>with</code>参数时，哪些属性会被with环境排除。</p> <pre><code class="language-js">const arr = [1] console.log(arr[Symbol.unscopables]) // 回显 {"copyWithin":true,"entries":true,"fill":true,"find":true,"findIndex":true,"flat":true,"flatMap":true,"includes":true,"keys":true,"values":true,"at":true,"findLast":true,"findLastIndex":true}  with(arr) {   console.log(entries) // 抛出ReferenceError }  const includes = '成功逃逸啦' with(arr) {   console.log(includes) // 回显 成功逃逸啦 }</code></pre> <p>防范的方法就是通过Proxy的get拦截器，当访问<code>Symbol.unscopables</code>时返回undefined</p> <pre><code class="language-js">const createContext = (ctx) =&gt; {   return new Proxy(ctx, {     has(target, key) {       // 由于代理对象作为`with`的参数成为当前作用域对象，因此若返回false则会继续往父作用域查找解析绑定       if (whiteList.includes(key)) {         return target.hasOwnProperty(key)       }        // 返回true则不会往父作用域继续查找解析绑定，但实际上没有对应的绑定，则会返回undefined，而不是报错，因此需要手动抛出异常。       if (!targe.hasOwnProperty(key)) {         throw ReferenceError(`${key} is not defined`)       }        return true     },     get(target, key, receiver) {       if (key === Symbol.unscopables) {         return undefined       }        return Reflect.get(target, key, receiver)     }   }) }</code></pre> <h2 id="实现一个基本安全的沙箱">实现一个基本安全的沙箱</h2> <pre><code class="language-ts">const toFunction = (script: string): Function =&gt; {   try {     return new Function('ctx', `with(ctx){${script}}`)   } catch (e) {     console.error(`${(e as Error).message} in script: ${script}`)     return () =&gt; {}   } }  const toProxy = (ctx: object, whiteList: string[]) =&gt; {   return new Proxy(ctx, {     has(target, key) {       // 由于代理对象作为`with`的参数成为当前作用域对象，因此若返回false则会继续往父作用域查找解析绑定       if (whiteList.includes(key)) {         return target.hasOwnProperty(key)       }        // 返回true则不会往父作用域继续查找解析绑定，但实际上没有对应的绑定，则会返回undefined，而不是报错，因此需要手动抛出异常。       if (!targe.hasOwnProperty(key)) {         throw ReferenceError(`${key} is not defined`)       }        return true     },     get(target, key, receiver) {       if (key === Symbol.unscopables) {         return undefined       }        return Reflect.get(target, key, receiver)     }   }) }  class Sandbox {   private evalCache: Map&lt;string, Function&gt;   private ctxCache: WeakMap&lt;object, Proxy&gt;    constructor(private whiteList: string[] = ['Math', 'Date', 'console']) {     this.evalCache = new Map&lt;string, Function&gt;()     this.ctxCache = new WeakMap&lt;object, Proxy&gt;()   }    run(script: string, ctx: object) {     if (!this.evalCache.has(script)) {       this.evalCache.set(script, toFunction(script))     }     const fn = this.evalCache.get(script)      if (!this.ctxCache.has(ctx)) {       this.ctxCache.set(ctx, toProxy(ctx, this.whiteList))     }     const ctxProxy = this.ctxCache.get(ctx)      return fn(ctx) }</code></pre> <p>到此我们已经实现一个基本安全的沙箱模型，但远远还没达到生产环境使用的要求。</p> <h2 id="总结">总结</h2> <p>上述我们是通过Proxy阻止沙箱内的程序访问全局作用域的内容，若没有Proxy那么要怎样处理呢？另外，如何实现沙箱的启停、恢复和并行运行呢？其实这个我们可以看看蚂蚁金服的微前端框架qiankun(乾坤)是如何实现的，具体内容请期待后续的《微前端框架qiankun源码剖析》吧！</p> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3400.htm">Mybatis 、SpringMVC、Spring 介绍及联系</a></p>
+                                                <p>下一个：<a href="/html/category/article-3402.htm">微信小程序自定义顶部导航栏封装</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3376.htm" title="react18中react-redux状态管理的实现_React">react18中react-redux状态管理的实现_React</a></li>
+                        <li class="py-2"><a href="/html/category/article-3390.htm" title="springcloud-的使用alibaba版&#8212;&#8212;Nacos Discovery&#8211;服务治理">springcloud-的使用alibaba版&#8212;&#8212;Nacos Discovery&#8211;服务治理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3386.htm" title="浅谈Vue下的components模板">浅谈Vue下的components模板</a></li>
+                        <li class="py-2"><a href="/html/category/article-3404.htm" title="【Spring】spring的反射机制详解">【Spring】spring的反射机制详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3377.htm" title="Android 4.0.1破坏了WebView HTML 5本地存储？">Android 4.0.1破坏了WebView HTML 5本地存储？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3372.htm" title="MySQL 索引简介">MySQL 索引简介</a></li>
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3384.htm" title="Parquet 之mapreduce">Parquet 之mapreduce</a></li>
+                        <li class="py-2"><a href="/html/category/article-3414.htm" title="ZooKeeper之Java客户端API使用—读取数据。">ZooKeeper之Java客户端API使用—读取数据。</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

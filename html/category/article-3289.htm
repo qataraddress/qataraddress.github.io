@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3289.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>基于kubernetes的分布式限流 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">基于kubernetes的分布式限流</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>做为一个数据上报系统，随着接入量越来越大，由于 API 接口无法控制调用方的行为，因此当遇到瞬时请求量激增时，会导致接口占用过多服务器资源，使得其他请求响应速度降低或是超时，更有甚者可能导致服务器宕机。</p> <h2 id="一概念">一、概念</h2> <p>限流(Ratelimiting)指对应用服务的请求进行限制，例如某一接口的请求限制为 100 个每秒,对超过限制的请求则进行快速失败或丢弃。</p> <h3 id="11-使用场景">1.1 使用场景</h3> <p>限流可以应对：</p> <ul> <li>热点业务带来的突发请求；</li> <li>调用方 bug 导致的突发请求；</li> <li>恶意攻击请求。</li> </ul> <h3 id="12-维度">1.2 维度</h3> <p>对于限流场景，一般需要考虑两个维度的信息：<br /><strong>时间</strong><br /> 限流基于某段时间范围或者某个时间点，也就是我们常说的“时间窗口”，比如对每分钟、每秒钟的时间窗口做限定<br /><strong>资源</strong><br /> 基于可用资源的限制，比如设定最大访问次数，或最高可用连接数。<br />   限流就是在某个时间窗口对资源访问做限制，比如设定每秒最多100个访问请求。</p> <p><img decoding="async" src="https://tva1.sinaimg.cn/large/e6c9d24egy1h10f5c73zyj21280g4my2.jpg" alt="基于kubernetes的分布式限流"></p> <h3 id="13-分布式限流">1.3 分布式限流</h3> <p>分布式限流相比于单机限流，只是把限流频次分配到各个节点中，比如限制某个服务访问100qps，如果有10个节点，那么每个节点理论上能够平均被访问10次，如果超过了则进行频率限制。</p> <h2 id="二分布式限流常用方案">二、分布式限流常用方案</h2> <p><strong>基于Guava的客户端限流</strong><br /> Guava是一个客户端组件，在其多线程模块下提供了以RateLimiter为首的几个限流支持类。它只能对“当前”服务进行限流，即它不属于分布式限流的解决方案。</p> <p><strong>网关层限流</strong><br /> 服务网关，作为整个分布式链路中的第一道关卡，承接了所有用户来访请求。我们在网关层进行限流，就可以达到了整体限流的目的了。目前，主流的网关层有以软件为代表的Nginx，还有Spring Cloud中的Gateway和Zuul这类网关层组件，也有以硬件为代表的F5。</p> <p><strong>中间件限流</strong><br /> 将限流信息存储在分布式环境中某个中间件里（比如Redis缓存），每个组件都可以从这里获取到当前时刻的流量统计，从而决定是拒绝服务还是放行流量。</p> <p><strong>限流组件</strong><br /> 目前也有一些开源组件提供了限流的功能，比如Sentinel就是一个不错的选择。Sentinel是阿里出品的开源组件，并且包含在了Spring Cloud Alibaba组件库中。Hystrix也具有限流的功能。</p> <p>Guava的Ratelimiter设计实现相当不错，可惜只能支持单机，网关层限流如果是单机则不太满足高可用，并且分布式网关的话还是需要依赖中间件限流，而redis之类的网络通信需要占用一小部分的网络消耗。阿里的Sentinel也是同理，底层使用的是redis或者zookeeper，每次访问都需要调用一次redis或者zk的接口。那么在云原生场景下，我们有没有什么更好的办法呢？</p> <p>对于极致追求高性能的服务不需要考虑熔断、降级来说，是需要尽量减少网络之间的IO，那么是否可以通过一个总限频然后分配到具体的单机里面去，在单机中实现平均的限流，比如限制某个ip的qps为100，服务总共有10个节点，那么平均到每个服务里就是10qps，此时就可以通过guava的ratelimiter来实现了，甚至说如果服务的节点动态调整，单个服务的qps也能动态调整。</p> <h2 id="三基于kubernetes的分布式限流">三、基于kubernetes的分布式限流</h2> <p>在Spring Boot应用中，定义一个filter，获取请求参数里的key（ip、userId等），然后根据key来获取rateLimiter，其中，rateLimiter的创建由数据库定义的限频数和副本数来判断，最后，再通过rateLimiter.tryAcquire来判断是否可以通过。</p> <p><img decoding="async" src="https://tva1.sinaimg.cn/large/e6c9d24egy1h13ke2ox1wj20u00vdq4g.jpg" alt="基于kubernetes的分布式限流"></p> <h3 id="31-kubernetes中的副本数">3.1 kubernetes中的副本数</h3> <p>在实际的服务中，数据上报服务一般无法确定客户端的上报时间、上报量，特别是对于这种要求高性能，服务一般都会用到HPA来实现动态扩缩容，所以，需要去间隔一段时间去获取服务的副本数。</p> <pre><code class="language-go">func CountDeploymentSize(namespace string, deploymentName string) *int32 { 	deployment, err := client.AppsV1().Deployments(namespace).Get(context.TODO(), deploymentName, metav1.GetOptions{}) 	if err != nil { 		return nil 	} 	return deployment.Spec.Replicas }</code></pre> <p>用法：GET host/namespaces/test/deployments/k8s-rest-api直接即可。</p> <h3 id="32-ratelimiter的创建">3.2 rateLimiter的创建</h3> <p>在RateLimiterService中定义一个LoadingCache&lt;String, RateLimiter&gt;，其中，key可以为ip、userId等，并且，在多线程的情况下，使用refreshAfterWrite只阻塞加载数据的线程，其他线程则返回旧数据，极致发挥缓存的作用。</p> <pre><code class="language-java">private final LoadingCache&lt;String, RateLimiter&gt; loadingCache = Caffeine.newBuilder()         .maximumSize(10_000)         .refreshAfterWrite(20, TimeUnit.MINUTES)         .build(this::createRateLimit); //定义一个默认最小的QPS private static final Integer minQpsLimit = 3000;</code></pre> <p>之后是创建rateLimiter，获取总限频数totalLimit和副本数replicas，之后是自己所需的逻辑判断，可以根据totalLimit和replicas的情况来进行qps的限定。</p> <pre><code class="language-java">public RateLimiter createRateLimit(String key) {     log.info("createRateLimit,key:{}", key);     int totalLimit = 获取总限频数，可以在数据库中定义     Integer replicas = kubernetesService.getDeploymentReplicas();     RateLimiter rateLimiter;     if (totalLimit &gt; 0 &amp;&amp; replicas == null) {         rateLimiter = RateLimiter.create(totalLimit);     } else if (totalLimit &gt; 0) {         int nodeQpsLimit = totalLimit / replicas;         rateLimiter = RateLimiter.create(nodeQpsLimit &gt; minQpsLimit ? nodeQpsLimit : minQpsLimit);     } else {         rateLimiter = RateLimiter.create(minQpsLimit);     }     log.info("create rateLimiter success,key:{},rateLimiter:{}", key, rateLimiter);     return rateLimiter; }</code></pre> <h3 id="33-ratelimiter的获取">3.3 rateLimiter的获取</h3> <p>根据key获取RateLimiter，如果有特殊需求的话，需要判断key不存在的尝尽</p> <pre><code class="language-java">public RateLimiter getRateLimiter(String key) {   return loadingCache.get(key); }</code></pre> <h3 id="34-filter里的判断">3.4 filter里的判断</h3> <p>最后一步，就是使用rateLimiter来进行限流，如果rateLimiter.tryAcquire()为true，则进行filterChain.doFilter(request, response)，如果为false，则返回HttpStatus.TOO_MANY_REQUESTS</p> <pre><code class="language-java">public class RateLimiterFilter implements Filter {     @Resource     private RateLimiterService rateLimiterService;      @Override     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {         HttpServletRequest httpServletRequest = (HttpServletRequest) request;         HttpServletResponse httpServletResponse = (HttpServletResponse) response;         String key = httpServletRequest.getHeader("key");         RateLimiter rateLimiter = rateLimiterService.getRateLimiter(key);         if (rateLimiter != null) {             if (rateLimiter.tryAcquire()) {                 filterChain.doFilter(request, response);             } else {                 httpServletResponse.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());             }         } else {             filterChain.doFilter(request, response);         }     } }</code></pre> <h2 id="四性能压测">四、性能压测</h2> <p>为了方便对比性能之间的差距，我们在本地单机做了下列测试，其中，总限频都设置为3万。</p> <p><strong>无限流</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a23aaccc2cd084760ceed69e3341e3c7.jpg" alt="基于kubernetes的分布式限流"></p> <p><strong>使用redis限流</strong></p> <p>其中，ping redis大概6-7ms左右，对应的，每次请求需要访问redis，时延都有大概6-7ms，性能下降明显</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e8f0b74d7fde9ff12a4800f6e13e9010.jpg" alt="基于kubernetes的分布式限流"></p> <p><strong>自研限流</strong></p> <p>性能几乎追平无限流的场景，guava的rateLimiter确实表现卓越</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6ca073d2d6d3d0c5dc94d718f17a1285.jpg" alt="基于kubernetes的分布式限流"></p> <h2 id="五其他问题">五、其他问题</h2> <p><strong>5.1 对于保证qps限频准确的时候，应该怎么解决呢？</strong></p> <p>在k8s中，服务是动态扩缩容的，相应的，每个节点应该都要有所变化，如果对外宣称限频100qps，而且后续业务方真的要求百分百准确，只能把LoadingCache&lt;String, RateLimiter&gt;的过期时间调小一点，让它能够近实时的更新单节点的qps。这里还需要考虑一下k8s的压力，因为每次都要获取副本数，这里也是需要做缓存的</p> <p><strong>5.2 服务从1个节点动态扩为4个节点，这个时候新节点识别为4，但其实有些并没有启动完，会不会造成某个节点承受了太大的压力</strong></p> <p>理论上是存在这个可能的，这个时候需要考虑一下初始的副本数的，扩缩容不能一蹴而就，一下子从1变为4变为几十个这种。一般的话，生产环境肯定是不能只有一个节点，并且要考虑扩缩容的话，至于要有多个副本预备的</p> <p><strong>5.3 如果有多个副本，怎么保证请求是均匀的</strong></p> <p>这个是依赖于k8s的service负载均衡策略的，这个我们之前做过实验，流量确实是能够均匀的落到节点上的。还有就是，我们整个限流都是基于k8s的，如果k8s出现问题，那就是整个集群所有服务都有可能出现问题了。</p> <h2 id="参考">参考</h2> <p>1.<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/hou_ge/article/details/113869419"  target="_blank" rel="nofollow">常见的分布式限流解决方案</a><br /> 2.<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.infoq.cn/article/qg2tx8fyw5vt-f3hh673"  target="_blank" rel="nofollow">分布式服务限流实战</a><br /> 3.<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/huilei/p/13773557.html"  target="_blank" rel="nofollow">高性能</a></p> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3288.htm">jenkins 新增用户和修改用户名密码</a></p>
+                                                <p>下一个：<a href="/html/category/article-3290.htm">Elasticsearch Mapping 中配置自定义Analyzer</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3386.htm" title="浅谈Vue下的components模板">浅谈Vue下的components模板</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3364.htm" title="如何在idea上部署tomcat&amp;项目">如何在idea上部署tomcat&amp;项目</a></li>
+                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3400.htm" title="Mybatis 、SpringMVC、Spring 介绍及联系">Mybatis 、SpringMVC、Spring 介绍及联系</a></li>
+                        <li class="py-2"><a href="/html/category/article-3415.htm" title="浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法">浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3403.htm" title="数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具">数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3387.htm" title="Node.js躬行记半吊子的可视化搭建系统">Node.js躬行记半吊子的可视化搭建系统</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

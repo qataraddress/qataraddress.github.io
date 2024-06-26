@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3274.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>基于vue+springboot，实现图片base64转码保存到数据库 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">基于vue+springboot，实现图片base64转码保存到数据库</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1><a id="vuespringbootbase64_0" rel="nofollow"></a>基于vue+springboot，实现图片base64转码保存到数据库</h1> <p><strong>背景</strong>：在项目中遇到一个新增、编辑的场景。新增一个车辆信息，并且附有车辆照片和关联的设备照片，照片转码成base64保存到mysql数据库。前端使用的是elementUi的upload组件，<strong>在前端把图片转成base64再传到后端</strong>。</p> <p><strong>前端代码如下</strong>：</p> <pre><code class="prism language-java"><span class="token operator">&lt;</span>el<span class="token operator">-</span>upload               ref<span class="token operator">=</span><span class="token string">"carUpload"</span><span class="token operator">:</span>action<span class="token operator">=</span><span class="token string">"doUpload"</span><span class="token operator">:</span>file<span class="token operator">-</span>list<span class="token operator">=</span><span class="token string">"carPictureList"</span>               list<span class="token operator">-</span>type<span class="token operator">=</span><span class="token string">"picture-card"</span><span class="token operator">:</span>limit<span class="token operator">=</span>limitNum<span class="token operator">:</span>auto<span class="token operator">-</span>upload<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">:</span>on<span class="token operator">-</span>change<span class="token operator">=</span><span class="token string">"changeCarPicture"</span><span class="token operator">:</span>on<span class="token operator">-</span>exceed<span class="token operator">=</span><span class="token string">"handleExceed"</span><span class="token operator">:</span>before<span class="token operator">-</span>upload<span class="token operator">=</span><span class="token string">"beforeUpload"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>i<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"el-icon-plus"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>upload<span class="token operator">&gt;</span></code></pre> <ul> <li>ref ：给这个组件加个id，可通过 this.$refs.carUpload 访问这个组件对象</li> <li>action ：必选参数，上传的地址，通过这个地址上传的文件类型为MultipartFile，而我需要的是base64的一串字符串。所以我这里的处理方式是随意给个接口地址，下面会给出接口代码</li> <li>file-list ：上传的文件列表，一个对象数组，类似[{name:‘xxx’,url:‘xxxx’}]</li> <li>list-type ：文件列表的类型，有text/picture/picture-card，可根据需求选择对应的类型</li> <li>limit ：最大允许上传个数</li> <li>auto-upload ：是否在选取文件后立即进行上传，这个是会上传到你action的指定接口的</li> <li>on-change ：文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用，<strong>在这里可以把图片转成base64</strong></li> <li>on-exceed ：文件超出个数限制时的钩子</li> <li>before-upload ：上传文件之前的钩子，参数为上传的文件，我是在这加了文件类型的限制</li> </ul> <p>直接上代码：</p> <pre><code class="prism language-java"><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span> 			doUpload<span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>$http<span class="token punctuation">.</span><span class="token function">adornUrl</span><span class="token punctuation">(</span><span class="token string">'/sys/dept/upload'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 			carPictureList<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 			limitNum<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span> 			carPicture<span class="token operator">:</span><span class="token string">''</span><span class="token comment">//定义一个值来接收base64的字符串</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> 	methods<span class="token operator">:</span><span class="token punctuation">{<!-- --></span><span class="token function">changeCarPicture</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> fileList<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 图片转成base64上传</span>         	let reader<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         	reader<span class="token punctuation">.</span>onload<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>           	 	let _base64<span class="token operator">=</span> reader<span class="token punctuation">.</span>result<span class="token punctuation">;</span>           		let BASE64<span class="token operator">=</span> _base64<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">this</span><span class="token punctuation">.</span>carPicture<span class="token operator">=</span> BASE64<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//赋值</span><span class="token punctuation">}</span><span class="token punctuation">;</span>           reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>raw<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">handleExceed</span><span class="token punctuation">(</span>files<span class="token punctuation">,</span> fileList<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//这个是文件超出个数限制时，给出提示</span><span class="token keyword">this</span><span class="token punctuation">.</span>$notify<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>           	  title<span class="token operator">:</span><span class="token string">'警告'</span><span class="token punctuation">,</span>           	  message<span class="token operator">:</span><span class="token string">'图片只能上传一张'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">beforeUpload</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//添加文件类型的限制</span>        	 	let types<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'image/jpeg'</span><span class="token punctuation">,</span><span class="token string">'image/jpg'</span><span class="token punctuation">,</span><span class="token string">'image/png'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">const</span> isImage<span class="token operator">=</span> types<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>isImage<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'上传图片只能是 JPG、JPEG、PNG 格式!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token boolean">false</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span></code></pre> <p>给大家看一下action绑定的doUpload: this.$http.adornUrl(’/sys/dept/upload’),这个接口</p> <pre><code class="prism language-java"><span class="token comment">/**      * 上传文件      */</span><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/upload"</span><span class="token punctuation">)</span><span class="token keyword">public</span> R<span class="token function">upload</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">)</span> MultipartFile file<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{<!-- --></span><span class="token comment">//上传文件</span>         String suffix<span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">getOriginalFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">getOriginalFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> R<span class="token punctuation">.</span><span class="token function">ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>保证这个接口能用就行。</p> <p>剩下的就很简单了，图片已经转成base64字符串保存在carPicture了，把这个字符串传到后台进行保存就行了。要传其他照片也是一样，多写一个upload，转成base64，换一个值保存，对于后端接口来说，它就是一个String类型的数据。<br /> 顺带提一下，<strong>mysql保存base64是用longblob字段类型</strong>，在你保存这种数据时，可能会因为数据量过大而报错，可以上网查看相应的解决办法，增加max_allowed_packet。</p> <p><strong>接下来来说一下图片回显</strong><br /> 很简单！<br /> 首先，根据你的接口查询到相应得数据，然后</p> <pre><code class="prism language-java">		let carMap<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">;</span>         carMap<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'车辆照片'</span><span class="token punctuation">;</span>         carMap<span class="token punctuation">[</span><span class="token string">"url"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"data:image/png;base64,"</span><span class="token operator">+</span> carPicture<span class="token punctuation">;</span><span class="token keyword">this</span><span class="token punctuation">.</span>carPictureList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>carMap<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>carPicture 为你后端查询的图片base64字符串<br /> carPictureList是你绑定在upload上的那个文件列表<br /> 这样你的图片就能回显在页面上了。</p> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3273.htm">基于springBoot动态配置定时任务</a></p>
+                                                <p>下一个：<a href="/html/category/article-3275.htm">将SpringBoot项目及vue项目分别打包部署到阿里云服务器</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3387.htm" title="Node.js躬行记半吊子的可视化搭建系统">Node.js躬行记半吊子的可视化搭建系统</a></li>
+                        <li class="py-2"><a href="/html/category/article-3380.htm" title="springboot的依赖管理和自动配置">springboot的依赖管理和自动配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3414.htm" title="ZooKeeper之Java客户端API使用—读取数据。">ZooKeeper之Java客户端API使用—读取数据。</a></li>
+                        <li class="py-2"><a href="/html/category/article-3368.htm" title="Redis实现并发阻塞锁方案_在线工具">Redis实现并发阻塞锁方案_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3400.htm" title="Mybatis 、SpringMVC、Spring 介绍及联系">Mybatis 、SpringMVC、Spring 介绍及联系</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3377.htm" title="Android 4.0.1破坏了WebView HTML 5本地存储？">Android 4.0.1破坏了WebView HTML 5本地存储？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3367.htm" title="tensorflow中张量、常量、变量、占位符">tensorflow中张量、常量、变量、占位符</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

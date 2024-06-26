@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3397.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>「Spring Boot 系列」05. Spring Boot Profiles（多环境配置） - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atelier-sulphurpool-light"> <div class="toc"> <h3>目录</h3> <ul> <li><a href="#Spring_Boot_Profiles_1" rel="nofollow">Spring Boot Profiles</a></li> <li> <ul> <li><a href="#profile_14" rel="nofollow">profile配置方式</a></li> <li><a href="#profile_70" rel="nofollow">profile激活方式</a></li> </ul> </li> </ul> </div> <h1> <a id="Spring_Boot_Profiles_1" rel="nofollow"></a>Spring Boot Profiles</h1> <p>Profile的是配置文件的意思，我们在开发Spring Boot应用时，通常同一个项目会被安装到不同的环境,而不同的环境又需要不同的配置。比如：</p> <ul> <li>开发环境，应用需要连接一个可供调试的数据库单机进程</li> <li>生产环境，应用需要使用正式发布的数据库，通常是高可用的集群</li> <li>测试环境，应用只需要使用内存式的模拟数据库</li> </ul> <p>其中数据库地址、服务器端口等等配置都不同，如果每次打包时，都要修改配置文件，那么就会非常麻烦。</p> <p>Spring框架提供了profile的管理功能，我们可以使用profile功能来区分不同环境的配置。然后可以通过激活、指定参数等方式快速动态的切换环境。</p> <h2> <a id="profile_14" rel="nofollow"></a>profile配置方式</h2> <p><strong>1) 多文件方式</strong><br /> 新建多个配置文件，命名格式：<code>application-环境名.yml</code><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/fbf0889221022061abce5b91387627c3.jpg" alt="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）"></p> <p><code>application-dev.yml</code> 开发环境</p> <pre><code class="prism language-yml"><span class="token key atrule">server</span><span class="token punctuation">:</span>   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8081</span> <span class="token comment"># 给配置文件起名字，方便主配置文件引用</span> <span class="token key atrule">spring</span><span class="token punctuation">:</span>   <span class="token key atrule">config</span><span class="token punctuation">:</span>     <span class="token key atrule">activate</span><span class="token punctuation">:</span>       <span class="token key atrule">on-profile</span><span class="token punctuation">:</span> dev </code></pre> <p><code> application-pro.yml</code> 生产环境</p> <pre><code class="prism language-yml"><span class="token key atrule">server</span><span class="token punctuation">:</span>   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8082</span> <span class="token key atrule">spring</span><span class="token punctuation">:</span>   <span class="token key atrule">config</span><span class="token punctuation">:</span>     <span class="token key atrule">activate</span><span class="token punctuation">:</span>       <span class="token key atrule">on-profile</span><span class="token punctuation">:</span> pro </code></pre> <p> <code>application-test.yml </code>测试环境</p> <pre><code class="prism language-yml"><span class="token key atrule">server</span><span class="token punctuation">:</span>   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8083</span> <span class="token key atrule">spring</span><span class="token punctuation">:</span>   <span class="token key atrule">config</span><span class="token punctuation">:</span>     <span class="token key atrule">activate</span><span class="token punctuation">:</span>       <span class="token key atrule">on-profile</span><span class="token punctuation">:</span> test </code></pre> <p><strong>2) yml多文档方式</strong><br /> 该方式只需要一个<code>application.yml</code>配置文件即可，在配置文件中使用 — （三个横杠）来分隔不同的环境配置</p> <pre><code class="prism language-yml"><span class="token punctuation">---</span> <span class="token key atrule">server</span><span class="token punctuation">:</span>   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8081</span> <span class="token key atrule">spring</span><span class="token punctuation">:</span>   <span class="token key atrule">profiles</span><span class="token punctuation">:</span> dev <span class="token punctuation">---</span> <span class="token key atrule">server</span><span class="token punctuation">:</span>   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8082</span> <span class="token key atrule">spring</span><span class="token punctuation">:</span>   <span class="token key atrule">profiles</span><span class="token punctuation">:</span> pro <span class="token punctuation">---</span> <span class="token key atrule">server</span><span class="token punctuation">:</span>   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8083</span> <span class="token key atrule">spring</span><span class="token punctuation">:</span>   <span class="token key atrule">profiles</span><span class="token punctuation">:</span> test <span class="token punctuation">---</span> </code></pre> <h2> <a id="profile_70" rel="nofollow"></a>profile激活方式</h2> <p><strong>1) 配置文件</strong><br /> 在yml配置文件中配置：</p> <pre><code class="prism language-java">spring<span class="token operator">:</span>   profiles<span class="token operator">:</span>     active<span class="token operator">:</span> test </code></pre> <p><strong>2) 虚拟机参数</strong><br /> 在VM options指定：<code>-Dspring.profiles.active -dev</code><img decoding="async" src="http://img.555519.xyz/uploads/20221230/4289e115429b6da47aa0cd3373187749.jpg" alt="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）"><br /> 紧接着启动该项目，你会在控制台看到此时的环境就是你刚才设置的开发环境，覆盖了我们在配置文件中的激活配置<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/32737d77a34077a0211fde91c62614ca.jpg" alt="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）"></p> <p><strong>3) 命令行参数</strong><br /> 第一种：<code>--spring.profiles.active=pro</code><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/cc6f4466eab070ce31910223e9cd22c8.jpg" alt="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）"><br /> 第二种：<code>java -jar xxx.jar --spring.profiles.active =test</code><br /> 使用maven打包项目，打开该jar包所在目录，接着启动该项目，不会可以参考这个&gt;&gt;&gt;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/weixin_52986315/article/details/125542132?spm=1001.2014.3001.5501"  rel="nofollow">Spring Boot的启动方式</a><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/16362db542ee13fa60990548003a8481.jpg" alt="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）"></p> <p><strong>最后</strong><br /><strong>祝大家学的愉快，学的神速。<br /> 有帮助的话，各位小伙伴可以点个赞收藏支持下啦！❤️<br /> 也欢迎关煮博主，一个正在努力变强的程序员~</strong></p> </p></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3396.htm">CentOS7设置固定IP地址详解</a></p>
+                                                <p>下一个：<a href="/html/category/article-3398.htm">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3422.htm" title="vue-cli项目添加骨架屏多种方式，自动生成骨架屏">vue-cli项目添加骨架屏多种方式，自动生成骨架屏</a></li>
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3379.htm" title="如果我将提供NULL，将返回什么MySQL ASCII()函数？">如果我将提供NULL，将返回什么MySQL ASCII()函数？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3372.htm" title="MySQL 索引简介">MySQL 索引简介</a></li>
+                        <li class="py-2"><a href="/html/category/article-3385.htm" title="Spring事件监听机制源码解析">Spring事件监听机制源码解析</a></li>
+                        <li class="py-2"><a href="/html/category/article-3364.htm" title="如何在idea上部署tomcat&amp;项目">如何在idea上部署tomcat&amp;项目</a></li>
+                        <li class="py-2"><a href="/html/category/article-3384.htm" title="Parquet 之mapreduce">Parquet 之mapreduce</a></li>
+                        <li class="py-2"><a href="/html/category/article-3402.htm" title="微信小程序自定义顶部导航栏封装">微信小程序自定义顶部导航栏封装</a></li>
+                        <li class="py-2"><a href="/html/category/article-3404.htm" title="【Spring】spring的反射机制详解">【Spring】spring的反射机制详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

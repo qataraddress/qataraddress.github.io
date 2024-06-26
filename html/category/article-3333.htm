@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3333.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Springboot 连接 Mysql - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Springboot 连接 Mysql</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2> <a id="mysql_0" rel="nofollow"></a>一、安装mysql</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://t.csdn.cn/rJ2Ud"  rel="nofollow">mysql8.0安装+配置教程</a><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/6266619760e559e4ec315abf81d76e36.jpg" alt="Springboot 连接 Mysql"></p> <h2> <a id="pomxml_5" rel="nofollow"></a>二、pom.xml配置</h2> <pre><code class="prism language-java">		<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>集成mysql数据库<span class="token operator">--</span><span class="token operator">&gt;</span> 		<span class="token generics"><span class="token punctuation">&lt;</span>dependency<span class="token punctuation">&gt;</span></span>             <span class="token generics"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>mysql<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>mysql<span class="token operator">-</span>connector<span class="token operator">-</span>java<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>version<span class="token punctuation">&gt;</span></span><span class="token number">8.0</span><span class="token number">.30</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>$NO<span class="token operator">-</span>MVN<span class="token operator">-</span>MAN<span class="token operator">-</span>VER$<span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>scope<span class="token punctuation">&gt;</span></span>runtime<span class="token operator">&lt;</span><span class="token operator">/</span>scope<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">&gt;</span>  		<span class="token generics"><span class="token punctuation">&lt;</span>dependency<span class="token punctuation">&gt;</span></span> 		    <span class="token generics"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span> 		    <span class="token generics"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>jdbc<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span> 		<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">&gt;</span> 		 		<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>lombok注解简化代码<span class="token operator">--</span><span class="token operator">&gt;</span> 		<span class="token generics"><span class="token punctuation">&lt;</span>dependency<span class="token punctuation">&gt;</span></span> 		    <span class="token generics"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>org<span class="token punctuation">.</span>projectlombok<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span> 		    <span class="token generics"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>lombok<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span> 		<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">&gt;</span>  </code></pre> <h2> <a id="application_properties_28" rel="nofollow"></a>三、application. properties</h2> <pre><code class="prism language-java">		spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>driverClassName<span class="token operator">=</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span></span>Driver</span> 		spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>url<span class="token operator">=</span>jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>mysql<span class="token operator">?</span>useSSL<span class="token operator">=</span><span class="token boolean">false</span><span class="token operator">&amp;</span>useUnicode<span class="token operator">=</span><span class="token boolean">true</span><span class="token operator">&amp;</span>characterEncoding<span class="token operator">=</span>utf<span class="token operator">-</span><span class="token number">8</span> 		spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>username<span class="token operator">=</span>root 		spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>password<span class="token operator">=</span>root </code></pre> <p>spring.datasource.url=jdbc: <font color="red" size="3"><strong>mysql</strong></font>: //localhost:3306/mysql?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8<br /><strong>红色标注的是名为 mysql 的数据库，大家不要全部照抄。</strong></p> <h2> <a id="_38" rel="nofollow"></a>四、方法</h2> <pre><code class="prism language-java">	<span class="token annotation punctuation">@Autowired</span> 	<span class="token class-name">JdbcTemplate</span> jdbcTemplate<span class="token punctuation">;</span>  	<span class="token annotation punctuation">@ResponseBody</span> 	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/save"</span><span class="token punctuation">)</span> 	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Map</span> params<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{<!-- --></span>  		<span class="token comment">// ------定义推送结果--------</span> 		<span class="token class-name">String</span> a<span class="token punctuation">;</span>  		<span class="token comment">// ------获取推送数据--------</span> 		id <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">//创建任务接口返回的id</span> 		companyId <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"companyId"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//公司id</span> 		templateId <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"templateId"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//模板id</span> 		templateName <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"templateName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//模板名称</span> 		phone <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"phone"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//外呼号码</span> 		result <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"result"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//外呼结果</span> 		callTime <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"callTime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//外呼时间</span> 		taskId <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"taskId"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//外呼任务id</span> 		callDuration <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"callDuration"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//外呼时长</span> 		voiceText <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"voiceText"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//对话信息</span> 		intention <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"intention"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//意向</span> 		intentionRoute <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"intentionRoute"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//意向路径</span> 		intentionScore <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"intentionScore"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//意向分数</span> 		telnum <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"telnum"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//外呼主叫号码</span> 		callRound <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"callRound"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//呼叫轮次</span> 		visitResult <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"visitResult"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//报表意向回访状态</span> 		lastRoundFlag <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Boolean</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"lastRoundFlag"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//是否最后一轮</span> 		totalDuration <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"totalDuration"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//外呼总时长</span> 		userData <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"userData"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//透传字段</span> 		visitResultReport <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Map</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"visitResultReport"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//报表意向回访结果</span> 		sex <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"sex"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//性别</span> 		dynamicProperties <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Map</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"dynamicProperties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//动态字段</span> 		hangUpDirect <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"hangUpDirect"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//挂断方向</span> 		fdsfPath <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"fdsfPath"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//通话录音文件路径</span> 		dialogueList <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token punctuation">)</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"dialogueList"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//人机对话详情</span>  		<span class="token comment">// ************** 存入mysql *********************</span> 		<span class="token comment">// ---------清空表-----------</span> 		<span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">"DELETE FROM url_table"</span><span class="token punctuation">;</span> 		jdbcTemplate<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span> 		 		<span class="token comment">// --------存入新数据------------</span> 		sql <span class="token operator">=</span> <span class="token string">"INSERT INTO url_table("</span> <span class="token operator">+</span> <span class="token string">"`id`,`companyId`,`templateId`,`templateName`,`phone`,"</span> 				<span class="token operator">+</span> <span class="token string">"`result`,`callTime`,`taskId`,`callDuration`,`voiceText`,"</span> 				<span class="token operator">+</span> <span class="token string">"`intention`,`intentionRoute`,`intentionScore`,`telnum`,`callRound`,"</span> 				<span class="token operator">+</span> <span class="token string">"`visitResult`,`lastRoundFlag`,`totalDuration`,`userData`,`visitResultReport`,"</span> 				<span class="token operator">+</span> <span class="token string">"`sex`,`dynamicProperties`,`hangUpDirect`,`fdsfPath`,`dialogueList`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"</span><span class="token punctuation">;</span> 		jdbcTemplate<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span> id<span class="token punctuation">,</span> companyId<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> templateId<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> templateName<span class="token punctuation">,</span> phone<span class="token punctuation">,</span>  				result<span class="token punctuation">,</span> callTime<span class="token punctuation">,</span> taskId<span class="token punctuation">,</span> callDuration<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> voiceText<span class="token punctuation">,</span>  				intention<span class="token punctuation">,</span> intentionRoute<span class="token punctuation">,</span> intentionScore<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> telnum<span class="token punctuation">,</span> callRound<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  				visitResult<span class="token punctuation">,</span> lastRoundFlag<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> totalDuration<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> userData<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> visitResultReport<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  				sex<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dynamicProperties<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> hangUpDirect<span class="token punctuation">,</span> fdsfPath<span class="token punctuation">,</span> dialogueList<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  		<span class="token punctuation">)</span><span class="token punctuation">;</span> 		 		<span class="token comment">//存储数据库成功且必填字段不为空，则推送成功</span> 		<span class="token keyword">if</span> <span class="token punctuation">(</span>phone <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> result <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> id <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> callRound <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> companyId <span class="token operator">!=</span> <span class="token keyword">null</span> 				<span class="token operator">&amp;&amp;</span> templateId <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> templateName <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 			a <span class="token operator">=</span> <span class="token string">"推送成功"</span><span class="token punctuation">;</span> 		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span> 			a <span class="token operator">=</span> <span class="token string">"推送失败，缺失必填值"</span><span class="token punctuation">;</span> 		<span class="token punctuation">}</span>  		<span class="token keyword">return</span> a<span class="token punctuation">;</span> 	<span class="token punctuation">}</span> </code></pre> </p></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3332.htm">C++ functional库中的仿函数</a></p>
+                                                <p>下一个：<a href="/html/category/article-3334.htm">vue中的共享数据管理vuex</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3374.htm" title="C语言多文件编程详解">C语言多文件编程详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3412.htm" title="sql 如何交换一个字符两侧字符的顺序_中级数据分析-SQL简单查询">sql 如何交换一个字符两侧字符的顺序_中级数据分析-SQL简单查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3363.htm" title="父传子、子传父经典案例—微信小程序自定义标题栏全过程">父传子、子传父经典案例—微信小程序自定义标题栏全过程</a></li>
+                        <li class="py-2"><a href="/html/category/article-3395.htm" title="关于Springcloud Sleuth分布式请求链路跟踪的使用 小结">关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

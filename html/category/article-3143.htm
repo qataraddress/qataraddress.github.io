@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3143.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>java如何对Map进行排序 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">java如何对Map进行排序</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2><a id="Mapkeyvalue_0" rel="nofollow"></a><strong>Map排序（按key排序，按value排序）</strong></h2> <p>主要分两种，按键排序、按值排序。 而且，按key排序主要用于TreeMap，而按value排序则对于Map的子类们都适用。</p> <h2><a id="_4" rel="nofollow"></a>一、按键排序</h2> <p>按Key排序主要用于TreeMap，可以实现按照Key值的大小，在对象插入时直接插入到合适的位置，保持Map的顺序性。</p> <p>来看TreeMap的构造函数：<code>TreeMap(Comparator&lt;? super K&gt; comparator)：</code>构造一个新的、空的树映射，该映射根据给定比较器进行排序。</p> <p>这里的比较器是key的比较器。所以定义比较器时用于比较的两个参数是Key的数据类型的对象。</p> <p>实例代码如下：</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">MapSortTest</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> stu<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">TreeMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">MyComparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//传进来一个key的比较器对象来构造treemap</span> 　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"apple"</span><span class="token punctuation">,</span><span class="token string">"55"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"boy"</span><span class="token punctuation">,</span><span class="token string">"32"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"cat"</span><span class="token punctuation">,</span><span class="token string">"22"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"dog"</span><span class="token punctuation">,</span><span class="token string">"12"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"egg"</span><span class="token punctuation">,</span><span class="token string">"11"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//map的遍历：把key抽取出来用set存放，然后用迭代器遍历keyset，同时用map.get(KEY)获取key所对应的value。</span><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> keySet<span class="token operator">=</span>stu<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">Iterator</span> it<span class="token operator">=</span>keySet<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">while</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">String</span> next<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>next<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>stu<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment">//定义key的比较器，比较算法根据第一个参数o1,小于、等于或者大于o2分别返回负整数、0或者正整数，来决定二者存放的先后位置：返回负数则o1在前，正数则o2在前。</span><span class="token keyword">class</span><span class="token class-name">MyComparator</span><span class="token keyword">implements</span><span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">int</span><span class="token function">compare</span><span class="token punctuation">(</span><span class="token class-name">String</span> o1<span class="token punctuation">,</span><span class="token class-name">String</span> o2<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> o1<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>**</p> <h2><a id="_44" rel="nofollow"></a>二、按值排序</h2> <p>与按值排序只使用TreeMap不同，按值排序由于其方法所用到的类型的统一性，所以能用于Map的所有子类。</p> <p>主要用到的知识点有;</p> <p><strong>1:map.entrySet()将map里的每一个键值对取出来封装成一个Entry对象并存放到一个Set里面。</strong></p> <p>2：泛型Map.Entry&lt;type1,type2&gt; 因为Key-value对组成Entry对象，此处指明Entry对象中这两个成员的数据类型。</p> <p>3：Collections.sort(List list, Comparator&lt;? super T&gt; c) 集合类的排序方法，通过自定义的比较器进行排序。这里的list存放的对象是entry对象。定义比较器对entry对象中的value属性进行比较。</p> <p>实例代码如下：</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">MapSortTest</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> stu<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">TreeMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//用TreeMap储存</span><span class="token comment">// Map&lt;String,String&gt; stu=new HashMap&lt;&gt;();//用HashMap储存</span>  　　　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"apple"</span><span class="token punctuation">,</span><span class="token string">"55"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"boy"</span><span class="token punctuation">,</span><span class="token string">"32"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"cat"</span><span class="token punctuation">,</span><span class="token string">"22"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"dog"</span><span class="token punctuation">,</span><span class="token string">"12"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 　　　　stu<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"egg"</span><span class="token punctuation">,</span><span class="token string">"11"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1：把map转换成entryset，再转换成保存Entry对象的list。</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> entrys<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>stu<span class="token punctuation">.</span><span class="token function">entrySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//2：调用Collections.sort(list,comparator)方法把Entry-list排序</span><span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>entrys<span class="token punctuation">,</span><span class="token keyword">new</span><span class="token class-name">MyComparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//3：遍历排好序的Entry-list，可得到按顺序输出的结果</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> entry<span class="token operator">:</span>entrys<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>entry<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment">//自定义Entry对象的比较器。每个Entry对象可通过getKey()、getValue()获得Key或Value用于比较。换言之：我们也可以通过Entry对象实现按Key排序。</span><span class="token keyword">class</span><span class="token class-name">MyComparator</span><span class="token keyword">implements</span><span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">int</span><span class="token function">compare</span><span class="token punctuation">(</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span> o1<span class="token punctuation">,</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span> o2<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span>o1<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span>o2<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>下一个：<a href="/html/category/article-3144.htm">Spring MVC 自定义拦截器</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3387.htm" title="Node.js躬行记半吊子的可视化搭建系统">Node.js躬行记半吊子的可视化搭建系统</a></li>
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3421.htm" title="PHP类属性">PHP类属性</a></li>
+                        <li class="py-2"><a href="/html/category/article-3393.htm" title="node.js &#8211; http、模块化、npm">node.js &#8211; http、模块化、npm</a></li>
+                        <li class="py-2"><a href="/html/category/article-3384.htm" title="Parquet 之mapreduce">Parquet 之mapreduce</a></li>
+                        <li class="py-2"><a href="/html/category/article-3370.htm" title="Python filecmp库">Python filecmp库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3415.htm" title="浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法">浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3418.htm" title="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用">序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3363.htm" title="父传子、子传父经典案例—微信小程序自定义标题栏全过程">父传子、子传父经典案例—微信小程序自定义标题栏全过程</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3256.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Nginx离线安装方法详解 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Nginx离线安装方法详解</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>用root用户安装，采用源代码编译的方式来进行安装，首先下载nginx安装要用到的所有文件，文件下载地址：nginx安装包</p> <p>下载好文件后，统一上传到服务器的root/nginx目录下（没有该目录则新建）</p> <p>一般我们都需要先装pcre,zlib，前者用于url rewrite，后者用于gzip压缩，openssl用于后续可能升级到https时使用。</p> <p>正式开始前需要确认gcc、g++开发库已经预先安装好。</p> <p>检查gcc是否安装</p> <p>gcc --version</p> <p>检查g++是否安装</p> <p>g++ --version</p> <p>GCC、G++安装<br /> 联网安装<br /> 如果服务器具备联网条件，可以使用联网安装</p> <p>安装gcc</p> <p>yum -y install gcc</p> <p>安装g++</p> <p>需要注意的是安装的命令是gcc-c++而不是g++</p> <p>yum -y install gcc-c++</p> <p>离线安装<br /> 离线安装环境：centos7.0 离线安装包：gcc环境安装包</p> <p>下载后，把安装包解压到服务器上，先安装gcc，再安装g++。分别执行两个文件夹下的install.sh。</p> <p>两个安装包里的内容分别是：</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads3/20220604/0edbe274fa3460b6857fcc07b0011c41.jpg"></p> <p>pcre安装<br /> 执行如下命令：</p> <p>tar -zxvf pcre-8.35.tar.gz</p> <p>cd pcre-8.35/</p> <p>./configure</p> <p>make</p> <p>make install</p> <p>zlib安装<br /> 执行如下命令：</p> <p>tar -zxvf zlib-1.2.11.tar.gz</p> <p>cd zlib-1.2.11/</p> <p>./configure</p> <p>make</p> <p>make install</p> <p>openssl安装<br /> 执行如下命令：</p> <p>tar -zxvf openssl-1.1.0g.tar.gz</p> <p>cd openssl-1.1.0g/</p> <p>./config</p> <p>make</p> <p>make&nbsp;install</p> <p>nginx安装<br /> 执行如下命令：</p> <p>tar -zxvf nginx-1.13.9.tar.gz</p> <p>cd nginx-1.13.9/</p> <p>./configure&nbsp;--prefix=/usr/local/nginx&nbsp;--with-http_ssl_module --with-pcre=../pcre-8.35 --with-zlib=../zlib-1.2.11&nbsp;--with-openssl=../openssl-1.1.0g</p> <p>make</p> <p>make install</p> <p>测试nginx是否安装成功<br /> nginx启动<br /> cd /usr/local/nginx/sbin</p> <p>./nginx</p> <p>浏览器访问如：http://192.168.44.128/<br /> 如果能正常显示nginx首页，则表示安装成功</p> <p style="text-align:center;"><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads3/20220604/389871191cde6b438fbe9e8237d5a576.jpg"></p> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3255.htm">windows下安装redis_在线工具</a></p>
+                                                <p>下一个：<a href="/html/category/article-3257.htm">001 Linux下编译开发环境和日常使用环境打造（以centos7为例）</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3404.htm" title="【Spring】spring的反射机制详解">【Spring】spring的反射机制详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3366.htm" title="golang goroutine 协程异常panic后怎么处理？返回什么样的结果？">golang goroutine 协程异常panic后怎么处理？返回什么样的结果？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3416.htm" title="vue项目实现webpack配置代理,解决跨域问题_vue.js">vue项目实现webpack配置代理,解决跨域问题_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3384.htm" title="Parquet 之mapreduce">Parquet 之mapreduce</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3373.htm" title="Centos7服务器上RabbitMQ单机安装_在线工具">Centos7服务器上RabbitMQ单机安装_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3367.htm" title="tensorflow中张量、常量、变量、占位符">tensorflow中张量、常量、变量、占位符</a></li>
+                        <li class="py-2"><a href="/html/category/article-3415.htm" title="浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法">浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3374.htm" title="C语言多文件编程详解">C语言多文件编程详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

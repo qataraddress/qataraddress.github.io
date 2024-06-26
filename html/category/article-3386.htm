@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3386.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>浅谈Vue下的components模板 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">浅谈Vue下的components模板</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <hr/> <h2 id="浅谈vue下的components模板">浅谈Vue下的components模板</h2> <blockquote> <p>晴 微风 温度 12-24°C<br /> 在我们越来越深入Vue时，我们会发现我们对HTML代码的工程量会越来越少，今天我们来谈谈Vue下的 components模板的 初步使用方法与 应用</p> <p>我们先来简单的写一段components代码<br /> (局部方法创造模板)</p> </blockquote> <pre class="prettyprint"><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span><span class="hljs-property">id</span>=<span class="hljs-string">"app"</span>&gt;   &lt;haha&gt;&lt;/haha&gt; &lt;/<span class="hljs-keyword">div</span>&gt;  /* 这是最简单常用的一种创造模板方法，局部方法创造模板 要注意,局部模板 的作用范围 只在 相对的vue对象 范围内  比如 这个例子, &lt;haha&gt;&lt;/haha&gt;的范围 只在 &lt;<span class="hljs-keyword">div</span><span class="hljs-property">id</span>=<span class="hljs-string">"app"</span>&gt; &lt;/<span class="hljs-keyword">div</span>&gt;内 因为  haha 挂载在 vm的components下 而 vm挂载的 对应节点是<span class="hljs-property">id</span>=app的<span class="hljs-keyword">div</span>上 */ let vm = new Vue({     el:<span class="hljs-string">"#app"</span>,     data:{   },     components:{<span class="hljs-string">"haha"</span>:{       template:<span class="hljs-string">"&lt;div&gt;哈哈哈&lt;div&gt;"</span>     }   } });</code></pre> <blockquote> <p>(共有模板/全局模板)，全局模板 顾名思义 肯定是 放在哪里都能用</p> </blockquote> <pre class="prettyprint"><code class="hljs axapta">&lt;<span class="hljs-keyword">div</span> id=<span class="hljs-string">"app"</span>&gt;   &lt;hehe&gt;&lt;/hehe&gt; &lt;/<span class="hljs-keyword">div</span>&gt;<span class="hljs-comment">//这里使用Vue.component原型方法来创造</span>   Vue.component(<span class="hljs-string">"hehe"</span>,template:<span class="hljs-string">"&lt;div&gt;呵呵呵&lt;div&gt;"</span> );  let vm =<span class="hljs-keyword">new</span> Vue({     el:<span class="hljs-string">"#app"</span>,     data:{   },     components:{<span class="hljs-comment">//这里则不需要添加,因为 互不影响</span>   } });</code></pre> <blockquote> <p>其他方法</p> </blockquote> <pre class="prettyprint"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span><span class="hljs-attribute">id</span>=<span class="hljs-value">"app"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">xixi</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">xixi</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>  let xixi={   template:"<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>嘻嘻嘻<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>" }  let vm = new Vue({   el : "#app",   data{   },   components:{     xixi   }  });</code></pre> <blockquote> <p>(模板的继承)，全局模板 顾名思义 肯定是 放在哪里都能用</p> </blockquote> <pre class="prettyprint"><code class="hljs lasso"><span class="hljs-comment">/*   我们来讲个最简单的 父亲，儿子 ，孙子的 例子   要注意以下几点：         1.先实例化对象vm         2.造出parent模板,并挂载在 vm的 conponents 下         3.造出 son 模板 并 挂载 在 父级 parent 的conponents下，并在 父级template属性中 包裹住自己的 模板名标签 ；同理 造出孙子标签         4.在HTML节点中添加 目标 根节点               （节点的顺序一定要书写正确） */</span><span class="hljs-subst">&lt;</span>div id<span class="hljs-subst">=</span><span class="hljs-string">"app"</span><span class="hljs-subst">&gt;</span><span class="hljs-subst">&lt;</span><span class="hljs-keyword">parent</span><span class="hljs-subst">&gt;&lt;</span>/<span class="hljs-keyword">parent</span><span class="hljs-subst">&gt;</span><span class="hljs-subst">&lt;</span>/div<span class="hljs-subst">&gt;</span><span class="hljs-comment">//创建 孙子 模板</span><span class="hljs-keyword">let</span> grendson<span class="hljs-subst">=</span> {      template:<span class="hljs-string">"&lt;div&gt;孙子&lt;/div&gt;"</span>  }<span class="hljs-comment">//创建 儿子 模板</span><span class="hljs-keyword">let</span> son<span class="hljs-subst">=</span> {      template:<span class="hljs-string">"&lt;son&gt;儿子&lt;grendson &gt;孙子&lt;/grendson &gt;&lt;/son&gt;"</span>     components:{      grendson      }  }<span class="hljs-comment">//创建 父亲 模板</span><span class="hljs-keyword">let</span><span class="hljs-keyword">parent</span><span class="hljs-subst">=</span> {      template:<span class="hljs-string">"&lt;div&gt;父亲&lt;son&gt;&lt;/son&gt;&lt;/div&gt;"</span>     components:{      son     }  }<span class="hljs-comment">//实例化vm对象</span><span class="hljs-keyword">let</span> vm<span class="hljs-subst">=</span><span class="hljs-literal">new</span> Vue({     el:<span class="hljs-string">"#app"</span>,<span class="hljs-built_in">data</span>:{     },     components:{<span class="hljs-keyword">parent</span>     } });</code></pre> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3385.htm">Spring事件监听机制源码解析</a></p>
+                                                <p>下一个：<a href="/html/category/article-3387.htm">Node.js躬行记半吊子的可视化搭建系统</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3414.htm" title="ZooKeeper之Java客户端API使用—读取数据。">ZooKeeper之Java客户端API使用—读取数据。</a></li>
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3381.htm" title="vue3 setup如何使用props">vue3 setup如何使用props</a></li>
+                        <li class="py-2"><a href="/html/category/article-3376.htm" title="react18中react-redux状态管理的实现_React">react18中react-redux状态管理的实现_React</a></li>
+                        <li class="py-2"><a href="/html/category/article-3389.htm" title="树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统">树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统</a></li>
+                        <li class="py-2"><a href="/html/category/article-3377.htm" title="Android 4.0.1破坏了WebView HTML 5本地存储？">Android 4.0.1破坏了WebView HTML 5本地存储？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3382.htm" title="SpringBoot + H2内置数据库">SpringBoot + H2内置数据库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3391.htm" title="基于知名微服务框架go-micro开发gRPC应用程序">基于知名微服务框架go-micro开发gRPC应用程序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3374.htm" title="C语言多文件编程详解">C语言多文件编程详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

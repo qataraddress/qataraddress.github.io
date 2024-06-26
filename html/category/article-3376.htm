@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3376.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>react18中react-redux状态管理的实现_React - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">react18中react-redux状态管理的实现_React</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>react的状态管理还是挺多的现在流行的有以下五种：</p> <ul> <li>Recoil</li> <li>MobX</li> <li>XState</li> <li>Redux</li> <li>Context</li> </ul> <p>今天我们来讲一下react众多状态管理之一的redux，虽然这个我不太喜欢用，但是我觉得简单的状态管理谁都会，但是难的就是程序员的分水岭，所以今天来给大家讲一下redux。</p> <p>下面我们来讲讲redux的优点：</p> <ul> <li>可以在众多组件中传值，突破react单向数据流的限制</li> <li>不仅支持react还支持vue等主流框架</li> <li>当然是好用方便啦</li> </ul> <p>接下来我们讲一下啥时候去使用他</p> <ul> <li>在我们有好多组件，但是组件间传值非常困难的时候在使用redux。</li> <li>redux一定要作为最后底牌使用，因为他布局起来有点过程复杂。</li> </ul> <p>接下来我们安装并使用redux</p> <div class="ay1code"> <pre class="brush:js;">yarn add redux react-redux redux-devtools-extension redux-thunk  </pre> </div> <p>安装好了下面我给大家讲一下每个插件是干嘛的</p> <ul> <li>redux不用说了状态管理</li> <li>react-redux，这个插件的话，咱这样将：就是redux将组件分为了ui组件和容器组件两类，自然我们平常写方法，页面啥的就叫ui组件，redux提供的叫容器组件，这俩组件构成了父子组件，大家记住我这说的话，下面会用到。</li> <li>redux-devtools-extension这个特别长的是redux官方提供的可以查看状态的ui插件，让我们在很多组件的情况下，也能知道每个组件的数据情况，非常贴心。</li> <li>redux-thunk这个插件可以让redux拥有使用异步操作的能力，本身redux是不支持异步操作的</li> </ul> <p>下面我们开始在react中去部署redux。中间会有点复杂，提倡大家多打两遍代码，毕竟还是内句话，简单 的谁都会，难的才是你和别的程序员的分水岭。</p> <p>第一步：我们在src目录下创建一个redux的目录作为我们状态管理的文件夹。</p> <p>第二步：在redux文件夹下创建store.js的文件，作为我们的入口文件</p> <div class="ay1code"> <pre class="brush:js;">/*  * 该文件专门用于暴露一个store对象，整个应用只有一个store对象*/     //创建redux中作为核心的store               支持异步的中间件  import {legacy_createStore as createStore, applyMiddleware} from 'redux'     //引入支持异步acton  import thunk from 'redux-thunk'  //引入开发者工具  import {composeWithDevTools} from 'redux-devtools-extension'  import Reducer from './reducer'                                                   这里为reduces文件这里还没说往下看  export default createStore(Reducer,composeWithDevTools(applyMiddleware(thunk)))</pre> </div> <p>第三步：在redux文件夹下创建actions文件，用来管理我们的动作对象，包括两个一个是type，data</p> <ul> <li>type：这个是标识属性</li> <li>data：顾名思义就是数据</li> </ul> <div class="ay1code"> <pre class="brush:js;">/*  * 专门为count组件生成action对象*/  export const increment=data=&gt;({type:"add",data})  export const decrement=data=&gt;({type:"inadd",data})  // 异步action就是指action的值为函数  export const incrementAsync=(data,time)=&gt;{      return (dispatch)=&gt;{          setTimeout(()=&gt;{              dispatch(increment(data))          },time)      }  }</pre> </div> <p>第四步：在redux文件夹下创建我们较为重要的reducer.js文件，这个文件为纯函数，里面不允许有任何的操作，加就是加，减就是减，不能有任何的条件或者异步</p> <div class="ay1code"> <pre class="brush:js;">/*  reduce只管纯函数，不管啥偶数加奇数加等等只是一个纯函数  * 本身就是一个函数*/    //之前的值，传过来的值                       //prestate初始化状态是null所以得定义一下默认值  const initState=0  export default function countReduce(preState=initState,action){      const {type,data}=action      switch (type) {          case "add":              return preState+data          case "inadd":              return preState-data          default:              return preState;      }  }</pre> </div> <p>第五步：下面我们为兄弟组件，上面提到了哦，兄弟组件传值，没错redux就是利用props传值</p> <p>在index.js文件中去设置</p> <div class="ay1code"> <pre class="brush:js;">import store from "./redux/store";  import {Provider} from "react-redux";  const root = ReactDOM.createRoot(document.getElementById('root'));  root.render(      &lt;Provider store={store}&gt;      &lt;App /&gt;      &lt;/Provider&gt;  );</pre> </div> <p>下面我们去使用redux，到组件中去使用，我们可以将ui组件和容器组件联合到一起写，根据意思就是使用一个叫connect的单词来使用在组件中引入(因为使用的是react -18的版本推崇hooks和函数组件，下面例子为函数组件)</p> <div class="ay1code"> <pre class="brush:js;">import {connect} from 'react-redux'  //引入操作方法  import {add,inadd} from '../action'  const app=(props)=&gt;{      //这里log一下如果存在data说明redux部署成功了函数组件这样取值      console.log(props.count)      方法就是      porps.add()      return(                    )  }                export default connect(      //数据      state=&gt;({count:state}),      //方法      {          add,          inadd          }  )(app)</pre> </div> <p>好啦上面就是部署redux的全部过程，大家按照流程多写两遍，因为redux有点复杂，难懂。</p> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3375.htm">Python中安装pandas出现问题总结</a></p>
+                                                <p>下一个：<a href="/html/category/article-3377.htm">Android 4.0.1破坏了WebView HTML 5本地存储？</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3366.htm" title="golang goroutine 协程异常panic后怎么处理？返回什么样的结果？">golang goroutine 协程异常panic后怎么处理？返回什么样的结果？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3380.htm" title="springboot的依赖管理和自动配置">springboot的依赖管理和自动配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3391.htm" title="基于知名微服务框架go-micro开发gRPC应用程序">基于知名微服务框架go-micro开发gRPC应用程序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3398.htm" title="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

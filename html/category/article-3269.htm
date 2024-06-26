@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3269.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>在 appium2.0 之前，在移动端设备上的触屏操作，单手指触屏和多手指触屏分别是由 TouchAction 类，Multiaction 类实现的。</p> <p>在 appium2.0 之后，这 2 个方法将会被舍弃。</p> <p><strong><code>"[Deprecated] 'TouchAction' action is deprecated. Please use W3C actions instead."</code></strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/26cb53083985f1339e23f600a554f494.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p></p> <h2 id="1-w3c-action是什么-">1、w3c action 是什么？</h2> <p>在 w3c 的 actions 当中，将输入源分为了三类：</p> <ol> <li>键盘类 - Key</li> <li>指针类 - Pointer</li> <li>None</li> </ol> <p>对于 Pointer 指针类输入源，共有 3 种：Mouse 鼠标、Touch 触屏、Pen 笔触</p> <p>输入源，是提供输入事件的虚拟设备。</p> <p>每一个输入源，都是一个输入 id，输入源 type。与真实设备一样，每一个输入源都有状态的，有输入事件。</p> <p>在 python selenium 的源码当中，selenium/common/actions/input_devices.py 里 InputDevices 类定义了输入源类。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/44685022862a2996311c7269d85ee244.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <h3 id="1-空输入源-null-input-source-">1、<strong>空输入源(null input source)</strong><br /> </h3> <p>提供以下行为：</p> <p><strong>pause</strong>：不做任何操作一段时间，或者动作的持续时间</p> <h3 id="2-键盘输入源-key-input-source-">2、<strong>键盘输入源(key input source)</strong><br /> </h3> <p>提供以下行为：</p> <p><strong>KeyDown</strong>：按下某个键</p> <p><strong>KeyUp</strong>：释放某个键</p> <p><strong>在 python selenium 的源码当中，selenium/common/actions/key_input.py 里 KeyInput 类定义了按钮输入源类。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/f61f4387e57677fbfcdca5e5b1c3536b.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <h3 id="3-指针输入源-pointer-input-source--提供以下行为-">3、<strong>指针输入源(pointer input source)</strong>，提供以下行为：</h3> <p><strong>PointerDown</strong>：按下鼠标键，或者触屏或者触屏笔触屏</p> <p><strong>PointerUp</strong>：松开鼠标键，或者手离开屏幕，或者触屏笔离开屏幕</p> <p><strong>PointerMove</strong>：移动到屏幕某个点</p> <p><strong>PointerCancel</strong>：删除某个指针操作</p> <p><strong>在 python selenium 的源码当中，selenium/common/actions/pointer_input.py 里 PointerInput 类定义了指针输入源类。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/9fa69167c93e9c358fb31f4bf1dfc3f1.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <h3 id="4-在输入源基础上-定义了键盘操作类KeyActions">4、在输入源基础上，定义了键盘操作类 <strong>KeyActions</strong><br /> </h3> <p><strong>在 python selenium 的源码当中，selenium/common/actions/key_actions.py 里 KeyActions 类定义了键盘操作类。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/e69cc38dcd47420b8ecaba4bbefb5c59.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <h3 id="5-在输入源基础上-定义了鼠标-触屏操作PointerActions类-">5、在输入源基础上，定义了鼠标/触屏操作 <strong>PointerActions</strong> 类：</h3> <p><strong>在 python selenium 的源码当中，selenium/common/actions/pointer_actions.py 里 PointerActions 类定义了鼠标/触屏操作类。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/946bd87a3561a11cc6193d740b046afa.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/4b45a9f7ae1b7a9de419f59a99ef9983.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> <img decoding="async" src="http://img.555519.xyz/uploads3/20220506/3bae4bae08987248d56577bbd13ffa3d.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/052d5b7a67c276c4ad27f8d03e9c7944.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>汇总一下上面几个类：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/30e5440f247eb687209424cea9dd9554.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <h3 id="6-ActionBuilder类">6、ActionBuilder 类</h3> <p><strong>初始化方法：</strong></p> <ol> <li>输入源设备列表，会放 2 个输入源：鼠标输入源、键盘输入源。</li> <li>有 2 个私有属性：键盘操作对象(KeyActions 类实例化**)**，鼠标/触屏操作对象(PointerActions 类实例化)</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/3efde946b015f23832ecd9cd05dfda0b.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p><strong>属性：key_action，pointer_action</strong></p> <p>在 ActionChains 类当中，就是通过这 2 个属性来调用鼠标和键盘的操作的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/1432de8d17f21a70b07f97b4646f2f8c.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p><strong>添加新的输入源：add_key_input，add_pointer_input</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/786d3ef43fb87cd97fcb36847e13fed9.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p></p> <h2 id="2-ActionChains类">2、ActionChains 类</h2> <p>selenium 中的鼠标操作类，鼠标行为都是使用的 ActionBuilder 类。</p> <p><strong>初始化：</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/5435e9318c2801a88f710c7356d7d9fc.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/0708a3ea9e67c73ee8bbb14532353c84.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p></p> <h2 id="3-单点触控---ActionChains类">3、单点触控 - ActionChains 类</h2> <p>直接使用 ActionChains 类里的，w3c_actions 去实现。</p> <p>比如 appium 当中的 swipe 滑屏方法：</p> <p>移动到某一个坐标点 → 按下 → 移动到另一个坐标点 → 释放</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/3658b185015557a5729d2e7e73f3f49f.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> <p> </p> <p></p> <h2 id="4-多点触控---ActionChains类">4、多点触控 - ActionChains 类</h2> <p>多点触控，是个单点触控操作同时发生，比如 2 个手指，同时在屏幕上进行滑动操作。</p> <p>仍然是 ActionChains 类，不过需要在里面，添加新的单点触控操作。</p> <div class="vditor-copy"> </p> <div class="cnblogs_code"> <pre>actions =<span style="color: rgba(0, 0, 0, 1)"> ActionChains(driver) </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 输入源设备列表为空</span> actions.w3c_actions.devices =<span style="color: rgba(0, 0, 0, 1)"> []  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 添加一个新的输入源到设备到中，输入源类型为Touch</span> new_input = actions.w3c_actions.add_pointer_input(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">touch</span><span style="color: rgba(128, 0, 0, 1)">'</span>, f<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">finger{finger}</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">) </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 输入源的动作：移动到某个点，按下，移动到另外一点，释放</span> new_input.create_pointer_move(x=start_x, y=<span style="color: rgba(0, 0, 0, 1)">start_y) new_input.create_pointer_down(MouseButton.LEFT) new_input.create_pause(duration </span>/ 1000<span style="color: rgba(0, 0, 0, 1)">) new_input.create_pointer_move(x</span>=end_x, y=<span style="color: rgba(0, 0, 0, 1)">end_y) new_input.create_pointer_up(MouseButton.LEFT)  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 以此类推，可以添加多个输入源操作到设备当中。可以是鼠标操作，也可以是触屏，按键等操作</span><span style="color: rgba(0, 0, 0, 1)"><br></span></pre> </div> <p> </p> </div> <p><code class="language-python highlight-chroma"><span class="highlight-n">比如，对百度地图 app 进行放大操作的代码如下：</span></code></p> <div class="vditor-copy"> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">from</span> time <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> sleep </span><span style="color: rgba(0, 0, 255, 1)">from</span> appium <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> webdriver  </span><span style="color: rgba(0, 0, 255, 1)">from</span> selenium.webdriver <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> ActionChains </span><span style="color: rgba(0, 0, 255, 1)">from</span> selenium.webdriver.common.actions.mouse_button <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> MouseButton  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">我要在android7.1.2设备上，打开百度地图app</span> desired_caps =<span style="color: rgba(0, 0, 0, 1)"> { </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">automationName</span><span style="color: rgba(128, 0, 0, 1)">"</span>:<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">UiAutomator2</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">platformName</span><span style="color: rgba(128, 0, 0, 1)">"</span>:<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Android</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">platformVersion</span><span style="color: rgba(128, 0, 0, 1)">"</span>:<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">7.1.2</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">deviceName</span><span style="color: rgba(128, 0, 0, 1)">"</span>:<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">HuaWei</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">noReset</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">:True, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">appPackage</span><span style="color: rgba(128, 0, 0, 1)">"</span>:<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">com.baidu.BaiduMap</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">appActivity</span><span style="color: rgba(128, 0, 0, 1)">"</span>:<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">com.baidu.baidumaps.WelcomeScreen</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">systemPort</span><span style="color: rgba(128, 0, 0, 1)">"</span>: 8225<span style="color: rgba(0, 0, 0, 1)">, </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">newCommandTimeout</span><span style="color: rgba(128, 0, 0, 1)">"</span>: 1200<span style="color: rgba(0, 0, 0, 1)"> }  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">先连接appium server。传递指令。 appium server连接地址</span> driver = webdriver.Remote(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">&lt;http://127.0.0.1:4723/wd/hub&gt;</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">, desired_caps)  sleep(</span>20<span style="color: rgba(0, 0, 0, 1)">)  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">获取设备的大小 - size</span> size_dict =<span style="color: rgba(0, 0, 0, 1)"> driver.get_window_size()  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> ==========放大地图：从地图中心分别向对角线滑动放大 - 2个手指同时执行滑动操作  ==================</span> actions =<span style="color: rgba(0, 0, 0, 1)"> ActionChains(driver) </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">输入源设备列表为空</span> actions.w3c_actions.devices =<span style="color: rgba(0, 0, 0, 1)"> []  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> ========== 第1个手指：从正中心向右上角滑动  ==================</span><span style="color: rgba(0, 128, 0, 1)"> #</span><span style="color: rgba(0, 128, 0, 1)">添加一个新的输入源到设备到中，输入源类型为Touch,id为finger0</span> new_input = actions.w3c_actions.add_pointer_input(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">touch</span><span style="color: rgba(128, 0, 0, 1)">'</span>,<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">finger0</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">) </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">输入源的动作：移动到某个点，按下，移动到另外一点，释放</span> new_input.create_pointer_move(x=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.5, y=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">height</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.5<span style="color: rgba(0, 0, 0, 1)">) new_input.create_pointer_down() </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> new_input.create_pointer_down(MouseButton.LEFT)</span> new_input.create_pause(0.2) <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 200ms</span> new_input.create_pointer_move(x=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.9, y=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">height</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.1<span style="color: rgba(0, 0, 0, 1)">) new_input.create_pointer_up(MouseButton.LEFT)  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> ========== 第2个手指：从正中心向左下角滑动  ==================</span><span style="color: rgba(0, 128, 0, 1)"> #</span><span style="color: rgba(0, 128, 0, 1)">添加一个新的输入源到设备到中，输入源类型为Touch。id为finger1</span> new_input = actions.w3c_actions.add_pointer_input(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">touch</span><span style="color: rgba(128, 0, 0, 1)">'</span>,<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">finger1</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">) </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">输入源的动作：移动到某个点，按下，移动到另外一点，释放</span> new_input.create_pointer_move(x=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.5, y=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">height</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.5<span style="color: rgba(0, 0, 0, 1)">) new_input.create_pointer_down() </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> new_input.create_pointer_down(MouseButton.LEFT)</span> new_input.create_pause(0.2) <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)"> 200ms</span> new_input.create_pointer_move(x=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">width</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.1, y=size_dict[<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">height</span><span style="color: rgba(128, 0, 0, 1)">"</span>] * 0.9<span style="color: rgba(0, 0, 0, 1)">) new_input.create_pointer_up(MouseButton.LEFT)  </span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">执行动作</span> <span style="color: rgba(0, 0, 0, 1)">actions.perform() <br></span></pre> </div> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/cc05ebfe40e51c9f5d677bbd5e5fc77a.jpg" alt="新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具"></p> <p> </p> <p> </p> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3268.htm">encodeURI()和encodeURIComponent()的区别</a></p>
+                                                <p>下一个：<a href="/html/category/article-3270.htm">Docker修改容器默认存储路径</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3422.htm" title="vue-cli项目添加骨架屏多种方式，自动生成骨架屏">vue-cli项目添加骨架屏多种方式，自动生成骨架屏</a></li>
+                        <li class="py-2"><a href="/html/category/article-3370.htm" title="Python filecmp库">Python filecmp库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3417.htm" title="项目优化——路由懒加载">项目优化——路由懒加载</a></li>
+                        <li class="py-2"><a href="/html/category/article-3364.htm" title="如何在idea上部署tomcat&amp;项目">如何在idea上部署tomcat&amp;项目</a></li>
+                        <li class="py-2"><a href="/html/category/article-3411.htm" title="wx.navigateTo/wx.redirectTo 不能跳转">wx.navigateTo/wx.redirectTo 不能跳转</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3372.htm" title="MySQL 索引简介">MySQL 索引简介</a></li>
+                        <li class="py-2"><a href="/html/category/article-3391.htm" title="基于知名微服务框架go-micro开发gRPC应用程序">基于知名微服务框架go-micro开发gRPC应用程序</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

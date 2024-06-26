@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3199.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1.简介</a></li> <li><a href="#_label1" rel="nofollow">2.基本保存</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_0" rel="nofollow">2.1添加数据</a></li> <li><a href="#_lab2_1_1" rel="nofollow">2.2更新数据</a></li> <li><a href="#_lab2_1_2" rel="nofollow">2.3删除数据</a></li> <li><a href="#_lab2_1_3" rel="nofollow">2.4单个SaveChanges中的多个操作</a></li> </ul> <li><a href="#_label2" rel="nofollow">3.保存关联数据</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_4" rel="nofollow">3.1添加关联数据</a></li> <li><a href="#_lab2_2_5" rel="nofollow">3.2添加相关实体</a></li> <li><a href="#_lab2_2_6" rel="nofollow">3.3更改关系</a></li> </ul> <li><a href="#_label3" rel="nofollow">4.级联删除</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label4" rel="nofollow">5.事务</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_4_7" rel="nofollow">5.1控制事务</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1.简介</h2> <p>每个上下文实例都有一个ChangeTracker，它负责跟踪需要写入数据库的更改。更改实体类的实例时，这些更改会记录在ChangeTracker中，然后在调用SaveChanges时会被写入数据库中。此数据库提供程序负责将更改转换为特定于数据库的操作（例如，关系数据库的INSERT、UPDATE和DELETE命令）。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2.基本保存</h2> <p>了解如何使用上下文和实体类添加、修改和删除数据。</p> <p class="maodian"><a name="_lab2_1_0" rel="nofollow"></a></p> <h3>2.1添加数据</h3> <p>使用DbSet.Add方法添加实体类的新实例。调用SaveChanges时，数据将插入到数据库中。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = new Blog { Url = "http://sample.com" };      context.Blogs.Add(blog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_1_1" rel="nofollow"></a></p> <h3>2.2更新数据</h3> <p>EF将自动检测对由上下文跟踪的现有实体所做的更改。这包括从数据库加载查询的实体，以及之前添加并保存到数据库的实体。只需通过赋值来修改属性，然后调用SaveChanges即可。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = context.Blogs.First();      blog.Url = "http://sample.com/blog";      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>2.3删除数据</h3> <p>使用DbSet.Remove方法删除实体类的实例。如果实体已存在于数据库中，则将在SaveChanges期间删除该实体。如果实体尚未保存到数据库（即跟踪为“已添加”），则在调用SaveChanges时，该实体会从上下文中移除且不再插入。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = context.Blogs.First();      context.Blogs.Remove(blog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>2.4单个SaveChanges中的多个操作</h3> <p>可以将多个添加/更新/删除操作合并到对SaveChanges的单个调用。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      // add      context.Blogs.Add(new Blog { Url = "http://sample.com/blog_one" });      context.Blogs.Add(new Blog { Url = "http://sample.com/blog_two" });      // update      var firstBlog = context.Blogs.First();      firstBlog.Url = "";      // remove      var lastBlog = context.Blogs.Last();      context.Blogs.Remove(lastBlog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3.保存关联数据</h2> <p>除了独立实体以外，还可以使用模型中定义的关系。</p> <p class="maodian"><a name="_lab2_2_4" rel="nofollow"></a></p> <h3>3.1添加关联数据</h3> <p>如果创建多个新的相关实体，则将其中一个添加到上下文时也会添加其他实体。在下面的示例中，博客和三个相关文章会全部插入到数据库中。找到并添加这些文章，因为它们可以通过Blog.Posts导航属性访问。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = new Blog      {          Url = "http://blogs.msdn.com/dotnet",          Posts = new List&lt;Post&gt;          {              new Post { Title = "Intro to C#" },              new Post { Title = "Intro to VB.NET" },              new Post { Title = "Intro to F#" }          }      };      context.Blogs.Add(blog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_2_5" rel="nofollow"></a></p> <h3>3.2添加相关实体</h3> <p>如果从已由上下文跟踪的实体的导航属性中引用新实体，则将发现该实体并将其插入到数据库中。在下面的示例中，插入post实体，因为该实体会添加到已从数据库中提取的blog实体的Posts属性。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = context.Blogs.Include(b =&gt; b.Posts).First();      var post = new Post { Title = "Intro to EF Core" };      blog.Posts.Add(post);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_2_6" rel="nofollow"></a></p> <h3>3.3更改关系</h3> <p>如果更改实体的导航属性，则将对数据库中的外键列进行相应的更改。在下面的示例中，post实体更新为属于新的blog实体，因为其Blog导航属性设置为指向blog，blog也会插入到数据库中，因为它是已由上下文post跟踪的实体的导航属性引用的新实体。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      //新增一个主体实体      var blog = new Blog { Url = "http://blogs.msdn.com/visualstudio" };      var post = context.Posts.First();      //post更新关系      post.Blog = blog;      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4.级联删除</h2> <p>删除行为在DeleteBehavior枚举器类型中定义，并且可以传递到OnDelete Fluent API来控制：</p> <ul> <li>可以删除子项/依赖项</li> <li>子项的外键值可以设置为null</li> <li>子项保持不变</li> </ul> <p>示例：</p> <div class="ay1code"> <pre class="brush:csharp;">var blog = context.Blogs.Include(b =&gt; b.Posts).First();  var posts = blog.Posts.ToList();  DumpEntities("  After loading entities:", context, blog, posts);  context.Remove(blog);  DumpEntities($"  After deleting blog '{blog.BlogId}':", context, blog, posts);  try  {      Console.WriteLine();      Console.WriteLine("  Saving changes:");      context.SaveChanges();      DumpSql();      DumpEntities("  After SaveChanges:", context, blog, posts);  }  catch (Exception e)  {      DumpSql();      Console.WriteLine();      Console.WriteLine($"  SaveChanges threw {e.GetType().Name}: {(e is DbUpdateException ? e.InnerException.Message : e.Message)}");  }</pre> </div> <p>记录结果：</p> <div class="ay1code"> <pre class="brush:plain;">After loading entities:      Blog '1' is in state Unchanged with 2 posts referenced.        Post '1' is in state Unchanged with FK '1' and reference to blog '1'.        Post '2' is in state Unchanged with FK '1' and reference to blog '1'.      After deleting blog '1':      Blog '1' is in state Deleted with 2 posts referenced.        Post '1' is in state Unchanged with FK '1' and reference to blog '1'.        Post '2' is in state Unchanged with FK '1' and reference to blog '1'.      Saving changes:      DELETE FROM [Posts] WHERE [PostId] = 1      DELETE FROM [Posts] WHERE [PostId] = 2      DELETE FROM [Blogs] WHERE [BlogId] = 1      After SaveChanges:      Blog '1' is in state Detached with 2 posts referenced.        Post '1' is in state Detached with FK '1' and no reference to a blog.        Post '2' is in state Detached with FK '1' and no reference to a blog.</pre> </div> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>5.事务</h2> <p>事务允许以原子方式处理多个数据库操作。如果已提交事务，则所有操作都会成功应用到数据库。如果已回滚事务，则所有操作都不会应用到数据库。</p> <p class="maodian"><a name="_lab2_4_7" rel="nofollow"></a></p> <h3>5.1控制事务</h3> <p>可以使用DbContext.Database API开始、提交和回滚事务。以下示例显示了两个SaveChanges()操作以及正在单个事务中执行的LINQ查询。并非所有数据库提供应用程序都支持事务的。 调用事务API时，某些提供应用程序可能会引发异常或不执行任何操作。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      using (var transaction = context.Database.BeginTransaction())      {          try          {              context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/dotnet" });              context.SaveChanges();              context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/visualstudio" });              context.SaveChanges();              var blogs = context.Blogs                  .OrderBy(b =&gt; b.Url)                  .ToList();              // Commit transaction if all commands succeed, transaction will auto-rollback              // when disposed if either commands fails              transaction.Commit();          }          catch (Exception)          {              // TODO: Handle failure          }      }  }</pre> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3198.htm">将maven项目打成执行jar包</a></p>
+                                                <p>下一个：<a href="/html/category/article-3200.htm">linux服务器磁盘满了的处理方法</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3380.htm" title="springboot的依赖管理和自动配置">springboot的依赖管理和自动配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3404.htm" title="【Spring】spring的反射机制详解">【Spring】spring的反射机制详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3400.htm" title="Mybatis 、SpringMVC、Spring 介绍及联系">Mybatis 、SpringMVC、Spring 介绍及联系</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3382.htm" title="SpringBoot + H2内置数据库">SpringBoot + H2内置数据库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3383.htm" title="Vue简单实现自定义拖拽">Vue简单实现自定义拖拽</a></li>
+                        <li class="py-2"><a href="/html/category/article-3413.htm" title="Centos7系统离线安装nginx步骤(亲测，超详细步骤)">Centos7系统离线安装nginx步骤(亲测，超详细步骤)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3401.htm" title="petite-vue源码剖析-沙箱模型">petite-vue源码剖析-沙箱模型</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3411.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>wx.navigateTo/wx.redirectTo 不能跳转 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">wx.navigateTo/wx.redirectTo 不能跳转</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p style="margin-top:0px; margin-bottom:1.1em; padding-top:0px; padding-bottom:0px; color:rgb(63,63,63); font-family:&quot;microsoft yahei&quot;; font-size:15px"> 在<a target="_blank" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://lib.csdn.net/base/wechat"  class="replace_word" title="微信开发知识库" style="color:rgb(223,52,52); font-weight:bold" rel="nofollow">微信</a>小程序开发过程中，如果你出现了在其他地方可以正常跳转，但是此时就是不行，不知道为什么。</p> <h3 id="分析原因" style="margin:0.8em 0px; padding:0px; font-weight:100; line-height:1.3em; font-size:1.73em; color:rgb(63,63,63); font-family:&quot;microsoft yahei&quot;"> 分析原因：</h3> <p style="margin-top:0px; margin-bottom:1.1em; padding-top:0px; padding-bottom:0px; color:rgb(63,63,63); font-family:&quot;microsoft yahei&quot;; font-size:15px"> 1.你的页面在app.json文件中注册了吗？&nbsp;<br style=""/> 2.你的url地址写对了吗，目录层级没错吗?&nbsp;<br style=""/> 3.你要跳转到的页面是非tabBar的页面吗？如果是tabBar页面，恭喜你，找到问题了。&nbsp;<br style=""/><code style="font-family:&quot;Source Code Pro&quot;,monospace; padding:2px 4px; font-size:13.5px; white-space:nowrap">wx.navigateTo/wx.redirectTo</code>只能用在非tabBar页面的跳转，要跳转到tabBar页面，需要使用<code style="font-family:&quot;Source Code Pro&quot;,monospace; padding:2px 4px; font-size:13.5px; white-space:nowrap">wx.switchTab</code></p> <p style="margin-top:0px; margin-bottom:1.1em; padding-top:0px; padding-bottom:0px; color:rgb(63,63,63); font-family:&quot;microsoft yahei&quot;; font-size:15px"> <code style="font-family:&quot;Source Code Pro&quot;,monospace; padding:2px 4px; font-size:13.5px; white-space:nowrap"></code></p> <h2 id="wxswitchtabobject" style="margin:20px 0px 10px; padding:0px; line-height:1.7; font-size:16px; font-family:Verdana,Arial,Helvetica,sans-serif"> wx.switchTab(OBJECT) </p> <hr style="margin:15px 0px; padding:0px; height:0px; border-right:0px; border-bottom:0px; border-left:0px; border-top-style:solid; border-top-color:rgb(170,170,170)"/> </h2> <p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; word-wrap:break-word; line-height:1.7; font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px"> 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</p> <p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; word-wrap:break-word; line-height:1.7; font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px"> <span style="margin:0px; padding:0px">OBJECT 参数说明：</span></p> <table style="margin:15px 0px; padding:0px; width:699.333px; table-layout:fixed; border-collapse:collapse; border-spacing:0px; color:rgb(0,0,0); font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px"> <thead style="margin:0px; padding:0px; background-color:rgb(249,249,249)"> <tr style="margin:0px; padding:0px"> <th style="margin:0px; padding:2px 4px; background-color:rgb(255,255,255); border:1px solid rgb(204,204,204)"> 参数</th> <th style="margin:0px; padding:2px 4px; background-color:rgb(255,255,255); border:1px solid rgb(204,204,204)"> 类型</th> <th style="margin:0px; padding:2px 4px; background-color:rgb(255,255,255); border:1px solid rgb(204,204,204)"> 必填</th> <th style="margin:0px; padding:2px 4px; background-color:rgb(255,255,255); border:1px solid rgb(204,204,204)"> 说明</th> </tr> </thead> <tbody style="margin:0px; padding:0px"> <tr style="margin:0px; padding:0px"> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> url</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> String</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 是</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 需要跳转的 tabBar 页面的路径（需在 app.json 的&nbsp;<a target="_blank" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.w3cschool.cn/weixinapp/hw9k1q8m.html#tabbar"  style="margin:0px; padding:0px; color:rgb(144,11,9); outline:0px; word-break:break-all" rel="nofollow">tabBar</a>&nbsp;字段定义的页面），路径后不能带参数</td> </tr> <tr style="margin:0px; padding:0px"> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> success</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> Function</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 否</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 接口调用成功的回调函数</td> </tr> <tr style="margin:0px; padding:0px"> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> fail</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> Function</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 否</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 接口调用失败的回调函数</td> </tr> <tr style="margin:0px; padding:0px"> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> complete</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> Function</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 否</td> <td style="margin:0px; padding:2px 4px; min-width:40px; height:30px; border:1px solid rgb(204,204,204); vertical-align:top"> 接口调用结束的回调函数（调用成功、失败都会执行）</td> </tr> </tbody> </table> <p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; word-wrap:break-word; line-height:1.7; font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px"> <span style="margin:0px; padding:0px">示例代码：</span></p> <pre style="margin-top:15px; margin-bottom:15px; padding:10px 5px; width:auto; max-width:700px; line-height:1.7; background:rgb(239,239,239); font-size:14px; font-family:Consolas,&quot;Courier New&quot;,Courier,monospace; overflow-x:auto; border:1px solid rgb(221,221,221); word-wrap:break-word!important; white-space:pre-wrap!important"><code class="lang-json hljs" style="margin:0px; padding:0px; display:block; overflow-x:auto; background:none; color:rgb(51,51,51); font-family:Consolas,&quot;Courier New&quot;,Courier,monospace">{   <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"tabBar"</span>: {     <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"list"</span>: [{       <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"pagePath"</span>: <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"index"</span>,       <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"text"</span>: <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"首页"</span>     },{       <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"pagePath"</span>: <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"other"</span>,       <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"text"</span>: <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)">"其他"</span>     }]   } } </code></pre> <pre style="margin-top:15px; margin-bottom:15px; padding:10px 5px; width:auto; max-width:700px; line-height:1.7; background:rgb(239,239,239); font-size:14px; font-family:Consolas,&quot;Courier New&quot;,Courier,monospace; overflow-x:auto; border:1px solid rgb(221,221,221); word-wrap:break-word!important; white-space:pre-wrap!important"><code class="lang-javascript hljs" style="margin:0px; padding:0px; display:block; overflow-x:auto; background:none; color:rgb(51,51,51); font-family:Consolas,&quot;Courier New&quot;,Courier,monospace"><span style="margin:0px; padding:0px">wx.switchTab({   url: <span class="hljs-string" style="margin:0px; padding:0px; color:rgb(136,0,0)"><span class="hljs-string" style="margin:0px; padding:0px">'/index'</span></span> })</span></code></pre> <p> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3410.htm">innoDB如何解决幻读详解</a></p>
+                                                <p>下一个：<a href="/html/category/article-3412.htm">sql 如何交换一个字符两侧字符的顺序_中级数据分析-SQL简单查询</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3370.htm" title="Python filecmp库">Python filecmp库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3373.htm" title="Centos7服务器上RabbitMQ单机安装_在线工具">Centos7服务器上RabbitMQ单机安装_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3385.htm" title="Spring事件监听机制源码解析">Spring事件监听机制源码解析</a></li>
+                        <li class="py-2"><a href="/html/category/article-3393.htm" title="node.js &#8211; http、模块化、npm">node.js &#8211; http、模块化、npm</a></li>
+                        <li class="py-2"><a href="/html/category/article-3383.htm" title="Vue简单实现自定义拖拽">Vue简单实现自定义拖拽</a></li>
+                        <li class="py-2"><a href="/html/category/article-3374.htm" title="C语言多文件编程详解">C语言多文件编程详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3381.htm" title="vue3 setup如何使用props">vue3 setup如何使用props</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

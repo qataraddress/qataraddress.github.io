@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3418.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <blockquote> <p>前言：很多时候，例如前端需要字段user可能只是需要用到user中的userName属性，而后端传过去的却是一整个user对象，这样显然是不行的。那有没有一种技术，可以把后端传给前端的user类型的值改变为userName类型的值呢？@JsonComponent、@JsonInclude、@JsonSerialize可以在序列化的时候动手脚，可以自定义返回给前端的序列化的对象的值。完美解决这个问题。</p> </blockquote> <div class="toc"> <h3>本文概述</h3> <ul> <li><a href="#JsonSerialize_4" rel="nofollow">@JsonSerialize常见用法</a></li> <li> <ul> <li><a href="#_9" rel="nofollow">标注在类上面用法</a></li> <li><a href="#get_85" rel="nofollow">标注在属性、get方法上</a></li> </ul> </li> <li><a href="#JsonProperty_163" rel="nofollow">@JsonProperty解析</a></li> <li><a href="#JsonIgnore_178" rel="nofollow">@JsonIgnore解析</a></li> <li><a href="#JsonComponent_181" rel="nofollow">@JsonComponent解析</a></li> <li> <ul> <li><a href="#_215" rel="nofollow">注意点</a></li> </ul> </li> <li><a href="#_230" rel="nofollow">代码获取</a></li> </ul> </div> <h1> <a id="JsonSerialize_4" rel="nofollow"></a>@JsonSerialize常见用法</h1> <p>标注范围：类、属性、get方法<br /> 标注在类上面：指定类的序列化规则<br /> 标注在属性、get方法上面：指定属性的序列化规则</p> <h2> <a id="_9" rel="nofollow"></a>标注在类上面用法</h2> <p>这里使用了lombok插件省略了写法。伪代码模拟异常基类</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Data</span> <span class="token annotation punctuation">@Builder</span> <span class="token annotation punctuation">@AllArgsConstructor</span> <span class="token annotation punctuation">@NoArgsConstructor</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseException</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">private</span> ErrorMsg errorMsg<span class="token punctuation">;</span>     <span class="token keyword">private</span> LocalDateTime date<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p><strong>模拟自定义异常的这个场景</strong>，@JsonSerialize指定序列化规则，用我们自己定义的序列化器</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@JsonSerialize</span><span class="token punctuation">(</span>using <span class="token operator">=</span> DivSerializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DivException</span> <span class="token keyword">extends</span> <span class="token class-name">BaseException</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token function">DivException</span><span class="token punctuation">(</span>ErrorMsg errorMsg<span class="token punctuation">,</span> LocalDateTime date<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">super</span><span class="token punctuation">(</span>errorMsg<span class="token punctuation">,</span> date<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>自定义序列化器，<strong>此处设置的值也就是前端能够接收到的值（没有设置的属性也就自然没有咯</strong>），干涉ErrorMsg = ErrorMsg.code</p> <pre><code class="prism language-java"><span class="token comment">/**  * @author 张子行  * @class  */</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DivSerializer</span> <span class="token keyword">extends</span> <span class="token class-name">StdSerializer</span><span class="token generics function"><span class="token punctuation">&lt;</span>DivException<span class="token punctuation">&gt;</span></span> <span class="token punctuation">{<!-- --></span>     <span class="token comment">/**      * @method 固定代码，原理搞不清      */</span>     <span class="token keyword">protected</span> <span class="token function">DivSerializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">super</span><span class="token punctuation">(</span>DivException<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token comment">/**      * @method      * @param DivException e:干涉前的对象      * @param JsonGenerator jsonGenerator: json生成器，指定干涉后的json对象                          */</span>     <span class="token annotation punctuation">@Override</span>     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">serialize</span><span class="token punctuation">(</span>DivException e<span class="token punctuation">,</span> JsonGenerator jsonGenerator<span class="token punctuation">,</span> SerializerProvider serializerProvider<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{<!-- --></span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeStartObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObjectField</span><span class="token punctuation">(</span><span class="token string">"date"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObjectField</span><span class="token punctuation">(</span><span class="token string">"ErrorMsg"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getErrorMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeEndObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> </code></pre> <p>测试代码<strong>注意加了@RestController</strong>返回值会经过json序列化</p> <pre><code class="prism language-java"><span class="token comment">/** * @author 张子行 * @class */</span> <span class="token annotation punctuation">@RestController</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GoodsController</span> <span class="token punctuation">{<!-- --></span>  <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/testMoney"</span><span class="token punctuation">)</span>  <span class="token keyword">public</span> money <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>      money money <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">money</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token string">"zzh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">return</span> money<span class="token punctuation">;</span>  <span class="token punctuation">}</span>   <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/testDivException"</span><span class="token punctuation">)</span>  <span class="token keyword">public</span> DivException <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>      DivException divException <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DivException</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ErrorMsg</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token string">"error"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">return</span> divException<span class="token punctuation">;</span>  <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>不加@JsonSerialize效果<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/b53e811c03dfd9d7d2a4df3abd448ad1.jpg" alt="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用"><br /> 加了@JsonSerialize效果<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/99dfa11dabf2079272d7d27225bc341a.jpg" alt="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用"></p> <h2> <a id="get_85" rel="nofollow"></a>标注在属性、get方法上</h2> <p><strong>money类</strong></p> <pre><code class="prism language-java"><span class="token comment">/**  * @author 张子行  * @class  */</span>  <span class="token comment">/**  * 类中有字段为null时不返回给前端  */</span> <span class="token annotation punctuation">@JsonInclude</span><span class="token punctuation">(</span>value <span class="token operator">=</span> JsonInclude<span class="token punctuation">.</span>Include<span class="token punctuation">.</span>NON_NULL<span class="token punctuation">)</span> <span class="token annotation punctuation">@Data</span> <span class="token annotation punctuation">@AllArgsConstructor</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">money</span> <span class="token punctuation">{<!-- --></span>      <span class="token comment">/**      * 只能被序列化，序列化的key为macAmount      */</span>     <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"macAmount"</span><span class="token punctuation">,</span> access <span class="token operator">=</span> JsonProperty<span class="token punctuation">.</span>Access<span class="token punctuation">.</span>READ_ONLY<span class="token punctuation">)</span>     <span class="token keyword">private</span> <span class="token keyword">int</span> amount<span class="token punctuation">;</span>     <span class="token comment">/**      * 使用自定义的序列化规则      */</span>     <span class="token annotation punctuation">@JsonSerialize</span><span class="token punctuation">(</span>using <span class="token operator">=</span> DateSerializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>     <span class="token keyword">private</span> LocalDateTime date<span class="token punctuation">;</span>     <span class="token comment">/**      * 为空时不会返回给前端      */</span>     <span class="token annotation punctuation">@JsonInclude</span><span class="token punctuation">(</span>value <span class="token operator">=</span> JsonInclude<span class="token punctuation">.</span>Include<span class="token punctuation">.</span>NON_EMPTY<span class="token punctuation">)</span>     <span class="token keyword">private</span> String unit<span class="token punctuation">;</span>     <span class="token comment">/**      * 序列化不返回给前端的字段      */</span>     <span class="token annotation punctuation">@JsonIgnore</span>     <span class="token keyword">private</span> String name<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p>date序列化器</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DateSerializer</span> <span class="token keyword">extends</span> <span class="token class-name">StdSerializer</span><span class="token generics function"><span class="token punctuation">&lt;</span>LocalDateTime<span class="token punctuation">&gt;</span></span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token function">DateSerializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">super</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>      <span class="token annotation punctuation">@Override</span>     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">serialize</span><span class="token punctuation">(</span>LocalDateTime localDateTime<span class="token punctuation">,</span> JsonGenerator jsonGenerator<span class="token punctuation">,</span> SerializerProvider serializerProvider<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{<!-- --></span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObject</span><span class="token punctuation">(</span>localDateTime<span class="token operator">+</span><span class="token string">"ggg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>测试</p> <pre><code class="prism language-java"><span class="token comment">/**  * @author 张子行  * @class  */</span> <span class="token annotation punctuation">@RestController</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GoodsController</span> <span class="token punctuation">{<!-- --></span>     <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/testMoney"</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> money <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         money money <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">money</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token string">"zzh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> money<span class="token punctuation">;</span>     <span class="token punctuation">}</span>      <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/testDivException"</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> DivException <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         DivException divException <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DivException</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ErrorMsg</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token string">"error"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> divException<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>效果<br /> name字段加了@JsonIgnore，所以不会被序列化<br /> unit字段在@JsonInclude作用下，无论是空串还是null都不会被序列化<br /> date字段在@JsonSerialize指定了序列化器下，输出的是时间+ggg<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/23a211af213c96d05a02c66a3edb17b8.jpg" alt="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用"></p> <h1> <a id="JsonProperty_163" rel="nofollow"></a>@JsonProperty解析</h1> <p>access = JsonProperty.Access.READ_ONLY，表示只能被序列化</p> <pre><code class="prism language-java"><span class="token comment">/**  * 只能被序列化  */</span>  <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"macAmount"</span><span class="token punctuation">,</span> access <span class="token operator">=</span> JsonProperty<span class="token punctuation">.</span>Access<span class="token punctuation">.</span>READ_ONLY<span class="token punctuation">)</span>  <span class="token keyword">private</span> <span class="token keyword">int</span> amount<span class="token punctuation">;</span> </code></pre> <p><strong>被序列化后的效果</strong></p> <pre><code class="prism language-java"><span class="token punctuation">{<!-- --></span><span class="token string">"macAmount"</span><span class="token operator">:</span> <span class="token string">"value"</span><span class="token punctuation">}</span> </code></pre> <h1> <a id="JsonIgnore_178" rel="nofollow"></a>@JsonIgnore解析</h1> <p><strong>被@JsonIgnore标注的属性</strong>序列化的时候会被忽略。不序列此字段，效果图同上</p> <h1> <a id="JsonComponent_181" rel="nofollow"></a>@JsonComponent解析</h1> <p>为指定类设置序列化规则，无需其他任何额外配置，即可生效。当controller层中的返回值中包含money对象，那么就会被此序列化器作用</p> <pre><code class="prism language-java"><span class="token comment">/**  * @author 张子行  * @class  */</span> <span class="token annotation punctuation">@JsonComponent</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">moneySerializer</span> <span class="token keyword">extends</span> <span class="token class-name">StdSerializer</span><span class="token generics function"><span class="token punctuation">&lt;</span>money<span class="token punctuation">&gt;</span></span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">protected</span> <span class="token function">moneySerializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">super</span><span class="token punctuation">(</span>money<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>      <span class="token comment">/**      * 序列化逻辑，只取出Money中的amount      */</span>     <span class="token annotation punctuation">@Override</span>     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">serialize</span><span class="token punctuation">(</span>money money<span class="token punctuation">,</span> JsonGenerator jsonGenerator<span class="token punctuation">,</span> SerializerProvider serializerProvider<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{<!-- --></span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeStartObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>money<span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObjectField</span><span class="token punctuation">(</span><span class="token string">"amount"</span><span class="token punctuation">,</span> money<span class="token punctuation">.</span><span class="token function">getAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObjectField</span><span class="token punctuation">(</span><span class="token string">"date"</span><span class="token punctuation">,</span> money<span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObjectField</span><span class="token punctuation">(</span><span class="token string">"unit"</span><span class="token punctuation">,</span> money<span class="token punctuation">.</span><span class="token function">getUnit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeObjectField</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> money<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         jsonGenerator<span class="token punctuation">.</span><span class="token function">writeEndObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>效果图，controller层同上。<br /> unit为null是因为unit加了注解@JsonIgnore<br /> date没有ggg尾缀请看下文注意点<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/a7b2ef06a7191d2b60366a50fcf50773.jpg" alt="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用"></p> <h2> <a id="_215" rel="nofollow"></a>注意点</h2> <p>此时下面代码会失效，<strong>被序列化器作用的类中的@JsonSerialize配置会失效</strong></p> <ul> <li>@JsonSerialize标注在类上且指定了序列化器a，序列化器a就不要加@JsonComponent注解。</li> <li>同理序列化器a为类b指定了序列化规则，类b就不要加@JsonSerialize注解指定序列化器</li> </ul> <pre><code class="prism language-java"><span class="token comment">/**      * 使用自定义的序列化规则      */</span>     <span class="token annotation punctuation">@JsonSerialize</span><span class="token punctuation">(</span>using <span class="token operator">=</span> DateSerializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>     <span class="token keyword">private</span> LocalDateTime date<span class="token punctuation">;</span> </code></pre> <h1> <a id="_230" rel="nofollow"></a>代码获取</h1> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/zhangzihang3/-workHarvestCode.git"  rel="nofollow">https://github.com/zhangzihang3/-workHarvestCode.git</a></p> </p></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3417.htm">项目优化——路由懒加载</a></p>
+                                                <p>下一个：<a href="/html/category/article-3419.htm">redis之发布与订阅(publish/subscribe模式)</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3418.htm" title="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用">序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3372.htm" title="MySQL 索引简介">MySQL 索引简介</a></li>
+                        <li class="py-2"><a href="/html/category/article-3391.htm" title="基于知名微服务框架go-micro开发gRPC应用程序">基于知名微服务框架go-micro开发gRPC应用程序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3396.htm" title="CentOS7设置固定IP地址详解">CentOS7设置固定IP地址详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3378.htm" title="Django 之视图url参数获取">Django 之视图url参数获取</a></li>
+                        <li class="py-2"><a href="/html/category/article-3375.htm" title="Python中安装pandas出现问题总结">Python中安装pandas出现问题总结</a></li>
+                        <li class="py-2"><a href="/html/category/article-3405.htm" title="vue实现消息向上无缝滚动效果_vue.js_">vue实现消息向上无缝滚动效果_vue.js_</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

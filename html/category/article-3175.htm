@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3175.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Android 中的广播机制你了解多少? - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Android 中的广播机制你了解多少?</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1> <a id="_0" rel="nofollow"></a>前言</h1> <p>Android 中的每个应用程序都可以对自己感兴趣的广播进行注册，这样该程序就只会接受自己所关心的广播内容，这些广播内容可能是来自于系统，也可能是来自于其他应用程序的;Android 提供了一整套的 API，允许应用程序自由地发送和接受广播，今天我们就来详细介绍下：</p> <h2> <a id="__4" rel="nofollow"></a>一. 广播介绍</h2> <p>1、标准广播<br /> 这是一种完全异步执行的广播，在广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息，因此它们之间没有任何先后顺序可言。接收器不能对收到的广播做任何处理，也不能截断广播继续传播;<br /> 该种类的广播用sendBroadcast发送;<br /> 2、有序广播<br /> 这是一种同步执行的广播，在广播发出之后，同一时刻只会有一个广播接收器能够收到这条广播消息，当这个广播接收器中的逻辑执行完毕后，广播才会继续传递;<br /> 所以此时的广播接收器是有先后顺序的，优先级高的广播接收器就可以先收到广播消息，并且前面的广播接收器还可以截断正在传递的广播，这样后面的广播接收器就无法收到广播消息了;<br /> 该种类的广播用sendOrderedBroadcast发送;<br /> 3、粘性广播<br /> 粘性广播的特点是Intent会一直保留到广播事件结束，而这种广播也没有所谓的10秒限制，10秒限制是指普通的广播如果onReceive方法执行时间太长，超过10秒的时候系统会将这个广播置为可以被干掉的‘候选人’，一旦系统资源不够的时候，就会干掉这个广播而让它不执行。该广播用sendStickyBroadcast发送;</p> <h2> <a id="_16" rel="nofollow"></a>二、广播详解</h2> <p>Android 内置了很多系统级别的广播，我们可以在应用中通过监听这些广播来得到各种系统的状态信息。比如手机开机后会发送一条广播，电池的电量发生变化会发出一条广播，时间或时区发生改变也会发出一条广播等等;<br /> 注册广播方式一般有两种：<br /> 动态注册在代码中注册;<br /> 静态注册在 AndroidManifest.xml 中注册<br /> 1、静态注册<br /> 一般为常驻广播，在AndroidManifest.xml里通过标签声明</p> <pre><code>&lt;receiver android:name=".MyBroadcastReceiver"  android:exported="true"&gt;      &lt;intent-filter&gt;          &lt;action android:name="android.intent.action.BOOT_COMPLETED"/&gt;          &lt;action android:name="android.intent.action.INPUT_METHOD_CHANGED" /&gt;      &lt;/intent-filter&gt;  &lt;/receiver&gt;  </code></pre> <p>2、动态注册<br /> 非常驻广播，在使用时注册，用完及时销毁，以免内存泄漏</p> <pre><code>BroadcastReceiver br = new MyBroadcastReceiver();  IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);      filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);      this.registerReceiver(br, filter);  </code></pre> <pre><code>@Override   protected void onDestroy() {       super.onDestroy();       unregisterReceiver(receiver);   }  </code></pre> <p>3、自定义广播</p> <pre><code> &lt;receiver              android:name=".test.MyBroadcastReceiver"              android:enabled="true"              android:exported="true"&gt;              &lt;intent-filter&gt;                  &lt;action android:name="com.test.test" /&gt;              &lt;/intent-filter&gt;    &lt;/receiver&gt;  public class MyBroadcastReceiver extends BroadcastReceiver {      @Override      public void onReceive(Context context, Intent intent) {          Toast.makeText(context,"发送标准广播",Toast.LENGTH_LONG).show();      }  }    Intent intent = new Intent("com.test.test");                   sendBroadcast(intent);  //发送有序广播   Intent intent = new Intent("com.test.test");                   sendOrderedBroadcast(intent,null);   </code></pre> <p>4、本地广播<br /> 我们发送和接受的广播全部属于系统全局广播，即发出的广播可以被其它任何应用程序接收到，并且我们也可以接受来自于其它任何应用程序的广播;<br /> 为了解决广播安全性问题，Android 引入了一套本地广播机制，使用这个机制发出的广播只能在应用程序内部进行传递，并且广播接受器也只能接受来自本应用程序发出的广播，这样所有的安全性问题就都不存在了;<br /> 初始化广播：</p> <pre><code>private LocalBroadcastManager localBroadcastManager;     private void init() {         //获取实例         localBroadcastManager = LocalBroadcastManager.getInstance(this);         IntentFilter intentFilter = new IntentFilter();         intentFilter.addAction("om.test.LOCAL_BROADCAST");         LocalReceiver localReceiver = new LocalReceiver();         localBroadcastManager.registerReceiver(localReceiver, intentFilter);     }  Intent intent = new Intent("om.test.LOCAL_BROADCAST");         localBroadcastManager.sendBroadcast(intent);  定义     private class LocalReceiver extends BroadcastReceiver {         @Override         public void onReceive(Context context, Intent intent) {             Toast.makeText(context, "本地广播.....", Toast.LENGTH_LONG).show();         }     }  </code></pre> <p>优点：<br /> 可以明确知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄露：<br /> 其它的程序无法将广播发送到我们程序内部，因此不需要担心会有安全漏洞问题：<br /> 发送本地广播比发送系统全局广播更加高效：<br /> 5、带权限的标准广播<br /> 发广播：<br /> 当调用sendBroadcast(Intent, String)或sendOrderedBroadcast(Intent, String, BroadcastReceiver, Handler, int, String, Bundle)时，可以指定权限参数;</p> <pre><code>sendBroadcast(new Intent("com.test"),                Manifest.permission.SEND_SMS);  </code></pre> <p>要想接收这个广播，那么这个接收的app必须申请该权限</p> <pre><code>&lt;uses-permission android:name="android.permission.SEND_SMS"/&gt;  </code></pre> <p>接收广播：<br /> 如果在注册广播接收器时指定了权限参数(使用registerReceiver(BroadcastReceiver，IntentFilter，String，Handler)或清单文件中的里)，则只有在清单文件中使用请求权限的广播发送者才可以将Intent发送给接收者;</p> <p>在清单文件中声明：</p> <pre><code>&lt;receiver android:name=".MyBroadcastReceiver"            android:permission="android.permission.SEND_SMS"&gt;      &lt;intent-filter&gt;          &lt;action android:name="com.test"/&gt;      &lt;/intent-filter&gt;  &lt;/receiver&gt;  </code></pre> <p>在注册的时候声明：</p> <pre><code>IntentFilter filter = new IntentFilter("com.test);  registerReceiver(receiver, filter, Manifest.permission.SEND_SMS, null );  </code></pre> <p>要给它发消息，那广播发送的app就必须得申请获得相应的权限才行：</p> <pre><code>&lt;uses-permission android:name="android.permission.SEND_SMS"/&gt;  </code></pre> <h2> <a id="_146" rel="nofollow"></a>总结</h2> <p>动态注册广播不是常驻型广播，也就是说广播跟随Activity的生命周期。注意在Activity结束前，移除广播接收器;静态注册是常驻型，也就是说当应用程序关闭后，如果有信息广播来，程序也会被系统调用自动运行。<br /><strong>当广播为有序广播时</strong>：优先级高的先接收(不分静态和动态)。同优先级的广播接收器，动态优先于静态;同优先级的同类广播接收器，静态：先扫描的优先于后扫描的，动态：先注册的优先于后注册的;<br /><strong>当广播为默认广播时</strong>：无视优先级，动态广播接收器优先于静态广播接收器。同优先级的同类广播接收器，静态：先扫描的优先于后扫描的，动态：先注册的优先于后册的。</p> </p></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3174.htm">Spring boot项目打包成jar在linux环境下设置开机自启动</a></p>
+                                                <p>下一个：<a href="/html/category/article-3176.htm">mysql创建表分区详细介绍及示例</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3365.htm" title="Robinhood基于Apache Hudi的下一代数据湖实践">Robinhood基于Apache Hudi的下一代数据湖实践</a></li>
+                        <li class="py-2"><a href="/html/category/article-3386.htm" title="浅谈Vue下的components模板">浅谈Vue下的components模板</a></li>
+                        <li class="py-2"><a href="/html/category/article-3366.htm" title="golang goroutine 协程异常panic后怎么处理？返回什么样的结果？">golang goroutine 协程异常panic后怎么处理？返回什么样的结果？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3406.htm" title="postman测试@pathvariable,@requestparam,@requestbody发送情况">postman测试@pathvariable,@requestparam,@requestbody发送情况</a></li>
+                        <li class="py-2"><a href="/html/category/article-3394.htm" title="C++编程——C++对象模型和this指针">C++编程——C++对象模型和this指针</a></li>
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3402.htm" title="微信小程序自定义顶部导航栏封装">微信小程序自定义顶部导航栏封装</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3385.htm" title="Spring事件监听机制源码解析">Spring事件监听机制源码解析</a></li>
+                        <li class="py-2"><a href="/html/category/article-3370.htm" title="Python filecmp库">Python filecmp库</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

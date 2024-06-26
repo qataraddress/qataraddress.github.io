@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3344.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>C++2结构体，输入与输出函数 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">C++2结构体，输入与输出函数</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>一、C语言与c++中的不同之：输入与输出</p> <p>C++中既可以使用C语言中的输入输出函数也可以用Cin和Cout进行输入与输出，不需要格式控制。</p> <pre><code class="language-plain"># include&lt;iostream&gt; using namespace std; int main() { 	printf("hello world\n"); 	cout &lt;&lt; "change world" &lt;&lt; endl; 	return 0; }</code></pre> <p>（1）endl代表换行（也可以使用\n换行）</p> <p>（2）需要包含输入输出流的头文件# include&lt;iostream&gt;</p> <p>(3)需要在开头加入using namespace std;如果不加入，编译器会识别不了，采用以下方式，即加入命名空间即使不加入也可以识别：</p> <pre><code class="language-plain"># include&lt;iostream&gt; //using namespace std; int main() { 	printf("hello world\n"); 	std::cout &lt;&lt; "change world" &lt;&lt;std:: endl; 	return 0; }</code></pre> <p>也可以将cout和endl引入标准空间来改正消除这个错误：</p> <pre><code class="language-plain"># include&lt;iostream&gt; //using namespace std; using std::cout; using std::endl; int main() { 	printf("hello world\n"); 	cout &lt;&lt; "change world" &lt;&lt;endl; 	return 0; }</code></pre> <p>（4）、C语言中需要给出格式化的部分，c++中则不需要给出格式化的部分（输出浮点型等都直接给出值即可）</p> <pre><code class="language-plain"># include&lt;iostream&gt; using namespace std; int main() { 	printf("%d %c %lf", 1, '1', 1.0);  	cout &lt;&lt; 1&lt;&lt;" "&lt;&lt;'1'&lt;&lt;" "&lt;&lt;1.0&lt;&lt;endl; 	//等同于 	/*cout &lt;&lt; 1 &lt;&lt; endl; 	cout &lt;&lt; '1' &lt;&lt; endl; 	cout &lt;&lt; 1.0&lt;&lt; endl;*/ 	return 0; }</code></pre> <p><span style="color:#3333ff;">在C语言的格式化部分若是出现错误，会影响其他的格式化部分都出现错误。</span><br /> </p> <p>printf函数返回值为成功输出字符的个数</p> <p>scanf传的参数是不定的，最开始为格式化部分。若是给定接收的参数没有初始化 ，编译器会认为未初始化不安全，<span style="float:none;background-color:transparent;color:rgb(79,79,79);font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:26px;text-align:justify;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">产生错误。如下：</span></p> <pre><code class="language-plain">int main() { 	int a, b; 	scanf("%d,%d",a, b); 	system("pause"); 	return 0; }</code></pre> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/b27f40fb9e41d062adf0f88da065979d.jpg"></p> <p>初始化后继续执行会异常中断，因为要传地址</p> <pre><code class="language-plain">int main() { 	int a=0, b=0; 	scanf("%d,%d",&amp;a, &amp;b); 	system("pause"); 	return 0; }</code></pre> <p>scanf的返回值为成功输入的参数个数</p> <p><span style="color:#000099;">在C++中使用cin，cout</span></p> <p>从控制台顺着输入输出流流入参数中：cin&gt;&gt;a;cout&gt;&gt;b。而且不需要关注其类型。</p> <p>二、C语言中结构体的认识：</p> <p>1、什么是结构体？</p> <p>结构体是一系列数据的集合，这些数据可能描述了一个物体，也可能是对一个问题的抽象。</p> <p>2、一般在什么情况下需要用到结构体？</p> <p>（1）内置类型已经无法满足实际需求；</p> <p>（2）参数打包：参数过多，一个一个的传递不方便，把参数打包在一块；</p> <p>3、什么是内存对齐？为什么要内存对齐？怎样对齐？</p> <p>在C语言中，若是没有重定义，必须用stuct 结构体名 实参名 来定义实参。而在c++中在可以用&nbsp;<span style="text-align:justify;color:rgb(79,79,79);text-transform:none;line-height:26px;text-indent:0px;letter-spacing:normal;font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;word-spacing:0px;white-space:normal;float:none;background-color:transparent;">结构体名 实参名 来定义实参</span>而不需要加struct。</p> <p style="margin:0px 0px 16px;padding:0px;text-align:justify;text-transform:none;line-height:26px;text-indent:0px;letter-spacing:normal;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;word-spacing:0px;white-space:normal;background-color:transparent;"><span style="color:#000000;"><span style="line-height:24px;text-indent:28px;"><span style="color:#ff0000;">内存对齐</span>”应该是</span><a style="line-height:24px;text-indent:28px;text-decoration:none;" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://baike.baidu.com/view/487018.htm"  rel="nofollow">编译器</a><span style="line-height:24px;text-indent:28px;">的“管辖范围”。编译器为程序中的每个“</span><a style="line-height:24px;text-indent:28px;text-decoration:none;" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://baike.baidu.com/view/2191734.htm"  rel="nofollow">数据单元</a><span style="line-height:24px;text-indent:28px;">”安排在适当的位置上。但是C语言的一个特点就是太灵活，太强大，它允许你干预“内存对齐”。如果你想了解更加底层的秘密，“内存对齐”对你就不应该再透明了。</span></span><span style="color:rgb(51,51,51);line-height:24px;text-indent:28px;"><span style="font-size:18px;"><span style="font-size:14px;color:#000000;">对于内存对齐问题，主要存在于struct和union等复合结构在内存中的分布情况，许多实际的计算机系统对基本类型数据在内存中存放的位置有限制，它们要求这些数据的首地址的值是某个数M（通常是4或8）；对于内存对齐，主要是为了提高程序的性能，数据结构，特别是栈，应尽可能在自然边界上对齐，经过对齐后，cpu的内存访问速度大大提升。</span></span></span></p> <p><span style="text-align:left;color:rgb(51,51,51);text-transform:none;text-indent:0px;letter-spacing:normal;font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;word-spacing:0px;white-space:normal;float:none;background-color:transparent;"></span></p> <p style="background-color:transparent;color:rgb(79,79,79);font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:26px;margin-bottom:16px;margin-left:0px;margin-right:0px;margin-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:justify;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;"> <p><span style="font-size:18px;"><span style="line-height:24px;text-indent:28px;"><span style="color:#ff0000;">Windows中默认对齐数为8，Linux中默认对齐数为4；</span></span></span></p> <p><span style="font-family:SimSun;font-size:16px;"><span style="color:#ff0000;"><span style="text-align:justify;text-transform:none;text-indent:28px;letter-spacing:normal;font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;font-size:18px;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;word-spacing:0px;white-space:normal;float:none;background-color:transparent;">为什么要内存对齐：</span>内存对齐的原因</span></span></p> <p><span style="font-size:18px;"><span style="line-height:24px;text-indent:28px;"></span></span></p> <p><span style="font-size:16px;"><span style="color:#333333;"><span style="font-family:SimSun;"></span><span style="font-size:16px;"></span><span style="color:#000000;"></span>（1、平台原因(移植原因)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;A &nbsp; 不是所有的硬件平台都能访问任意地址上的任意数据的；<br /></span></span></p> <div>  &nbsp; &nbsp; &nbsp;&nbsp; B &nbsp; &nbsp;某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常。 </div> <div>  （ 2、性能原因：<br />   </div> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;A &nbsp; 数据结构(尤其是栈)应该尽可能地在自然边界上对齐。<br /> <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;B &nbsp; 原因在于，为了访问未对齐的内存，处理器需要作两次内存访问；而对齐的内存访问仅需要一次访问。<br /> </p> <p><span style="font-size:18px;"><span style="line-height:24px;text-indent:28px;"><span style="color:#ff0000;">&nbsp;<span style="font-size:14px;">对齐规则：1、结构体中每个成员&nbsp; 2、结构体整体</span></span></span></span></p> <p><span style="font-size:18px;"><span style="line-height:24px;text-indent:28px;"><span style="font-size:14px;">（1）第一个成员在与结构体变量偏移量为0的地址处。（在一个对齐的位置上）<br /></span></span></span></p> <p><span style="font-size:18px;"><span style="line-height:24px;text-indent:28px;"><span style="font-size:14px;">(2)其他成员变量要对齐到某个数字（对齐数）的整数倍的地址处。<br />注意：对齐数 = 编译器默认的一个对齐数 与 该成员大小的较小值，min（对齐参数，sizeof（成员））。VS中默认的值为8，gcc中的默认值为4<br />（3）结构体总大小为最大对齐数（每个成员变量除了第一个成员都有一个对齐数）的整数倍。min（对齐参数，类型最大成员所占字节数）<br />（4）如果嵌套了结构体的情况，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数（含嵌套结构体的对齐数）的整数倍。<br /></span></span></span></p> <p><span style="font-size:18px;"><span style="line-height:24px;text-indent:28px;"><span style="font-size:14px;"></span></span></span>4、对齐参数如何设置？可以设置为按照任意字节对齐吗？</p> <p>法1、</p> <p># pragma pack（对齐数）</p> <p>#pragma pack（）//恢复</p> <p>法2、项目---》属性---》c/c++----》代码生成---》设置结构成员对齐数，更改默认设置：此方法一旦实现，整个工程的对齐数都将发生更改。</p> <p><span style="float:none;background-color:transparent;color:rgb(79,79,79);font-family:'-apple-system', 'SF UI Text', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif, SimHei, SimSun;font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:26px;text-align:justify;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">对齐参数不能任意设置，只能是内置类型已有的字节数，如：char(1)、short（2），int（4），double(8)…不能是3，5…任意数。 </span></p> <p>5、如何知道结构体中某个成员相对于结构体起始位置的偏移量？</p> <p>宏offsetof可以求出<span style="float:none;background-color:transparent;color:rgb(79,79,79);font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:26px;text-align:justify;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">结构体中某个成员相对于结构体起始位置的偏移量</span>。</p> <pre><code class="language-plain">#pragma pack(4) struct A { 	int a; 	char b; 	double c; 	char d; }; #pragma pack() int main() { 	A a; 	cout &lt;&lt; offsetof(A, c) &lt;&lt; endl; 	cout &lt;&lt; sizeof(A) &lt;&lt; endl;  	return 0; }</code></pre> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230109/f9c17ac3b11561b4971331a881885c90.jpg"></p> <p>实现一个宏（offsetof）或者函数实现<span style="float:none;background-color:transparent;color:rgb(79,79,79);font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:26px;text-align:justify;text-decoration:none;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;">结构体中某个成员相对于结构体起始位置的偏移量</span>：</p> <p></p> <p>6、变长的结构体：</p> <p>（1）intfo和其他的结构成员在同一块空间，info的空间可以为0，通过malloc申请需要的空间大小</p> <pre><code class="language-plain">struct student { 	char _name[20]; 	int _age; 	char _gender; 	int _len; 	char _info[0];//柔性数组 };</code></pre> <p>（2）info与其他的结构体成员不在同一块空间，最小为4个字节，因为char *字符指针占4个字节。<br /> </p> <pre><code class="language-plain">struct student { 	char _name[20]; 	int _age; 	char _gender; 	int _len; 	char* _info; };</code></pre> <p></p> <p>7、位段，联合体</p> <p>8、大小端问题？如何来测试大小端（多种方式）？</p> <p>大小端：</p> <p>测试方式：</p> <p></p> <p>9、C语言与c++中结构体的相同和不同之处：</p> <p>（1）定义实体的方式不同；</p> <p>（2）初始化结构体的成员：C语言中一般用一个函数进行初始化，不可以将函数写道结构体里面（结构体里面不可以放函数）；而在c++中结构体里面可以放函数。</p> <p>结构体的一个实例：</p> <pre><code class="language-plain">struct student { 	char _name[20]; 	int _age; 	char _gender[3]; 	void SetInfo(char *name, int age, char *gender) 	{ 		strcpy(_name, name); 		_age = age; 		strcpy(_gender, gender); 	} 	void PrintStudent() 	{ 		cout &lt;&lt; _name &lt;&lt; " " &lt;&lt; _age &lt;&lt; " " &lt;&lt; _gender &lt;&lt; endl; 	} }; int main() { 	student s1, s2; 	s1.SetInfo("将旧", 28, "女"); 	s2.SetInfo("卡卡", 3, "男"); 	s1.PrintStudent(); 	s2.PrintStudent(); 	return 0; }</code></pre> <p> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3343.htm">一文详解微服务架构</a></p>
+                                                <p>下一个：<a href="/html/category/article-3345.htm">Docker镜像拉取报错：Error response from daemon: Get https://registry-1.docker.io/v2/</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3396.htm" title="CentOS7设置固定IP地址详解">CentOS7设置固定IP地址详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3405.htm" title="vue实现消息向上无缝滚动效果_vue.js_">vue实现消息向上无缝滚动效果_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3385.htm" title="Spring事件监听机制源码解析">Spring事件监听机制源码解析</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3384.htm" title="Parquet 之mapreduce">Parquet 之mapreduce</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3382.htm" title="SpringBoot + H2内置数据库">SpringBoot + H2内置数据库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3370.htm" title="Python filecmp库">Python filecmp库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3418.htm" title="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用">序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

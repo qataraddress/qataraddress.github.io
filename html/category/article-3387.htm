@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3387.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Node.js躬行记半吊子的可视化搭建系统 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Node.js躬行记半吊子的可视化搭建系统</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>　　我们组维护的管理后台会接到很多开发需求，每次新开页面，就会到处复制黏贴相关代码。</p> <p>　　并且还会经常性的翻阅文档，先在书签或地址栏输入WIKI地址，然后找到那一份说明文档，再定位到要看的组件位置。</p> <p>　　虽然单人损耗的时间并不是非常多，但还是会打断思路，影响开发的流畅性，当把所有人的时间累加起来，那损耗的时间也很可观。</p> <p>　　为了能提升团队成员的开发效率，就开始构思一套可视化搭建系统。理想状态下，拖动组件，配置交互和样式，页面生成，直接可用。</p> <p>　　但是要完成这套功能，开发成本比较大，现在我想先解决当前的痛点，减少代码复制的频率和快速读取组件文档。</p> <p>　　为此，在构思了好多天后，打算搞一个半吊子的可视化搭建系统。</p> <p>　　所谓半吊子是指搭建完后，点击生成，会在后台创建视图和数据两个脚本文件、自动添加权限、新增菜单栏，不过后续我们还得继续做开发，完善页面功能。</p> <h1>一、界面</h1> <p>　　界面分成左右两部分，左边是配置区域，右边空白处是组件的预览区域。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6c91afe56c60f194b91e9600c556324b.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="800"/></p> <p><span style="font-size: 16px"><strong>1）组件区域</strong></span></p> <p>　　组件区域的第一个下拉框可以选择Ant Design和部分模板组件，选中后，会替换组件地址的链接，点击就能跳转到组件的说明文档。</p> <p>　　第二个下拉框能选择页面中需要的组件，例如图中的提示组件，点击添加后会在右边显示，并且还会提供一个删除图标，目前暂不支持拖动效果。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/e54b9ec93660f8b1dc6d796fda6d0adf.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="800"/></p> <p><span style="font-size: 16px"><strong>2）配置区域</strong></span></p> <p>　　在配置区域中，可以输入菜单名称、路由、文件目录和权限等信息。</p> <p>　　原先的话，还得手动的在路由和权限两个文件中新增配置项，现在都能自动化了。</p> <p>　　原理就是先用Node分别读取这两份文件，得到一个数组，然后将配置内容塞到此数组中，再将数组序列化写入文件内。</p> <p>　　注意，需求在引入模块（调用require()函数）前删除模块缓存，否则读到的将是之前的文件内容。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">权限文件的绝对路径</span> const absAuthorityPath = pathObj.resolve(__dirname, 'src/utils/authority.ts'<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 0, 255, 1)">delete</span> require.cache[absAuthorityPath];<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除模块缓存</span> const authorities =<span style="color: rgba(0, 0, 0, 1)"> require(absAuthorityPath); const obj</span>=<span style="color: rgba(0, 0, 0, 1)"> {   id: authority,   pid: parent,   name: menu,   desc:</span>''<span style="color: rgba(0, 0, 0, 1)">,   routers: currentPath, }; authorities.push(obj);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">添加权限</span><span style="color: rgba(0, 128, 0, 1)"> //</span><span style="color: rgba(0, 128, 0, 1)">写入文件</span> fs.writeFileSync(absAuthorityPath, `module.exports = ${JSON.stringify(authorities,<span style="color: rgba(0, 0, 255, 1)">null</span>, 2)}`);</pre> </div> <p>　　fs.writeFileSync()用于同步写入文件。module.exports是Node的模块语法，而export default是ES6语法，Node原生并不支持，好在webpack对于这些模块化语法都支持。</p> <p>　　一旦点击生成文件按钮，在项目重新构建后，左边菜单列表就能出现刚刚配置的菜单名称（例如名称叫菜单测试），并且能够跳转，权限也加好了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3b6c1d0d21461472dee98696fbdb4779.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="300"/></p> <p>　　视图和数据文件也是用Node创建的，在Node项目中写好一份模板字符串（下面是生成视图模板的函数），将可变部分作为参数传入。</p> <div class="cnblogs_code"> <pre>export<span style="color: rgba(0, 0, 255, 1)">function</span> setPageTemplate({name, antd, namespace, code=''<span style="color: rgba(0, 0, 0, 1)">, props, component}) {</span><span style="color: rgba(0, 0, 255, 1)">return</span> `import { connect, Dispatch, ${namespace}ModelState } from "umi"<span style="color: rgba(0, 0, 0, 1)">; import { setColumn } from</span>'@/utils/tools'<span style="color: rgba(0, 0, 0, 1)">; import { TEMPLATE_MODEL } from</span>'@/utils/constants'<span style="color: rgba(0, 0, 0, 1)">; ${antd}</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 页面参数类型</span><span style="color: rgba(0, 0, 0, 1)">interface ${name}Props {   dispatch: Dispatch;   state: ${namespace}ModelState; }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 全局声明</span><span style="color: rgba(0, 0, 0, 1)">${code} const ${name}</span>= ({ dispatch, state }: ${name}Props) =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> dispatch({ type: "xx/xx", payload: {} });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 状态</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> const { } = state;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 通用组件配置</span><span style="color: rgba(0, 0, 0, 1)">  ${props}</span><span style="color: rgba(0, 0, 255, 1)">return</span> &lt;&gt;<span style="color: rgba(0, 0, 0, 1)">     ${component}</span>&lt;/&gt;;<span style="color: rgba(0, 0, 0, 1)">}; export</span><span style="color: rgba(0, 0, 255, 1)">default</span> connect((data: {${namespace}: ${namespace}ModelState}) =&gt;<span style="color: rgba(0, 0, 0, 1)"> ({ state: data.${namespace} }))(${name});`; }</span></pre> </div> <h1>二、配置</h1> <p>　　配置是本系统的核心，构思了很久，原先考虑了系统的灵活性，就想直接提供脚本编辑框，自定义逻辑。</p> <p>　　不过出现个问题，那就是我这边目前是用TypeScript语言开发的，那么我在自定义脚本逻辑时，也需要使用TypeScript语法。</p> <p>　　浏览器提供的<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">eval()</span></a></span> 函数并不支持TypeScript语法，需要先做转译，网上搜索后，得到了解决方案，下载了TypeScript库后。</p> <p>　　但是却一直报错，在网上也查到了些解决方案（<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/microsoft/TypeScript/issues/39436"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">方案一</span></a></span>，<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://stackoverflow.com/questions/45153848/evaluate-typescript-from-string"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">方案二</span></a></span>），不过并不适用于我目前的项目环境。</p> <div class="cnblogs_code"> <pre>./node_modules/typescript/lib/<span style="color: rgba(0, 0, 0, 1)">typescript.js Critical dependency: the request of a dependency is an expression  .</span>/node_modules/typescript/lib/<span style="color: rgba(0, 0, 0, 1)">typescript.js Critical dependency: the request of a dependency is an expression  .</span>/node_modules/typescript/lib/<span style="color: rgba(0, 0, 0, 1)">typescript.js Module not found: Can</span>'t resolve 'perf_hooks' in 'C:\Users\User\node_modules\typescript\lib'</pre> </div> <p>　　最终决定暂时放弃自定义脚本逻辑，先解决当前痛点，尽快将系统上线。</p> <p>　　期间还遇到个比较隐蔽的bug，如下所示，数组会先调用 toString() 转换成字符串，最终变为 eval("(1, 2)")，所以得到的值是 2。</p> <div class="cnblogs_code"> <pre>eval(`(${[1,2]})`);<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">2</span></pre> </div> <p>　　还遇到个问题，那就是在用<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">JSON.stringify()</span></a></span>&nbsp;序列化对象时，若参数是函数，那么就会被过滤掉。</p> <div class="cnblogs_code"> <pre>JSON.stringify({func:() =&gt; {}});  //"{}"</pre> </div> <p><span style="font-size: 16px"><strong>1）物料库</strong></span></p> <p>　　物料库中的组件分为两种，一种是自定义的<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/pwstrick/shin-admin/blob/main/docs/template.md"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">后台模板组件</span></a></span>，另一种是第三方的<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://3x.ant.design/docs/react/introduce-cn"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">Ant Design 3.X</span></a></span>组件。</p> <p>　　为了快速搭建页面，选择的组件是前者。这次顺便用TypeScript，再次完善了组件代码的类型声明。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/aa072c9bfb38f2243b69f4f4fbc7e411.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="500"/></p> <p>　　后者只是用来文档查询和在模板字符串中拼接引入语句，如下所示。</p> <div class="cnblogs_code"> <pre>`import { ${antds.join(',')} } from 'antd';`</pre> </div> <p><span style="font-size: 16px"><strong>2）自定义组件</strong></span></p> <p>　　自定义组件的声明采用JSON格式，TypeScript声明的类型如下所示。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">interface OptionsType {   value: string;   label: string;   children: Array</span>&lt;<span style="color: rgba(0, 0, 0, 1)">{     value: string;     label: string;     link: string;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">链接地址</span>     readonlyProps?: ObjectType;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">会影响组件的呈现，并且不能配置的属性</span>     readonlyStrProps?: string;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">待拼接的字符串属性</span>     handleProps?: (values:ObjectType) =&gt; ObjectType;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">在格式化表单数据后，再处理特定的组件属性</span>     handleStrProps?: (values:ObjectType) =&gt; string;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">拼接无法转换成字符串的属性</span>     props: Array&lt;<span style="color: rgba(0, 0, 0, 1)">{       label: string;       name: string;       params</span>?<span style="color: rgba(0, 0, 0, 1)">: ObjectType;       control: JSX.Element</span>| ((index: number) =&gt;<span style="color: rgba(0, 0, 0, 1)"> JSX.Element);       type</span>?<span style="color: rgba(0, 0, 0, 1)">: string;       initControl</span>?: (props:any) =&gt;<span style="color: rgba(0, 0, 0, 1)"> JSX.Element;     }</span>&gt;<span style="color: rgba(0, 0, 0, 1)">   }</span>&gt;<span style="color: rgba(0, 0, 0, 1)">; }</span></pre> </div> <p>　　链接地址就是说明文档的地址，在组件的属性中，有一部分是回调函数，而目前已经舍弃了自定义的回调逻辑。</p> <p>　　所以这部分属性要特殊处理（声明在&nbsp;readonlyProps），不能在界面中输入。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">        readonlyProps: {           initPanes: (record: ObjectType): TabPaneType[]</span>=&gt;<span style="color: rgba(0, 0, 0, 1)"> [             {               name:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,               key:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,               controls: [                 { label:</span>'测试组件', control: &lt;&gt;内容&lt;/&gt; }<span style="color: rgba(0, 0, 0, 1)">              ]             },           ],         },</span></pre> </div> <p>　　readonlyStrProps 就是&nbsp;readonlyProps 对应的字符串格式，该属性还会增加一些其它属性，配上注释，也相当于是份组件文档了。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">        readonlyStrProps: `,</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 标签栏内容回调函数，参数为 record，当标签栏只有一项时，将不显示菜单</span>         "initPanes": (record: ObjectType): TabPaneType[] =&gt;<span style="color: rgba(0, 0, 0, 1)"> [           {             name:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,             key:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,             controls: [               { label:</span>'测试组件', control: &lt;&gt;内容&lt;/&gt; }<span style="color: rgba(0, 0, 0, 1)">            ]           },         ],</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> useEffect钩子中的回调函数，参数是 record</span>         "effectCallback": (record: ObjectType) =&gt; {}`,</pre> </div> <p>　　handleProps() 是一个回调函数，在表单接收到数据后，有些组件需要再做一次特殊的处理。</p> <p>　　例如加些特定属性、数组元素合并成字符串等，从而才能顺利的在预览界面呈现。</p> <div class="cnblogs_code"> <pre>        handleProps: (values:ObjectType) =&gt; {<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">对表单中的值做处理</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 对接口数组做特殊处理,从['api', 'get']转换成api.get</span>           values.url &amp;&amp; (values.url = values.url.join('.'<span style="color: rgba(0, 0, 0, 1)">));</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 初始化表单需要的组件</span><span style="color: rgba(0, 0, 255, 1)">if</span>(values.controls.length === 0<span style="color: rgba(0, 0, 0, 1)">) {             values.controls</span>=<span style="color: rgba(0, 0, 0, 1)"> [               {                 label:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,                 name:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,                 control:</span>&lt;&gt;测试组件&lt;/&gt;<span style="color: rgba(0, 0, 0, 1)">              },             ];           }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {             values.originControls</span>= values.controls;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">备份组件名称数组</span>             values.controls = values.controls.map((item:string) =&gt;<span style="color: rgba(0, 0, 0, 1)"> getControls(item));           }</span><span style="color: rgba(0, 0, 255, 1)">delete</span> values.controlskeys;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除冗余属性</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> values;         },</span></pre> </div> <p>　　handleStrProps() 是在输出模板时使用，将那些特殊属性写成字符串形式。</p> <div class="cnblogs_code"> <pre>        handleStrProps: (values:ObjectType):string =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 0, 255, 1)">if</span>(values.controls.length === 0<span style="color: rgba(0, 0, 0, 1)">) {</span><span style="color: rgba(0, 0, 255, 1)">delete</span> values.originControls;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除备份数组</span><span style="color: rgba(0, 0, 255, 1)">delete</span> values.controls;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除原始属性</span><span style="color: rgba(0, 0, 255, 1)">return</span> `,"controls"<span style="color: rgba(0, 0, 0, 1)">: [               {                 label:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,                 name:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,                 control:</span>&lt;&gt;测试组件&lt;/&gt;<span style="color: rgba(0, 0, 0, 1)">              },             ]`;           }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 组件名称数组处理</span>           const newControls = values.originControls.map((item:string) =&gt;<span style="color: rgba(0, 0, 0, 1)"> getStrControls(item));</span><span style="color: rgba(0, 0, 255, 1)">delete</span><span style="color: rgba(0, 0, 0, 1)"> values.originControls;</span><span style="color: rgba(0, 0, 255, 1)">delete</span><span style="color: rgba(0, 0, 0, 1)"> values.controls;</span><span style="color: rgba(0, 0, 255, 1)">return</span> `,"controls": [${newControls.join(','<span style="color: rgba(0, 0, 0, 1)">)}]`;         },</span></pre> </div> <p>　　在经过一系列的处理后，将一些字符串代码传递给接口，接口最后拼接成两个文件，输出到指定目录中。</p> <p>　　不过生成的代码，排版有点混乱，每次都还需要手动格式化一下。</p> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3386.htm">浅谈Vue下的components模板</a></p>
+                                                <p>下一个：<a href="/html/category/article-3388.htm">springboot的定时任务</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3380.htm" title="springboot的依赖管理和自动配置">springboot的依赖管理和自动配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3373.htm" title="Centos7服务器上RabbitMQ单机安装_在线工具">Centos7服务器上RabbitMQ单机安装_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3382.htm" title="SpringBoot + H2内置数据库">SpringBoot + H2内置数据库</a></li>
+                        <li class="py-2"><a href="/html/category/article-3404.htm" title="【Spring】spring的反射机制详解">【Spring】spring的反射机制详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3394.htm" title="C++编程——C++对象模型和this指针">C++编程——C++对象模型和this指针</a></li>
+                        <li class="py-2"><a href="/html/category/article-3379.htm" title="如果我将提供NULL，将返回什么MySQL ASCII()函数？">如果我将提供NULL，将返回什么MySQL ASCII()函数？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
+                        <li class="py-2"><a href="/html/category/article-3415.htm" title="浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法">浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

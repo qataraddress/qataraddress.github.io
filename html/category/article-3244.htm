@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3244.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Python通过kerberos安全认证操作kafka - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Python通过kerberos安全认证操作kafka</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1><strong style="font-size: 16px;">如何通过Kerberos认证.</strong><br /></h1> <p>1.安装Kerberos客户端<br /> CentOS：</p> <blockquote> <p>yum install krb5-workstation<br /> 使用which kinit查看是否安装成功；</p> </blockquote> <p>2.拷贝Kerberos配置文件<br /> conf目录下krb5.conf和kafka.keytab和jaas.conf拷贝到客户端机器的etc目录, 同时,krb5.conf中的kdc集群主机名和IP配置到客户端机器hosts配置文件中</p> <p>3.Kinit客户端通过kerberos认证<br /> 获取Principal</p> <blockquote> <p>klist -kt kafka.keytab</p> </blockquote> <p>4.安装python-gssapi</p> <blockquote> <p>pip install gssapi</p> </blockquote> <p>遇到的问题,如下:<br /> a.在linux中执行wget命令提示 -bash: wget: command not found 解决方法</p> <blockquote> <p>yum -y install wget</p> </blockquote> <p>b.报错：bash: pip: command not found</p> <blockquote> <p>wget <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://bootstrap.pypa.io/get-pip.py"  rel="nofollow">https://bootstrap.pypa.io/get-pip.py</a><br /> python <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://get-pip.py"  rel="nofollow">get-pip.py</a><br /> pip -V　　#查看pip版本</p> </blockquote> <blockquote> <p>python -m pip install --upgrade --force pip<br /> easy_install -U setuptools<br /> pip install --upgrade setuptools</p> </blockquote> <h2> <a id="3pipCommand_python_setuppy_egg_info_failed_with_error_code_1__32" rel="nofollow"></a>3.pip安装出现Command “python <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://setup.py"  rel="nofollow">setup.py</a> egg_info” failed with error code 1 的解决方法</h2> <h2> <a id="Traceback_most_recent_call_last __File_string_line_1_in_module __File_tmppipinstall6HfDE3gssapisetuppy_line_109_in_module 	raise_ExceptionCould_not_find_main_GSSAPI_shared_library__Please_ Exception_Could_not_find_main_GSSAPI_shared_library__Please_try_setting_GSSAPI_MAIN_LIB_yourself_or_setting_ENABLE_SUPPORT_DETECTION_to_false_34"></a>Traceback (most recent call last):<br /> File “”, line 1, in <br /> File “/tmp/pip-install-6HfDE3/gssapi/setup.py”, line 109, in <br /> raise Exception("Could not find main GSSAPI shared library. Please "<br /> Exception: Could not find main GSSAPI shared library. Please try setting GSSAPI_MAIN_LIB yourself or setting ENABLE_SUPPORT_DETECTION to ‘false’</h2> <p>Command “python <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://setup.py"  rel="nofollow">setup.py</a> egg_info” failed with error code 1 in /tmp/pip-install-6HfDE3/gssapi/</p> <blockquote> <p>yum install -y krb5-devel.x86_64</p> </blockquote> <p>4.关于error: command ‘gcc’ failed with exit status 1错误的解决方法</p> <blockquote> <p>yum install gcc python-devel</p> </blockquote> <p><strong>安装kafka-python</strong></p> <blockquote> <p>pip install kafka-python</p> </blockquote> <p><strong>初始化环境变量</strong></p> <blockquote> <p>export KAFKA_OPTS="-Djava.security.auth.login.config=/etc/conf/jaas.conf -Djava.security.krb5.conf=/etc/krb5.conf"</p> </blockquote> <p><strong>Python操作kafka样例</strong></p> <pre><code class="prism language-javascript"><span class="token keyword">from</span> kafka <span class="token keyword">import</span> KafkaProducer <span class="token keyword">from</span> kafka<span class="token punctuation">.</span>errors <span class="token keyword">import</span> KafkaError <span class="token keyword">import</span> os  <span class="token keyword">class</span> <span class="token class-name">Kafka_Producer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>     def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> kafkahost<span class="token punctuation">,</span> kafkaport<span class="token punctuation">,</span> kafkatopic<span class="token punctuation">)</span><span class="token punctuation">:</span>         self<span class="token punctuation">.</span>kafkaHost <span class="token operator">=</span> kafkahost         self<span class="token punctuation">.</span>kafkaPort <span class="token operator">=</span> kafkaport         self<span class="token punctuation">.</span>kafkatopic <span class="token operator">=</span> kafkatopic         self<span class="token punctuation">.</span>producer <span class="token operator">=</span> <span class="token function">KafkaProducer</span><span class="token punctuation">(</span>                 bootstrap_servers <span class="token operator">=</span> <span class="token string">'{kafka_host}:{kafka_port}'</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>kafka_host<span class="token operator">=</span>self<span class="token punctuation">.</span>kafkaHost<span class="token punctuation">,</span>kafka_port<span class="token operator">=</span>self<span class="token punctuation">.</span>kafkaPort<span class="token punctuation">)</span><span class="token punctuation">,</span>                 security_protocol<span class="token operator">=</span><span class="token string">"SASL_PLAINTEXT"</span><span class="token punctuation">,</span>                 sasl_mechanism<span class="token operator">=</span><span class="token string">"GSSAPI"</span><span class="token punctuation">,</span>                 sasl_kerberos_service_name<span class="token operator">=</span><span class="token string">"kafka"</span><span class="token punctuation">,</span>                 compression_type<span class="token operator">=</span><span class="token string">'gzip'</span> #压缩方式                 <span class="token punctuation">)</span>     def <span class="token function">sendFileData</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">:</span>         <span class="token keyword">try</span><span class="token punctuation">:</span>              f <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span>params<span class="token punctuation">,</span><span class="token string">'rb'</span><span class="token punctuation">)</span>              parmasMessage <span class="token operator">=</span> f<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">strip</span><span class="token punctuation">(</span><span class="token punctuation">)</span>              producer <span class="token operator">=</span> self<span class="token punctuation">.</span>producer              producer<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>kafkatopic<span class="token punctuation">,</span> parmasMessage<span class="token punctuation">)</span>              producer<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>         except KafkaError <span class="token keyword">as</span> e<span class="token punctuation">:</span>              <span class="token function">print</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span>       def <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>     filePath <span class="token operator">=</span> <span class="token string">"/home/public/data/"</span>     topic <span class="token operator">=</span> <span class="token string">"demo"</span>     producer <span class="token operator">=</span> <span class="token function">Kafka_Producer</span><span class="token punctuation">(</span><span class="token string">"xxx.xx.xx.xx"</span><span class="token punctuation">,</span><span class="token string">"9092"</span><span class="token punctuation">,</span>topic<span class="token punctuation">)</span>     dirList <span class="token operator">=</span> os<span class="token punctuation">.</span><span class="token function">listdir</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span>     <span class="token keyword">for</span> fileName <span class="token keyword">in</span> dirList<span class="token punctuation">:</span>         producer<span class="token punctuation">.</span><span class="token function">sendFileData</span><span class="token punctuation">(</span>filePath<span class="token operator">+</span>fileName<span class="token punctuation">)</span>     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'send success!!!'</span><span class="token punctuation">)</span>  <span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>     <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> </code></pre> <p>文稿实践参考如下::<br /> [1].<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/qiannianyuan/p/greenplum_compile.html"  rel="nofollow">https://www.cnblogs.com/qiannianyuan/p/greenplum_compile.html</a><br /> [2].<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/weixin_28738845/article/details/82598386"  rel="nofollow">https://blog.csdn.net/weixin_28738845/article/details/82598386</a><br /> [3].<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/liao392781/article/details/80776528"  rel="nofollow">https://blog.csdn.net/liao392781/article/details/80776528</a></p> <p>文稿内容,仅作学习记录<br /><mark>竹筒</mark></p> </p></div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3243.htm">ArrayUtils和Arrays比较常用的方法推荐</a></p>
+                                                <p>下一个：<a href="/html/category/article-3245.htm">Spring文件POST(JSON)下载, restTemplate.execute大文件流处理</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3416.htm" title="vue项目实现webpack配置代理,解决跨域问题_vue.js">vue项目实现webpack配置代理,解决跨域问题_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3381.htm" title="vue3 setup如何使用props">vue3 setup如何使用props</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3391.htm" title="基于知名微服务框架go-micro开发gRPC应用程序">基于知名微服务框架go-micro开发gRPC应用程序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3418.htm" title="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用">序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3421.htm" title="PHP类属性">PHP类属性</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3386.htm" title="浅谈Vue下的components模板">浅谈Vue下的components模板</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

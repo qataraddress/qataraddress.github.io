@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3324.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>通过代码解释什么是API，什么是SDK？_在线工具 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">通过代码解释什么是API，什么是SDK？_在线工具</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>这个问题说来惭愧，读书时找实习面的第一家公司，问的第一个问题就是这个。</p> <p>当时我没能说清楚，回去之后就上百度查。结果查了很久还是看不懂，然后就把这个问题搁置了。</p> <p>谁知道毕业正式工作后，又再一次地面对了这个问题......（事实告诉我们，欠的知识债总是要还的）</p> <p>现在回过头想，我能明白自己为啥想不通这个问题：</p> <ol> <li>没用过 SDK</li> <li>思维只停留在前后端 API 接口交互</li> </ol> <p>所以想要弄清楚这个问题，看别人写的概念解释文章可能帮助不大，还是得自己亲手设计一下 API，使用或简单封装一个 SDK。</p> <p>下面，我尝试设计一个小故事，直接通过代码讲清楚这个事儿。</p> <h2 id="对外提供云你好服务">对外提供云你好服务</h2> <p>假设我是一个软件服务提供商，我设计了一个打招呼的服务，给他起了个名字叫：云你好。</p> <p>用户只要调用我的 API 接口，就能使用我的服务，我会向他打一个招呼。</p> <p>首先我起一个后端服务，这里选择用 python，主要是用 python 比较快，代码少，解释这个问题和语言无关哈。（先看代码，再解释）</p> <pre><code class="language-python"># 云你好服务源码 from flask import Flask from flask import request  app = Flask(__name__)  # 云你好服务 API 接口 @app.get("/api/hello") def hello():     # 看用户是否传递了参数，参数为打招呼的目标     name = request.args.get("name", "")     # 如果传了参数就向目标对象打招呼，输出 Hello XXX，否则输出 Hello World     return f"Hello {name}" if name else "Hello World"  # 启动云你好服务 if __name__ == '__main__':     app.run() </code></pre> <p>从上面代码可以看出，我定义好了<code>你好云</code>的 API 接口：</p> <pre><code class="language-python">@app.get("/api/hello") def hello():     ...... </code></pre> <p>当我的服务跑起来后，我就会告诉用户我的 API 调用方式：</p> <p>请求地址：<code>GET http://127.0.0.1:5000/api/hello</code></p> <p>可选请求参数：<code>name - 打招呼的对象名儿</code></p> <p>当然更规范的做法是提供一份 API 文档。</p> <h2 id="没有-sdk-如何使用云你好">没有 SDK 如何使用云你好</h2> <p>接下来我们切换一下身份，假设我现在是一名云你好的用户。</p> <p>在我登陆上云你好的官网后，只看到了云你好定义的 API 调用规则。</p> <p>也就是说，如果我想使用云你好服务，不管我是写 python，写 java，或是写 golang，都得写发送 http 请求的代码，调用云你好的 API 使用打招呼服务。</p> <p>比如在 python 中我们可以这样写：</p> <pre><code class="language-python"># 我是云你好服务的一名客户，我通过发送 http get 请求使用云你好  import requests  # API 地址 url = "http://127.0.0.1:5000/api/hello" # 发送 GET 请求 response = requests.get(url=url, params={"name": "阿菌"}) # 打印响应结果 print(response.text) </code></pre> <p>最后得到结果：<code>Hello 阿菌</code></p> <h2 id="更好地服务我的客户">更好地服务我的客户</h2> <p>接下来我们切换一下身份，假设我变回了云你好的服务提供商。</p> <p>经过一些简单的调研，我听说有非常多的 python / java / golang 工作者喜欢使用我们的云你好服务。</p> <p>为了让他们更方便地使用云你好服务，我决定向他们提供云你好服务 python sdk / java sdk / golang sdk，进一步降低他们使用云你好服务的难度（忽悠他们更多的服务费）</p> <p>下面我以 python sdk 作为示例，在 sdk 中，我会封装好使用云你好服务的逻辑，仅对用户提供一个 hello 方法，这样只要用户安装好云你好 sdk，就能直接调用 hello 方法使用云你好服务了。</p> <pre><code># 云你好 python sdk import requests   class HelloSDK:     # 云你好服务地址     service_url = "http://127.0.0.1:5000/api/hello"      @classmethod     def hello(cls, name):         response = requests.get(url=cls.service_url, params={"name": name})         return response.text </code></pre> <p>写好 sdk 后，我们会在官方网站上更新道：</p> <p>大家好，欢迎使用云你好 python sdk，您可以通过以下方式使用 sdk：</p> <ol> <li>安装云你好 sdk：<code>pip install hello-sdk</code> </li> <li>使用你好云 sdk：</li> </ol> <pre><code class="language-python">from hello_sdk import HelloSDK  HelloSDK.hello("阿菌") </code></pre> <h2 id="使用-sdk-访问你好云">使用 SDK 访问你好云</h2> <p>然后我们再次切换身份，假设我是你好云服务的用户，你好云发布 SDK 了，我非常高兴，于是我的代码就简化成这样了：</p> <pre><code class="language-python"># 我是云你好服务的一名客户，我通过你好云的 hello-sdk 使用你好云服务  from hello_sdk import HelloSDK  HelloSDK.hello("阿菌") </code></pre> <p>得到的结果仍然是：<code>Hello 阿菌</code></p> <h2 id="总结">总结</h2> <p>希望上面的代码能帮助大家理解 API 和 SDK，当然它只是一个极简的 Demo，不能代表 API 和 SDK 这两个概念的全部东西。</p> <p>IT 行业中有很多概念，他们背后往往对应的是一类行为，如果仅从技术名词的角度理解是非常痛苦的，所以极力推荐动手实践学习。</p> <p>API 的全称是：Application Program Interface（应用程序接口）</p> <p>SDK 的全称是：Software Development Kit（软件开发工具包）</p> <p>如果让我总结 API 和 SDK 的区别，我觉得 API 可以理解成一种标准吧，我们按照服务提供商定义的 API 标准去调用他们的服务，就能得到相应的结果。</p> <p>而 SDK 可以理解为对 API 背后服务的一种封装，它更贴近用户，能大幅降低用户使用服务的开发成本。</p> <p>最后，如果同学们还想进一步学习的话，推荐去看一下云厂商的 API 和 SDK 定义，甚至分别动手体验一下，绝对瞬间秒懂。</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.bilibili.com/video/BV1n34y1a7pR/"  target="_blank"  rel="nofollow">参考讲解 - 链接地址</a></p> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3323.htm">带你学MySQL系列 | 什么是数据定义语言(DDL)呢？</a></p>
+                                                <p>下一个：<a href="/html/category/article-3325.htm">vue组件之间传值的几种方式</a></p>
+                                            </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3377.htm" title="Android 4.0.1破坏了WebView HTML 5本地存储？">Android 4.0.1破坏了WebView HTML 5本地存储？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3385.htm" title="Spring事件监听机制源码解析">Spring事件监听机制源码解析</a></li>
+                        <li class="py-2"><a href="/html/category/article-3367.htm" title="tensorflow中张量、常量、变量、占位符">tensorflow中张量、常量、变量、占位符</a></li>
+                        <li class="py-2"><a href="/html/category/article-3414.htm" title="ZooKeeper之Java客户端API使用—读取数据。">ZooKeeper之Java客户端API使用—读取数据。</a></li>
+                        <li class="py-2"><a href="/html/category/article-3393.htm" title="node.js &#8211; http、模块化、npm">node.js &#8211; http、模块化、npm</a></li>
+                        <li class="py-2"><a href="/html/category/article-3396.htm" title="CentOS7设置固定IP地址详解">CentOS7设置固定IP地址详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3376.htm" title="react18中react-redux状态管理的实现_React">react18中react-redux状态管理的实现_React</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>
