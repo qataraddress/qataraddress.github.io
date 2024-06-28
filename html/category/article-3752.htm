@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3752.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CentOS7离线安装Nginx及配置 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">CentOS7离线安装Nginx及配置</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <h1><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/xiongzaiqiren/p/12916125.html"  id="cb_post_title_url" rel="nofollow">CentOS7离线安装Nginx及配置</a></h1> <p>下载离线包：</p> <p>用浏览器打开地址，选择您要下载的版本：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://nginx.org/packages/centos/7/x86_64/RPMS/"  rel="nofollow">http://nginx.org/packages/centos/7/x86_64/RPMS/</a></p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220604/5c4c562083c96bdd09561153b9851531.jpg"></p> <p>如图，我下载的1.16.1版。</p> <p>执行安装：</p> <p>将下载的rpm包上传到服务器，然后赋予可执行权限，执行安装。</p> <pre>sudo yum install -y nginx-1.16.1-1.el7.ngx.x86_64.rpm</pre> <p>启动Nginx并设置开机启动</p> <pre>sudo service nginx start #或者 sudo systemctl start nginx.service sudo systemctl enable nginx.service</pre> <p>查看Nginx版本</p> <pre>nginx -v</pre> <p>查看Nginx启动状态</p> <pre>sudo service nginx status sudo systemctl status nginx.service</pre> <p>如图为正在运行状态：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220604/19c5516b4888c5b3e8d12e47988a3d5e.jpg"></p> <p>停止Nginx服务</p> <p>查看Nginx位置：</p> <pre>whereis nginx sudo whereis nginx</pre> <p>默认安装则配置文件一般是这个：/etc/nginx/nginx.conf</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220604/a5c7cc15cb7b4ff80443f93f1b06f492.jpg"></p> <p>&nbsp;root用户启动nginx默认监听80端口：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220604/fb82c3cdffccffdfeb41489acfebe616.jpg"></p> <p>&nbsp;此时，如果您用浏览器访问却看不见这个界面，仍然打不开有可能是服务器防火墙拦截了80端口。去设置允许80端口，或者直接关闭防火墙即可。</p> <pre>sudo systemctl stop firewalld.service sudo systemctl disable firewalld.service</pre> <p>然后再访问：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220604/3edce9da6fceacaca8b27091d4ee9164.jpg"></p> <p>&nbsp;就正常了</p> <p>卸载Nginx</p> <pre>yum remove nginx</pre> <p>检查配置文件是否正确</p> <pre>nginx -t -c /usr/nginx/conf/nginx.conf  # 或者 /usr/nginx/sbin/nginx -t</pre> <p>重启Nginx</p> <pre>nginx -s reload  /usr/nginx/sbin/nginx -s reload</pre> <p>安装后一般会自动创建nginx用户：</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220604/877efe0b0f2586a2f2afb6d9acd2b236.jpg"></p> </div> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3751.htm">记一次RabbitMQ连接阻塞，全部队列不消费异常</a></p>
+                                            </div>
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3413.htm">Centos7系统离线安装nginx步骤(亲测，超详细步骤)</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3385.htm">Spring事件监听机制源码解析</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3358.htm">vue+eslint+prettier格式化</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3343.htm">一文详解微服务架构</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3319.htm">Linux服务器执行命令报 nohup: redirecting stderr to stdout 错误</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3282.htm">python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3250.htm">element UI 表格table多个数值进行排序筛选</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3246.htm">Vue项目中添加一些独立的静态资源（内嵌独立静态页面等）</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3182.htm">如果我们在CONCAT_WS()函数中同时使用NULL作为参数，参数之一和分隔符，那么MySQL将返回什么？</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3178.htm">netty系列之:netty中的自动解码器ReplayingDecoder_在线工具</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3395.htm" title="关于Springcloud Sleuth分布式请求链路跟踪的使用 小结">关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</a></li>
+                        <li class="py-2"><a href="/html/category/article-3377.htm" title="Android 4.0.1破坏了WebView HTML 5本地存储？">Android 4.0.1破坏了WebView HTML 5本地存储？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3383.htm" title="Vue简单实现自定义拖拽">Vue简单实现自定义拖拽</a></li>
+                        <li class="py-2"><a href="/html/category/article-3394.htm" title="C++编程——C++对象模型和this指针">C++编程——C++对象模型和this指针</a></li>
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3422.htm" title="vue-cli项目添加骨架屏多种方式，自动生成骨架屏">vue-cli项目添加骨架屏多种方式，自动生成骨架屏</a></li>
+                        <li class="py-2"><a href="/html/category/article-3369.htm" title="vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_">vue跳转页面打开新窗口,并携带与接收参数方式_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3405.htm" title="vue实现消息向上无缝滚动效果_vue.js_">vue实现消息向上无缝滚动效果_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3404.htm" title="【Spring】spring的反射机制详解">【Spring】spring的反射机制详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3398.htm" title="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">56</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">61</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>
