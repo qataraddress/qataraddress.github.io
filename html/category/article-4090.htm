@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-4090.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>设计模式学习笔记责任链模式实现及在Filter中的应用详解 - Qatar Address</title>
+        <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/addons/xcblog/css/qataraddress/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/addons/xcblog/css/qataraddress/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/addons/xcblog/css/qataraddress/fontello.css">
+    <link href="/assets/addons/xcblog/css/qataraddress/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f2cd1f435343615e6078c743d0623024";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">Qatar Address</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/html/category/">文章分类</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">设计模式学习笔记责任链模式实现及在Filter中的应用详解</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/html/category/">文章分类</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>责任链模式（Chain Of Responsibility Design Pattern），也叫做职责链，是将请求的发送和接收解耦，让多个接收对象都有机会处理这个请求。当有请求发生时，可将请求沿着这条链传递，直到有对象处理它为止。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/64c1bca1fee625bff0bb559ffa092b0c.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> <h2 id="一责任链模式介绍">一、责任链模式介绍</h2> <p>其实在日常生活中，有不少使用责任链的场景。比如公司采购审批流程，需要各个部门领导的批准同意。在责任链模式中，客户端只需要将请求发送到责任链上，无须关心请求的处理细节和传递，请求会自动进行传递。</p> <h3 id="11-责任链模式的结构">1.1 责任链模式的结构</h3> <p>责任链模式的结构大致如下所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9743ffefd40dd22c130977abd9bfcb13.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> <ul> <li><code>abstract Handler</code>：抽象处理者，定义一个处理请求的接口，内部包含抽象处理方法和后继具体处理者</li> <li><code>Handler1、Handler2</code>：具体处理者，具体实现抽象处理者的方法，并对请求做一些逻辑处理</li> <li><code>Client</code>：客户端，使用职责链模式</li> </ul> <h3 id="12-责任链模式的实现">1.2 责任链模式的实现</h3> <p>根据上面的类图，可以实现如下代码：</p> <pre><code class="language-java">/**  * @description: 抽象处理类  * @author: wjw  * @date: 2022/4/4  */ public abstract class Handler {      private Handler successor;      public Handler getSuccessor() {         return successor;     }      public void setSuccessor(Handler successor) {         this.successor = successor;     }      /**      * 处理请求的抽象方法      * @param request 请求      */     public abstract void handleRequest(String request); } /**  * @description: 具体处理者1  * @author: wjw  * @date: 2022/4/4  */ public class Handler1 extends Handler{      private String handler;      public Handler1(String handler) {         this.handler = handler;     }      @Override     public void handleRequest(String request) {         if ("handler1".equals(request)) {             System.out.println("具体处理者handler1进行请求处理");         } else {             if (getSuccessor() != null) {                 //如果指向下一个具体处理者                 getSuccessor().handleRequest(request);             } else {                 System.out.println("没有处理者进行处理");             }         }     } } /**  * @description: 具体处理者2  * @author: wjw  * @date: 2022/4/4  */ public class Handler2 extends Handler{      private String handler;      public Handler2(String handler) {         this.handler = handler;     }      @Override     public void handleRequest(String request) {         if ("handler2".equals(request)) {             System.out.println("具体处理者handler2进行请求处理");         } else {             if (getSuccessor() != null) {                 getSuccessor().handleRequest(request);             } else {                 System.out.println("请求没有被任何处理者处理");             }         }     } } /**  * @description: 客户端类  * @author: wjw  * @date: 2022/4/4  */ public class Client {     public static void main(String[] args) {         Handler handler1 = new Handler1("handler1");         Handler handler2 = new Handler2("handler2");         handler1.setSuccessor(handler2);         handler1.handleRequest("handler1");         handler1.handleRequest("handler2");      } }</code></pre> <p>测试结果：</p> <pre><code>具体处理者handler1进行请求处理 具体处理者handler2进行请求处理</code></pre> <h2 id="二责任链模式的应用场景">二、责任链模式的应用场景</h2> <p>职责链模式最常见的应用就是用来开发各种框架的过滤器和拦截器，比如Spring Interceptor和Servlet Filter</p> <h3 id="21-在servlet-filter中的应用">2.1 在Servlet Filter中的应用</h3> <p>Filter 可以实现对HTTP 请求的过滤功能，比如鉴权、限流、记录日志、验证参数等等。比如一些Servlet 容器（TomCat、Jetty等）就支持Filter的过滤功能。以TomCat 为例：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/24e1b8c0826a1cfe5ecfcefb87fff0ee.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> <p>所以当Servlet 请求到来时，首先会经过Filter 处理，最后再到达Servlet实例。我这里选取的TomCat版本是SpringBoot自带的9.0，先来看看<code>FilterChain</code> 的接口：</p> <pre><code class="language-java">public interface FilterChain {     //Filter具体实现     void doFilter(ServletRequest var1, ServletResponse var2) throws IOException, ServletException; }</code></pre> <p><code>ApplicationFilterChain</code>是责任链模式的具体实现类：</p> <pre><code class="language-java">public final class ApplicationFilterChain implements FilterChain {     private ApplicationFilterConfig[] filters = new ApplicationFilterConfig[0]; //Filter配置数组     private int pos = 0; //执行Filter的序号     private int n = 0;	 //目前Filter的个数     private Servlet servlet = null;      public ApplicationFilterChain() {     }      	@Override     public void doFilter(ServletRequest request, ServletResponse response) throws IOException, ServletException {         //Filter 具体实现         //...     }          public static ServletRequest getLastServicedRequest() {         return (ServletRequest)lastServicedRequest.get();     }      public static ServletResponse getLastServicedResponse() {         return (ServletResponse)lastServicedResponse.get();     }      void addFilter(ApplicationFilterConfig filterConfig) {         ApplicationFilterConfig[] newFilters = this.filters;         int var3 = newFilters.length;          for(int var4 = 0; var4 &lt; var3; ++var4) {             ApplicationFilterConfig filter = newFilters[var4];             if (filter == filterConfig) {                 return;             }         } 		//增加Filter         if (this.n == this.filters.length) {             newFilters = new ApplicationFilterConfig[this.n + 10];             System.arraycopy(this.filters, 0, newFilters, 0, this.n);             this.filters = newFilters;         }          this.filters[this.n++] = filterConfig;     } }</code></pre> <h3 id="22-在spring-interceptor中的应用">2.2 在Spring Interceptor中的应用</h3> <p>和Servlet Filter类似，在Spring 中也有对应的过滤器 Interceptor。它是由Spring MVC 框架来实现，借一张来自《设计模式之美》的图片来说明：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6dcf395bb3b9c8b740db8432d654f5ba.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> <p>客户端发送请求，首先会经过Servlet Filter，然后再经过Spring Interceptor，最后再到达具体的业务中。</p> <p>和Filter一样，Interceptor 中也是基于责任链模式来实现的，与之相对的<code>HandlerInterceptor</code>是抽象处理接口：</p> <pre><code class="language-java">public interface HandlerInterceptor {     default boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {         return true;     }      default void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {     }      default void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {     } }</code></pre> <p>会有各种具体处理类的实现：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9fcc0a0a3a77318997ca270a232d478a.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> <p>此外在其他框架中也存在着职责链模式的使用，比如Dubbo Filter、Netty ChannelPipeline等等</p> <h2 id="三责任链模式实战">三、责任链模式实战</h2> <p>模拟在618大促期间的业务系统上线审批流程场景：</p> <blockquote> <p>像是这些⼀线电商类的互联⽹公司，阿⾥、京东、拼多多等，在618期间都会做⼀些运营活动场景以及 提供的扩容备战，就像过年期间百度的红包⼀样。但是所有开发的这些系统都需要陆续的上线，因为临 近618有时候也有⼀些紧急的调整的需要上线，但为了保障线上系统的稳定性是尽可能的减少上线的， 也会相应的增强审批⼒度。就像⼀级响应、⼆级响应⼀样。</p> <p>⽽这审批的过程在随着特定时间点会增加不同级别的负责⼈加⼊，每个⼈就像责任链模式中的每⼀个核 ⼼点。对于研发并不需要关⼼具体的审批流程处理细节，只需要知道这个上线更严格，级别也更 ⾼，但对于研发⼈员来说同样是点击相同的提审按钮，等待审核。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/735b51a7ecaf833217926df4389868de.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> </blockquote> <p>使用责任链模式可以将各个服务模块按照一、二、三级进行分离，每个级别可以像<code>Filter</code>一样用<code>Successor</code>下一个级别的方法进行调用。具体结构图如下（来自《重学Java设计模式》）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f92acb7389e4f3ab931a898dcfaa32b9.jpg" alt="设计模式学习笔记责任链模式实现及在Filter中的应用详解"></p> <p>具体代码结构</p> <pre><code>│——AuthInfo.java │——AuthLink.java │ ├─business │     AuthService.java │ └─impl       Level1AuthLink.java       Level2AuthLink.java       Level3AuthLink.java</code></pre> <p>实现代码：</p> <pre><code class="language-java">/**  * @description: 链路抽象审批  * @author: wjw  * @date: 2022/4/4  */ public abstract class AuthLink {      /**时间格式化**/     protected SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");     /**级别人员ID**/     protected String levelUserId;     /**级别人员姓名**/     protected String levelUserName;     /**下一个链路**/     private AuthLink next;      public AuthLink(String levelUserId, String levelUserName) {         this.levelUserId = levelUserId;         this.levelUserName = levelUserName;     }      public AuthLink next() {         return next;     }      public AuthLink appendNext(AuthLink next) {         this.next = next;         return this;     }      /**每个具体处理者必须实现的方法**/     public abstract AuthInfo doAuth(String uId, String orderId, Date authDate); } /**  * @description: 责任链中返回对象的定义  * @author: wjw  * @date: 2022/4/4  */ public class AuthInfo {      private String code;     private String info = " ";      public AuthInfo(String code, String... infos) { //...表示可变长参数，可以传入多个参数         this.code = code;         for (String s : infos) {             this.info = this.info.concat(s);         }     }      public String getCode() {         return code;     }      public void setCode(String code) {         this.code = code;     }      public String getInfo() {         return info;     }      public void setInfo(String info) {         this.info = info;     } } /**  * @description: 一级审核人  * @author: wjw  * @date: 2022/4/4  */ public class Level1AuthLink extends AuthLink {      public Level1AuthLink(String levelUserId, String levelUserName) {         super(levelUserId, levelUserName);     }      @Override     public AuthInfo doAuth(String uId, String orderId, Date authDate) {         Date date = AuthService.queryAuthInfo(levelUserId, orderId);         if (null == date) {             return new AuthInfo("0001", "单号", orderId, "状态：一级审批负责人", levelUserName);         }         AuthLink next = super.next();         if (null == next) {             return new AuthInfo("0000", "单号", orderId, "状态：一级审批负责人", " 时间：", f.format(date), "审批人：", levelUserName);         }         return next.doAuth(uId, orderId, authDate);     } } /**  * @description: 测试类  * @author: wjw  * @date: 2022/4/5  */ public class ApiTest {     private Logger logger = LoggerFactory.getLogger(ApiTest.class);      @Test     public void test_AuthLink() throws ParseException {         AuthLink authLink = new Level3AuthLink("1000013", "王工")                 .appendNext(new Level2AuthLink("1000012", "张经理"))                 .appendNext(new Level3AuthLink("1000011", "赵总裁"));          logger.info("测试结果：{}", JSON.toJSONString(authLink.doAuth("ethan", "100099800423123", new Date())));          AuthService.auth("1000013", "100099800423123");         logger.info("测试结果：{}", "模拟二级审批，王工");         logger.info("测试结果：{}",JSON.toJSONString(authLink.doAuth("ethan", "100099800423123", new Date())));          AuthService.auth("1000012", "100099800423123");         logger.info("测试结果：{}", "模拟二级负责人审批，张经理");         logger.info("测试结果：{}", JSON.toJSONString(authLink.doAuth("ethan", "100099800423123", new Date())));          AuthService.auth("1000011", "100099800423123");         logger.info("测试结果：{}", "模拟二级负责人审批，赵总裁");         logger.info("测试结果：{}", JSON.toJSONString(authLink.doAuth("ethan", "100099800423123", new Date())));      } }</code></pre> <p>最后的测试结果：</p> <pre><code class="language-java">10:45:14.496 [main] INFO  ApiTest - 测试结果：{"code":"0001","info":" 单号：100099800423123 状态：待三级审批 王工"} 10:45:14.500 [main] INFO  ApiTest - 测试结果：模拟二级审批，王工 10:45:14.500 [main] INFO  ApiTest - 测试结果：{"code":"0001","info":" 单号：100099800423123 状态：待三级审批 赵总裁"} 10:45:14.500 [main] INFO  ApiTest - 测试结果：模拟二级负责人审批，张经理 10:45:14.500 [main] INFO  ApiTest - 测试结果：{"code":"0001","info":" 单号：100099800423123 状态：待三级审批 赵总裁"} 10:45:14.500 [main] INFO  ApiTest - 测试结果：模拟二级负责人审批，赵总裁 10:45:14.500 [main] INFO  ApiTest - 测试结果：{"code":"0000","info":" 单号： 100099800423123 状态：三级审批完成 时间：2022-04-05 10:45:14 审批人：赵总裁"}</code></pre> <h2 id="参考资料"></h2> 			
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-4089.htm">springboot 2.X Jar包部署到阿里云 配置SSL证书 启用HTTPS  通过域名访问</a></p>
+                                            </div>
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3386.htm">浅谈Vue下的components模板</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3379.htm">如果我将提供NULL，将返回什么MySQL ASCII()函数？</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3368.htm">Redis实现并发阻塞锁方案_在线工具</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3334.htm">vue中的共享数据管理vuex</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3298.htm">前端开发：npm install 报错npm ERR! Cannot read property ‘extraneous‘ of undefined的解决方法</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3235.htm">mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3219.htm">将文件转成base64 字符串</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3173.htm">SpringMVC基础：自定义异常处理</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3157.htm">详解Dockerfile中的copy命令</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3153.htm">Spring Data Jpa 使用的hibernate 不支持 日期函数  to_char  的解决方案</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3778.htm" title="vue 的ESlint .eslintrc.js 文件 常用配置和注释">vue 的ESlint .eslintrc.js 文件 常用配置和注释</a></li>
+                        <li class="py-2"><a href="/html/category/article-3413.htm" title="Centos7系统离线安装nginx步骤(亲测，超详细步骤)">Centos7系统离线安装nginx步骤(亲测，超详细步骤)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3387.htm" title="Node.js躬行记半吊子的可视化搭建系统">Node.js躬行记半吊子的可视化搭建系统</a></li>
+                        <li class="py-2"><a href="/html/category/article-3396.htm" title="CentOS7设置固定IP地址详解">CentOS7设置固定IP地址详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3752.htm" title="CentOS7离线安装Nginx及配置">CentOS7离线安装Nginx及配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3380.htm" title="springboot的依赖管理和自动配置">springboot的依赖管理和自动配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
+                        <li class="py-2"><a href="/html/category/article-3398.htm" title="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">61</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            Qatar Address 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/addons/xcblog/js/frontend/qataraddress/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/xcblog/js/frontend/qataraddress/multiple-carousel.js"></script>
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>
