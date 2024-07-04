@@ -2,12 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3751.htm" />
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-4345.htm" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>记一次RabbitMQ连接阻塞，全部队列不消费异常 - Qatar Address</title>
+    <title>国产机油品牌有哪些牌子(国产润滑油十大名牌) - Qatar Address</title>
         <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
     <!-- Bootstrap -->
     <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
@@ -82,7 +82,7 @@ var _hmt = _hmt || [];
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                     <div class="page-section">
-                        <h1 class="page-title">记一次RabbitMQ连接阻塞，全部队列不消费异常</h1>
+                        <h1 class="page-title">国产机油品牌有哪些牌子(国产润滑油十大名牌)</h1>
                     </div>
                 </div>
             </div>
@@ -105,11 +105,10 @@ var _hmt = _hmt || [];
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-size: 1em;">前几天博主遇到一个很狗屎的bug，RabbitMQ本来运行的好好突然所有的消息队列都不消费了，看了一下 Connections连接，发现全部都发生阻塞了，导致线上的队列堆积如山，情况万分危急。</span></p> <h3 id="推测一生产者和消费者问题">推测一：生产者和消费者问题</h3> <p>刚开始推测是不是生产者和消费者出问题了，然后就检查了一下服务的运行状态，发现都没问题，说明不是这个问题引起的，所以进一步猜测可能是MQ本身出现问题了。</p> <h3 id="推测二mq本身出现问题">推测二：MQ本身出现问题</h3> <p>如果是MQ出现问题，那MQ的日志肯定会有错误的相关信息记载，所以我们进入MQ日志下面，查看日志情况。</p> <pre class="has"><code>/var /log/rabbitmq/</code></pre> <p><strong>日志结果如下所示：</strong></p> <pre class="has"><code>=ERROR REPORT==== 30-May-2019::19:28:49 === connection &lt;0.23331.7132&gt;, channel 4 - soft error: {amqp_error,precondition_failed,"unknown delivery tag 1",'basic.ack'}  =INFO REPORT==== 30-May-2019::19:28:49 === vm_memory_high_watermark clear. Memory used:383597048 allowed:385616281  =WARNING REPORT==== 30-May-2019::19:28:49 === memory resource limit alarm cleared on node rabbit@VM_2_12_centos</code></pre> <p>通过错误日志我们可以很明显的看出，是MQ的运行内存超过限制，导致连接阻塞的。</p> <h3 id="问题原因">问题原因：</h3> <p>因为RabbitMQ服务器在启动时会计算系统内存总大小。然后会根据vm_memory_high_watermark参数指定的百分比，进行控制.可通过命令 rabbitmqctl set_vm_memory_high_watermark fraction 动态设置。默认下，vm_memory_high_watermark的值为0.4,当RabbitMQ使用的内存超过40%时，系统会阻塞所有连接。一旦警报解除（消息被消费者取走，或者消息被写到硬盘中）,系统重新恢复工作。32位系统的单进程内存使用最大为2G,即使系统有10G,那么内存警报线为2G*40%.</p> <h3 id="解决方案">解决方案：</h3> <p>最快的解决方案时将<strong>vm_memory_high_watermark</strong>值上调，如果短时间内上调不了，可以选择直接升级服务器内存。</p> <p>但是这样治标不治本，如果队列继续堆积，内存占用率还是会变大，最终的解决方案，应该要<strong>平衡消费者和生产者</strong>，让消息队列尽量不要堆积导致内存过大阻塞。</p> <h3 id="其它阻塞的场景">其它阻塞的场景：</h3> <p><strong>硬盘控制</strong></p> <p>当RabbitMQ的磁盘空闲空间小于50M（默认），生产者将被BLOCK，并且阻塞信息发布前，会尝试把内存中的信息输出到磁盘上。持久化信息和非持久化信息都将被写到磁盘（持 久化信息一进入队列就会被写到磁盘）。如果采用集群模式，磁盘节点空闲空间小于50M将导致其他节点的生产者都被block。可以通过disk_free_limit来对进行配置。 如果磁盘的预设值为50%，内存预设值默认是0.4，那么就是当内存使用量达到20%时，队列信息会被写到磁盘上。 可以通过设置 vm_memory_high_watermark_paging_ratio （默认值为0.5）来改变写入磁盘的策略，例如：</p> <pre class="has"><code>[{rabbit, [{vm_memory_high_watermark_paging_ratio, 0.75},          {vm_memory_high_watermark, 0.4}]}].1</code></pre> <p>上面的配置将会在内存全用30%时将队列信息写入到磁盘，阻塞信息发布是在内存使用40%时发生。建议vm_memory_high_watermark 不超过50%.</p> <p><strong>消息积压</strong></p> <p>在RabbitMQ中，消息可能被存储在多个不同的队列，消息越早被消费，那么消息经过的队列层次越少，则平均每个消息处理的开销就越小。但若发布消息的速率过快，MQ来不及处理，这些消息就可能进入很深层次的队列，大大增加平均每个消息的处理开销，进一步使得处理新消息和发送旧消息的能力减弱，更多的消息会进入很深的队列，循环往复，整个系统的性能就会极大的降低。另外若接收消息的速率过快还会实现某些进程的mailbox过大，可能会产生很严重的后果。为此，RabbitMQ设计了一套流控机制。</p> <p>RabbitMQ 使用了一种基于 credit 的算法来 限制 message 被 publish 的速率 。Publisher 只有在其从某个 queue 的 全部镜像处收到 credit 之后才被允许继续 publish 。在这个上下文中，Credit 意味着对 publish 行为的允许。如果存在没能成功发送出 credit 的 slaves ，则将导致 publisher 停止 publish 动作。Publisher 会一直保持停止的状态，直到所有 slave 都成功发送了 credit 或者直到剩余的 node 都认为某 slave 已经从 cluster 中断开了。Erlang 会周期性地发送 tick 到所有的 node 上来检测是否出现连接断开。 tick 的间隔时间可以通过配置 net_ticktime 的值来控制。</p> </div> 			
+                      			<div class="orbui orbui-post orbui-post-01"></script>  <ins class="adsbygoogle"       style="display:block; text-align:center;"       data-ad-layout="in-article"       data-ad-format="fluid"       data-ad-client="ca-pub-6016799283272811"       data-ad-slot="9026798696"></ins>  </script></div>						<p>小编今天整理了一些国产</a></a></a>？相关内容，希望能够帮到大家。本文目录一览：1、国产机油品牌有哪些？2、国产机油有哪些品牌？3、国产机油哪个牌子比较好？</p> <p>国产机油品牌有哪些？<br> 国产机油品牌越来越好，得到很多车主的喜欢，也是市场上性价比比较高的机油，*得十分火爆。你喜欢用国产机油吗？那你可以看看我们的文章：国产机油品牌有哪些？国产机油品牌前十排行！ <br> 国产机油品牌前十排行 <br> 1、龙蟠 <br> 2、长城 <br> 3、昆仑 <br> 4、诺贝润 <br> 5、艾纳 <br> 6、安耐驰 <br> 7、ist <br> 8、老李化学 <br> 9、VOGO <br> 10、立顿 <br> 1、龙蟠 <br> 推荐型号：soinc 9000 <br> 推荐理由：一直用这个牌子的油，谁用谁知道很不错，明显声音小了动力有劲，国产品牌不错！很好的一款机油，加上后，换了以后动力明显增加，发动机声音很小，而且十分顺滑，开车觉得很舒服。 <br> 2、长城 <br> 推荐型号：金吉星 <br> 推荐理由：换上之后第一感觉是发动机声音变小了，油门更灵敏了，感觉提速轻快一点，相信长城润滑油，大品牌质量就是好。国产中的机油大品牌，机油品质非常好，使用了一段时间，觉得油耗有所下降，满意。 <br> 3、昆仑 <br> 推荐型号：润强 <br> 推荐理由：这油非常好用，比其他油好多了，油加进去感觉挺好的，没什么毛病，车子跑起来也比以前顺畅了很多，满意。机油真的是好用，品质比起嘉实多不差，而且更适合中国使用环境，建议长期购*！ <br> 4、诺贝润 <br> 推荐型号：纳米技术全合成汽油机油 <br> 推荐理由：诺贝润全合成汽油机油就是好，品质看着就是好机油，用的效果也不错，能够降低噪音，减少震动，延长引擎寿命，有效节省燃油，减少尾气排放。机油真的是好用，价格相对也便宜，值得购*！ <br> 5、艾纳 <br> 推荐型号：金盾RH800 <br> 推荐理由：一直用他们家的机油，每次都是1万公里换一次，性能稳定值得信耐。感觉是很好的油，效果非常好，动力澎湃，怠速轻平稳，用后车子抖动速度也好了很多，特别满意。国产机油有哪些品牌？ </p> <p>  <strong>   还是长城、昆仑等，国企的实力还是有的。其次龙蟠、奥吉娜等地方民营品牌经过几年的市场积累。  </strong> </p> <p>  其中W代表Winter是冬天的意思，其中分为0W，5W，10W，15W,，20W，25W；W前面的数值越小说明机油的低温流动性越好，代表可供使用的环境温度越低，在  冷启动  时对发动机的保护能力越好，5W就是最低温度-30℃。所以，在极寒地区，最差也得是5w的，不然冬天机油就冻了。  <strong>   <br>  </strong> </p> <p>  机油相关参数的知识： </p> <p>  汽油类机油质量等级：分为SA、SB、SC、SE、SF、SG、SH、SJ、SL、SM。汽油品质由前往后依次升高。其中S代表汽油的机油，后面的字母代表着级别。（拓展：柴油类机油符号为C，后续字母A-H也是按等级从低到高依次排列）。 </p> <p>  （1）“车辆”，是指机动车和  非机动车  。 </p> <p>  （2）“机动车”，是指以动力装置驱动或者牵引，上道路行驶的供人员乘用或者用于运送物品以及进行工程专项作业的轮式车辆。 </p> <p>  （3）“非机动车”，是指以人力或者畜力驱动，上道路行驶的  交通工具  ，以及虽有动力装置驱动但设计最高时速、空车质量、外形尺寸符合有关国家标准的残疾人机动轮椅车、  电动自行车  等交通工具。 </p> <p>国产机油哪个牌子比较好？ </p> <p>  <strong>   国产机油品牌推荐：  </strong> </p> <p>  1、 长城：长城润滑油近年来，中国润滑油市场上，长城润滑油总销量第一，其中包装油销量第一，车用油、工业油也都有显著增长。 </p> <p>  2、昆仑：昆仑润滑油中国石油润滑油公司是  中国石油天然气股份有限公司  的直属企业，集生产、研发、*、服务于一体的专业化润滑油公司。 </p> <p>  3、统一：统一润滑*业神话，曾经的民族润滑油领军品牌。以生产和*“统一”牌润滑油系列产品享誉国内市场，产品覆盖汽车用油、摩托车用油、工业用油、工程机械用油及润滑脂、  刹车油  、不冻液、汽车护理品等众多石油化工领域。 </p> <p>  4、龙蟠：龙蟠润滑油作为快速成长的民族品牌，隶属江苏龙蟠科技的龙蟠润滑油系列产品，已经拥有包括汽油机油、柴油机油、齿轮油、抗磨液压油、  防冻液  、制动液、润滑脂、汽车养护品等在内的400多个品种。 </p> <p>  5、Mobil  美孚  ：美孚机油整体上的性能不错，可以对发动机起到很好的保护作用，使发动机的性能能够发挥极致。同时，美孚机油主打的特性是长效性，也就是说机油更换周期长，美孚采用独家的聚α-烯烃的  基础油  ，分子整齐排列，拥有良好的抗氧化性能和抗高温性能，其粘度变化不大，比较适合长期使用。 </p> <p>以上就是蝶侠小编为大家带来的内容了，想要了解更多相关信息，请关注蝶侠。</p> 					
                     <div class="clearfix"></div>
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3446.htm">CSS3 弹性布局弹性流（flex-flow）属性详解和实例</a></p>
-                                                <p>下一个：<a href="/html/category/article-3752.htm">CentOS7离线安装Nginx及配置</a></p>
+                                                <p>上一个：<a href="/html/category/article-4344.htm">南京农大动物医院电话号码（南京农业大学动物医院电话）</a></p>
                                             </div>
                                         <div class="panel panel-default mt-5">
                         <div class="panel-heading">
@@ -117,16 +116,16 @@ var _hmt = _hmt || [];
                         </div>
                         <div class="panel-body">
                             <ul class="p-0 x-0">
-                                                                <li class="py-2"><a href="/html/category/article-3316.htm">分布式事务提交协议2PC/3PC详解</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3300.htm">webpack 中 Module build failed (from ./node_modules/babel-loader/lib/index.js): 的错误解决</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3283.htm">我们如何使用MySQL SELECT语句计算表中的行数？</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3271.htm">Python基础语法 &#8211; 分支与循环</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3255.htm">windows下安装redis_在线工具</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3234.htm">前端框架小实验-在umi框架中以worker线程方式使用SQL.js的wasm</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3217.htm">CEPH-3：cephfs功能详解</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3194.htm">42. Vue组件传值-子组件通过事件调用向父组件传值</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3168.htm">使用SpringBoot简单了解Druid的监控系统</a></li>
-                                                                <li class="py-2"><a href="/html/category/article-3163.htm">JVM&#8212;&#8212;-程序计数器、虚拟机栈、本地方法栈</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3405.htm">vue实现消息向上无缝滚动效果_vue.js_</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3404.htm">【Spring】spring的反射机制详解</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3399.htm">获取java泛型真实类型的方式</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3393.htm">node.js &#8211; http、模块化、npm</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3366.htm">golang goroutine 协程异常panic后怎么处理？返回什么样的结果？</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3346.htm">基于.NetCore开发博客项目 StarBlog &#8211; (4) markdown博客批量导入_在线工具</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3345.htm">Docker镜像拉取报错：Error response from daemon: Get https://registry-1.docker.io/v2/</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3344.htm">C++2结构体，输入与输出函数</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3286.htm">C#/VB.NET 获取Excel中图片所在的行、列坐标位置</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3206.htm">使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格</a></li>
                                                             </ul>
                         </div>
                     </div>
@@ -138,16 +137,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3416.htm" title="vue项目实现webpack配置代理,解决跨域问题_vue.js">vue项目实现webpack配置代理,解决跨域问题_vue.js</a></li>
-                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
-                        <li class="py-2"><a href="/html/category/article-4090.htm" title="设计模式学习笔记责任链模式实现及在Filter中的应用详解">设计模式学习笔记责任链模式实现及在Filter中的应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3417.htm" title="项目优化——路由懒加载">项目优化——路由懒加载</a></li>
+                        <li class="py-2"><a href="/html/category/article-3381.htm" title="vue3 setup如何使用props">vue3 setup如何使用props</a></li>
+                        <li class="py-2"><a href="/html/category/article-3393.htm" title="node.js &#8211; http、模块化、npm">node.js &#8211; http、模块化、npm</a></li>
+                        <li class="py-2"><a href="/html/category/article-4089.htm" title="springboot 2.X Jar包部署到阿里云 配置SSL证书 启用HTTPS  通过域名访问">springboot 2.X Jar包部署到阿里云 配置SSL证书 启用HTTPS  通过域名访问</a></li>
                         <li class="py-2"><a href="/html/category/article-3409.htm" title="Hyperledger Fabric 通道配置文件和容器环境变量详解">Hyperledger Fabric 通道配置文件和容器环境变量详解</a></li>
                         <li class="py-2"><a href="/html/category/article-3395.htm" title="关于Springcloud Sleuth分布式请求链路跟踪的使用 小结">关于Springcloud Sleuth分布式请求链路跟踪的使用 小结</a></li>
-                        <li class="py-2"><a href="/html/category/article-3418.htm" title="序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用">序列化之@JsonComponent、@JsonInclude、@JsonSerialize、@JsonIgnore、JsonProperty区别与联系作用</a></li>
-                        <li class="py-2"><a href="/html/category/article-4118.htm" title="数据库上云实践：使用Ora2pg进行数据库迁移">数据库上云实践：使用Ora2pg进行数据库迁移</a></li>
-                        <li class="py-2"><a href="/html/category/article-3387.htm" title="Node.js躬行记半吊子的可视化搭建系统">Node.js躬行记半吊子的可视化搭建系统</a></li>
-                        <li class="py-2"><a href="/html/category/article-3383.htm" title="Vue简单实现自定义拖拽">Vue简单实现自定义拖拽</a></li>
-                        <li class="py-2"><a href="/html/category/article-3389.htm" title="树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统">树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统</a></li>
+                        <li class="py-2"><a href="/html/category/article-3400.htm" title="Mybatis 、SpringMVC、Spring 介绍及联系">Mybatis 、SpringMVC、Spring 介绍及联系</a></li>
+                        <li class="py-2"><a href="/html/category/article-4146.htm" title="python类内部成员的访问及外部访问">python类内部成员的访问及外部访问</a></li>
+                        <li class="py-2"><a href="/html/category/article-3414.htm" title="ZooKeeper之Java客户端API使用—读取数据。">ZooKeeper之Java客户端API使用—读取数据。</a></li>
                     </ul>
     </div>
 </div>
