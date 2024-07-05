@@ -2,12 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-3359.htm" />
+        <link rel="canonical" href="https://qataraddress.github.io/html/category/article-4391.htm" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>正则表达式\ip地址匹配方法 - Qatar Address</title>
+    <title>足球100分2021（难以置信）足球100分陆姝，吴岚，足球100分， - Qatar Address</title>
         <link rel="icon" href="/assets/addons/xcblog/img/qataraddress/favicon.ico" type="image/x-icon"/>
     <!-- Bootstrap -->
     <link href="/assets/addons/xcblog/css/qataraddress/bootstrap.min.css" rel="stylesheet">
@@ -82,7 +82,7 @@ var _hmt = _hmt || [];
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                     <div class="page-section">
-                        <h1 class="page-title">正则表达式\ip地址匹配方法</h1>
+                        <h1 class="page-title">足球100分2021（难以置信）足球100分陆姝，吴岚，足球100分，</h1>
                     </div>
                 </div>
             </div>
@@ -105,12 +105,30 @@ var _hmt = _hmt || [];
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <h2> <a id="1_rematchresearch_0" rel="nofollow"></a>(1) re.match\re.search</h2> <pre><code>re.match(pattern,string.flag=0)                        #从第一个字母匹配，span（）输出范围 re.search(pattern,string,flags=0)                      #区别为search搜索整个字符串  </code></pre> <h2> <a id="2_recompile_6" rel="nofollow"></a>(2) re.compile</h2> <pre><code>re.compile(pattern，flag=0) #用来编辑正则表达式，返回一个正则表达式，用于match和search方法 </code></pre> <p>例子：</p> <pre><code>import re pattern = re.compile(r'\d+')                           #得到新的正则表达式pattern result = pattern.search("asdf13 34etq 56') print(result) &gt;&gt;&gt; &lt;re.Match object; span=(4, 6), match='13'&gt;         #注意输出的类型是 re.match 类型 result.group()                                         #group（）的用法，作用是分组，groups（）的作用是全部分组 &gt;&gt;&gt; '13' </code></pre> <h2> <a id="3refindall_23" rel="nofollow"></a>(3)re.findall</h2> <p>re.findall是搜索所有的符合条件的字符串,并<strong>返回一个列表</strong></p> <pre><code>import re pattern =  re.compile(r' \w+\s\w') result1 = pattern.findall("asdf13 34etq 56")                #用法1，用来配合match和search print(result1) &gt;&gt;&gt; ['13', '34', '56'] re.findall(string,pos,endpos)   #（）左封闭，如（0,3）指124 例子：找到字符串里面所有的数字：``` import re string = 'qwe123 rty456 uio789' re.findall(r'\d+',string) &gt;&gt;&gt;['123', '456', '789'] </code></pre> <p>例子：补充！！</p> <h2> <a id="4_40" rel="nofollow"></a>（4）替换与补充</h2> <p>re.sub(pattern,replace，string，count=0,flags=0) #作用就是将搜索到的字符串替换为指定的字符串</p> <pre><code>import re  re.sub(r'\d\d\d','000','123qwe456qwe78ui',count=1) &gt;&gt;&gt;'000qwe456qwe78ui' </code></pre> <p>还可以替换为函数，如将字符串中的数字放大两倍，s = ‘A23G4HFD567’</p> <pre><code>import re def double(): 	补充！！！ </code></pre> <h2> <a id="5refinditer_54" rel="nofollow"></a>（5）re.finditer</h2> <p>refinditer（pattern，string，flags=0）的作用是找到字符串，将其作为一个迭代器返回</p> <pre><code>import re it = re.finditer(r'\d+','as24jjl453lj6l786l8') for match in it: 	print(match.group()) &gt;&gt;&gt;24    453    6     786    8 </code></pre> <h2> <a id="6resplit_67" rel="nofollow"></a>（6）re.split</h2> <p>re.split(pattern,string,maxsplit = 0,flags=0)的作用是以搜索到的字符串作为分割符</p> <pre><code>import re re.split(r'\w+','runnoob, runnoob.') &gt;&gt;&gt; ['', ', ', '.'] </code></pre> <h2> <a id="_75" rel="nofollow"></a>练习：</h2> <p>（1）用正则表达式匹配IP地址172.20.68.170，191.125.1.1</p> <pre><code>import re ip = '192.168.1.1' trueIp =re.search(r'(([01]{0,1}\d{0,1}\d|2[0-4]\d|25[0-5])\.){3}([01]{0,1}\d{0,1}\d|2[0-4]\d|25[0-5])',ip) print(trueIp) &gt;&gt;&gt; 192.168.1.1 ''' 这种写法存在问题，即[01]{0,1}\d{0,1}\d会匹配到001的字符出来，而这样是不对的。故换另一种方式 ''' </code></pre> <p>分析：<br /> 0~99正则表达式为[0-9]{0,1}\d<br /> 100~199表示为 1\d{2}<br /> 200~249表示为 2[0-4]\d<br /> 250~255表示为 25[0-5]<br /> 因此，ip地址的正则表达式为([0-9]{0,1}\d|1\d{2}| 2[0-4]\d|25[0-5].){3}[0-9]{0,1}\d|1\d{2}| 2[0-4]\d|25[0-5]</p> <pre><code>import re ip = '192.170.1.1' re.search(r'([01]{0,1}\d{0,1}\d\.){3}[01]{0,1}\d{0,1}\d',ip) &gt;&gt;&gt; &lt;re.Match object; span=(0, 11), match='192.170.1.1'&gt; </code></pre> <h2> <a id="_102" rel="nofollow"></a>常用的正则表达式</h2> </p></div> 			
+                      			<div class="orbui orbui-post orbui-post-01"></script>  <ins class="adsbygoogle"       style="display:block; text-align:center;"       data-ad-layout="in-article"       data-ad-format="fluid"       data-ad-client="ca-pub-6016799283272811"       data-ad-slot="9026798696"></ins>  </script></div>						 <p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;">当前的结果是过去行动的产物。所以如果你想改变你的结果，不要做你昨天做的事。尝试新事物会有所作为。</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;"> 北京广播电视台的拳头栏目《足球100分》赛季的回顾访谈名叫“一赛季·一生情”，邀请到的嘉宾是来自国安球员以及名宿12月2日晚间播出的节目中，“如今队魂”奥古斯托是节目的第一组嘉宾，而“昔日队魂”、球队出场纪录保持者徐云龙是最后一组压轴嘉宾。</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;"> 奥古斯托以超过2300次的传球次数排名第一，他的总跑动虽然排在第六位，但高强度跑动距离仅次于建业的伊沃位居第二，在出场时间、射门、射正、助攻、被侵犯次数等数据中，奥古斯托均进入中超前五各项数据已经证明了奥古的态度、能力和在球队中的作用。</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;">他非常谦虚：“这些数据的取得都是在队友的帮助之下完成的，我需要感谢他们”已经代表国安出场127次的傲骨，超越了他代表勒沃库森的出场次数，仅次于他代表科林蒂安的出场次数</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;">傲骨表示：“我不知道，我在北京能不能超过我在科林蒂安的出场次数，我会在国安尽可能发挥自己最好的一面”谈到在奥古之前的国安5号马季奇代表国安出场242场比赛，奥古斯托直言：“我希望尽可能多踢比赛，242场也很难超越，我也会追寻他的道路，继续为北京奋斗。</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;">”傲骨和国安的合同到2021赛季到期，未来他还将在国安建立更大的功勋</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;"> 最后一节压轴出场嘉宾是国安出场纪录的保持者徐云龙，他对于国安本赛季的收官战非常有感触：“0比2落后鲁能时，我真没想能够扳回来，国安需要这种胜利！”作为球队的精神领袖级人物，徐云龙对于国安本赛季的表现也有自己的看法：“我们是完成了一个非常好的赛季。</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;">”对于更换施密特他更是直言：“在比埃拉受伤之后，施密特突然不会踢了，而中方球员的参与感也很低而热内西奥恰恰相反，他的到来激活了中方球员”</p>     <p style="font-size: 18px; line-height: 40px; text-align: left; margin-bottom: 30px;">人生不应该是一场以完好无损的身体安全抵达坟墓为目标的旅程，而是在一团烟雾中滑行，筋疲力尽，筋疲力尽，大声说，“真是一次旅行！“它应该是尖叫的东西”</p>     </p> 					
                     <div class="clearfix"></div>
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3358.htm">vue+eslint+prettier格式化</a></p>
-                                                <p>下一个：<a href="/html/category/article-3360.htm">mysql in变量值的处理方案</a></p>
+                                                <p>上一个：<a href="/html/category/article-4390.htm">襄阳市养狗（襄阳市养犬）</a></p>
                                             </div>
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3446.htm">CSS3 弹性布局弹性流（flex-flow）属性详解和实例</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3393.htm">node.js &#8211; http、模块化、npm</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3388.htm">springboot的定时任务</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3372.htm">MySQL 索引简介</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3273.htm">基于springBoot动态配置定时任务</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3248.htm">Day02—Python的变量类型、变量命名、变量类型检查、变量类型转换、运算符</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3242.htm">kerberos认证python_python confluent kafka客户端配置kerberos认证</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3220.htm">Synchronized锁及其膨胀</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3183.htm">#include＜stack＞栈的基本操作</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3174.htm">Spring boot项目打包成jar在linux环境下设置开机自启动</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -119,16 +137,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3415.htm" title="浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法">浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
-                        <li class="py-2"><a href="/html/category/article-3405.htm" title="vue实现消息向上无缝滚动效果_vue.js_">vue实现消息向上无缝滚动效果_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3445.htm" title="基于YARN HA集群的Spark HA集群">基于YARN HA集群的Spark HA集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3416.htm" title="vue项目实现webpack配置代理,解决跨域问题_vue.js">vue项目实现webpack配置代理,解决跨域问题_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3384.htm" title="Parquet 之mapreduce">Parquet 之mapreduce</a></li>
                         <li class="py-2"><a href="/html/category/article-3388.htm" title="springboot的定时任务">springboot的定时任务</a></li>
-                        <li class="py-2"><a href="/html/category/article-4117.htm" title="搭建vue3.0+Element Plus项目">搭建vue3.0+Element Plus项目</a></li>
-                        <li class="py-2"><a href="/html/category/article-3751.htm" title="记一次RabbitMQ连接阻塞，全部队列不消费异常">记一次RabbitMQ连接阻塞，全部队列不消费异常</a></li>
-                        <li class="py-2"><a href="/html/category/article-4090.htm" title="设计模式学习笔记责任链模式实现及在Filter中的应用详解">设计模式学习笔记责任链模式实现及在Filter中的应用详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-4390.htm" title="襄阳市养狗（襄阳市养犬）">襄阳市养狗（襄阳市养犬）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3389.htm" title="树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统">树莓派开发笔记入手研华ADVANTECH工控树莓派UNO-220套件介绍和运行系统</a></li>
-                        <li class="py-2"><a href="/html/category/article-4118.htm" title="数据库上云实践：使用Ora2pg进行数据库迁移">数据库上云实践：使用Ora2pg进行数据库迁移</a></li>
+                        <li class="py-2"><a href="/html/category/article-3446.htm" title="CSS3 弹性布局弹性流（flex-flow）属性详解和实例">CSS3 弹性布局弹性流（flex-flow）属性详解和实例</a></li>
+                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
+                        <li class="py-2"><a href="/html/category/article-3399.htm" title="获取java泛型真实类型的方式">获取java泛型真实类型的方式</a></li>
                     </ul>
     </div>
 </div>
