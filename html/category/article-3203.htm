@@ -105,7 +105,7 @@ var _hmt = _hmt || [];
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <h2 id="user-content-11-实现效果">1.1 实现效果</h2> <p><img fetchpriority="high" decoding="async" alt="" height="349" src="http://img.555519.xyz/uploads3/20220604/f4f87e5039e324fd74b9d1312e19138e.jpg"></p> <h2 id="user-content-21-移动到某个选项卡上，自己的背景颜色要改变，对应的内容区域要显示">2.1 移动到某个选项卡上，自己的背景颜色要改变，对应的内容区域要显示</h2> <h3 id="user-content-211-由于要移动到选项卡，背景也要变化，所以要先取到li标签和img标签">2.1.1 由于要移动到选项卡，背景也要变化，所以要先取到li标签和img标签</h3> <pre><code>//li和img都是一个数组 let li = document.getElementsByTagName("li"); let img = document.getElementsByTagName("img");</code></pre> <h3 id="user-content-212-由于不知道选中的是哪个li，所以用数组循环">2.1.2 由于不知道选中的是哪个li，所以用数组循环</h3> <pre><code>for (let i = 0 ; i&lt;li.length ; i++){     li[i].onmouseover = function(){         li[i].style.backgroundColor = '#aaa';     } }</code></pre> <h3 id="user-content-213-同理，移除时，背景的颜色要恢复，对应内容区域要隐藏">2.1.3 同理，移除时，背景的颜色要恢复，对应内容区域要隐藏</h3> <pre><code>for (let i = 0 ; i&lt;li.length ; i++){     li[i].onmouseover = function(){         li[i].style.backgroundColor = '#aaa';     }      li[i].onmouseout = function(){         li[i].style.backgroundColor = '#eee';     } }</code></pre> <h2 id="user-content-31-实现图片和列表的一一对应">3.1 实现图片和列表的一一对应</h2> <h3 id="user-content-311-首先要让图片和列表的下标都一致">3.1.1 首先要让图片和列表的下标都一致</h3> <p><img decoding="async" alt="" height="63" src="http://img.555519.xyz/uploads3/20220604/552a4e5710cc634ce6f62ad008306439.jpg"></p> <pre><code>//先让li数组的下标等于i，然后让img的数组下标也等于i，然后让img的下标为li[i].index，变成这样的连接结构: li[i].index = i;  img[this.index].style.display = 'block';</code></pre> <h2 id="user-content-41-由于没有设置隐藏，经过图片时会全部显示出来，所以要进行修改">4.1 由于没有设置隐藏，经过图片时会全部显示出来，所以要进行修改</h2> <h3 id="user-content-411-先让所有的img数组的图片都隐藏，使用for循环，然后让鼠标经过的图片显示即可">4.1.1 先让所有的img数组的图片都隐藏，使用for循环，然后让鼠标经过的图片显示即可</h3> <pre><code>//先把所有的图片隐藏，再让对应的图片显示 for(let j = 0;j&lt;img.length;j++){     img[j].style.display = 'none'; } img[this.index].style.display = 'block';</code></pre> <h3 id="user-content-412-或者在鼠标移出的函数那里加上上述这个for循环的代码即可">4.1.2 或者在鼠标移出的函数那里加上上述这个for循环的代码即可</h3> <p>资料来源：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.bilibili.com/video/BV1ca4y1i7Lz?spm_id_from=333.999.0.0"  title="20个JavaScript经典案例_哔哩哔哩_bilibili" rel="nofollow">20个JavaScript经典案例_哔哩哔哩_bilibili</a></p> </div> 			
+                      				  				  				<div id="content_views" class="htmledit_views"> <h2 id="user-content-11-实现效果">1.1 实现效果</h2> <p><img fetchpriority="high" decoding="async" alt="" height="349" src="http://img.555519.xyz/uploads3/20220604/f4f87e5039e324fd74b9d1312e19138e.jpg"></p> <h2 id="user-content-21-移动到某个选项卡上，自己的背景颜色要改变，对应的内容区域要显示">2.1 移动到某个选项卡上，自己的背景颜色要改变，对应的内容区域要显示</h2> <h3 id="user-content-211-由于要移动到选项卡，背景也要变化，所以要先取到li标签和img标签">2.1.1 由于要移动到选项卡，背景也要变化，所以要先取到li标签和img标签</h3> <pre><code>//li和img都是一个数组 let li = document.getElementsByTagName("li"); let img = document.getElementsByTagName("img");</code></pre> <h3 id="user-content-212-由于不知道选中的是哪个li，所以用数组循环">2.1.2 由于不知道选中的是哪个li，所以用数组循环</h3> <pre><code>for (let i = 0 ; i<li.length ; i++){     li[i].onmouseover = function(){         li[i].style.backgroundColor = '#aaa';     } }</code></pre> <h3 id="user-content-213-同理，移除时，背景的颜色要恢复，对应内容区域要隐藏">2.1.3 同理，移除时，背景的颜色要恢复，对应内容区域要隐藏</h3> <pre><code>for (let i = 0 ; i<li.length ; i++){     li[i].onmouseover = function(){         li[i].style.backgroundColor = '#aaa';     }      li[i].onmouseout = function(){         li[i].style.backgroundColor = '#eee';     } }</code></pre> <h2 id="user-content-31-实现图片和列表的一一对应">3.1 实现图片和列表的一一对应</h2> <h3 id="user-content-311-首先要让图片和列表的下标都一致">3.1.1 首先要让图片和列表的下标都一致</h3> <p><img decoding="async" alt="" height="63" src="http://img.555519.xyz/uploads3/20220604/552a4e5710cc634ce6f62ad008306439.jpg"></p> <pre><code>//先让li数组的下标等于i，然后让img的数组下标也等于i，然后让img的下标为li[i].index，变成这样的连接结构: li[i].index = i;  img[this.index].style.display = 'block';</code></pre> <h2 id="user-content-41-由于没有设置隐藏，经过图片时会全部显示出来，所以要进行修改">4.1 由于没有设置隐藏，经过图片时会全部显示出来，所以要进行修改</h2> <h3 id="user-content-411-先让所有的img数组的图片都隐藏，使用for循环，然后让鼠标经过的图片显示即可">4.1.1 先让所有的img数组的图片都隐藏，使用for循环，然后让鼠标经过的图片显示即可</h3> <pre><code>//先把所有的图片隐藏，再让对应的图片显示 for(let j = 0;j<img.length;j++){     img[j].style.display = 'none'; } img[this.index].style.display = 'block';</code></pre> <h3 id="user-content-412-或者在鼠标移出的函数那里加上上述这个for循环的代码即可">4.1.2 或者在鼠标移出的函数那里加上上述这个for循环的代码即可</h3> <p>资料来源：20个JavaScript经典案例_哔哩哔哩_bilibili</p> </div> 			
                     <div class="clearfix"></div>
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3202.htm">使用aspnetcore前后端分离开发，你一定要知道这个</a></p>
@@ -119,16 +119,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
-                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
-                        <li class="py-2"><a href="/html/category/article-4572.htm" title="电影:匆匆那年（播电视剧）怎么可以错过，">电影:匆匆那年（播电视剧）怎么可以错过，</a></li>
-                        <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
-                        <li class="py-2"><a href="/html/category/article-4571.htm" title="动物疫苗防疫站上班时间表（动物疫苗厂家电话）">动物疫苗防疫站上班时间表（动物疫苗厂家电话）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3394.htm" title="C++编程——C++对象模型和this指针">C++编程——C++对象模型和this指针</a></li>
-                        <li class="py-2"><a href="/html/category/article-3413.htm" title="Centos7系统离线安装nginx步骤(亲测，超详细步骤)">Centos7系统离线安装nginx步骤(亲测，超详细步骤)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3411.htm" title="wx.navigateTo/wx.redirectTo 不能跳转">wx.navigateTo/wx.redirectTo 不能跳转</a></li>
                         <li class="py-2"><a href="/html/category/article-4536.htm" title="申请动物诊疗机构需要具备哪些条件和要求的条件（申办动物诊疗许可证的条件）">申请动物诊疗机构需要具备哪些条件和要求的条件（申办动物诊疗许可证的条件）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3416.htm" title="vue项目实现webpack配置代理,解决跨域问题_vue.js">vue项目实现webpack配置代理,解决跨域问题_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3777.htm" title="vue3+vite 实现自动导入路由+组件">vue3+vite 实现自动导入路由+组件</a></li>
+                        <li class="py-2"><a href="/html/category/article-4464.htm" title="动物疫苗监管部门是哪里管的（动物疫苗由哪里监管）">动物疫苗监管部门是哪里管的（动物疫苗由哪里监管）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4572.htm" title="电影:匆匆那年（播电视剧）怎么可以错过，">电影:匆匆那年（播电视剧）怎么可以错过，</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-4344.htm" title="南京农大动物医院电话号码（南京农业大学动物医院电话）">南京农大动物医院电话号码（南京农业大学动物医院电话）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3408.htm" title="Springboot @Order注解正确用法">Springboot @Order注解正确用法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3405.htm" title="vue实现消息向上无缝滚动效果_vue.js_">vue实现消息向上无缝滚动效果_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-4425.htm" title="动物机体注射疫苗后产生的抗体通常存在哪里? 动物机体注射疫苗后产生的抗体通常存在哪里">动物机体注射疫苗后产生的抗体通常存在哪里? 动物机体注射疫苗后产生的抗体通常存在哪里</a></li>
                     </ul>
     </div>
 </div>
@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

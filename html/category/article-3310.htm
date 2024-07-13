@@ -105,7 +105,7 @@ var _hmt = _hmt || [];
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-dracula"> <h1><a id="Docker___0" rel="nofollow"></a>Docker 操作 删除临时镜像（虚悬镜像）</h1> <p>再构建镜像中，多次使用build指令构建Dockerfile，并且镜像的名字以及版本一致的时候，或者多次pull指令，拉取相同名字:相同版本的镜像的时候，就会出现虚悬镜像；</p> <p>例如：下载了一个nginx默认版本的镜像；</p> <pre><code class="prism language-shell">pull nginx:latest</code></pre> <p>过一段时间，再次拉取（相当于更新本地镜像为最新版本）的时候；就会出现虚悬镜像；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/7f93dbbf36d8b461318c47ace4d1372e.jpg" alt="Docker 操作 删除临时镜像（虚悬镜像）"/></p> <p>docker的分层处理的，虚悬镜像，不占用硬盘空间；当虚悬镜像过多的时候，还是会影响查看的；</p> <p>单独查看虚悬镜像</p> <pre><code class="prism language-shell">docker images -q -f dangling<span class="token operator">=</span>true</code></pre> <p><code>-f</code>：表示<code>filter</code>,过滤</p> <p><code>-q</code>：表示只显示镜像ID；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/86ad4db5fe7633e42855a85751fefcab.jpg" alt="Docker 操作 删除临时镜像（虚悬镜像）"/></p> <p>删除指令镜像</p> <pre><code class="prism language-shell">docker rmi<span class="token variable"><span class="token variable">$(</span>docker images -q -f dangling<span class="token operator">=</span>true<span class="token variable">)</span></span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/302e247bd1c2bfb3591a2468da4669f7.jpg" alt="Docker 操作 删除临时镜像（虚悬镜像）"/></div> 			
+                      				  				  				<div id="content_views" class="markdown_views prism-dracula"> <h1>Docker 操作 删除临时镜像（虚悬镜像）</h1> <p>再构建镜像中，多次使用build指令构建Dockerfile，并且镜像的名字以及版本一致的时候，或者多次pull指令，拉取相同名字:相同版本的镜像的时候，就会出现虚悬镜像；</p> <p>例如：下载了一个nginx默认版本的镜像；</p> <pre><code class="prism language-shell">pull nginx:latest</code></pre> <p>过一段时间，再次拉取（相当于更新本地镜像为最新版本）的时候；就会出现虚悬镜像；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/7f93dbbf36d8b461318c47ace4d1372e.jpg" alt="Docker 操作 删除临时镜像（虚悬镜像）"/></p> <p>docker的分层处理的，虚悬镜像，不占用硬盘空间；当虚悬镜像过多的时候，还是会影响查看的；</p> <p>单独查看虚悬镜像</p> <pre><code class="prism language-shell">docker images -q -f dangling<span class="token operator">=</span>true</code></pre> <p><code>-f</code>：表示<code>filter</code>,过滤</p> <p><code>-q</code>：表示只显示镜像ID；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/86ad4db5fe7633e42855a85751fefcab.jpg" alt="Docker 操作 删除临时镜像（虚悬镜像）"/></p> <p>删除指令镜像</p> <pre><code class="prism language-shell">docker rmi<span class="token variable"><span class="token variable">$(</span>docker images -q -f dangling<span class="token operator">=</span>true<span class="token variable">)</span></span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/302e247bd1c2bfb3591a2468da4669f7.jpg" alt="Docker 操作 删除临时镜像（虚悬镜像）"/></div> 			
                     <div class="clearfix"></div>
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3309.htm">Spring Boot 中使用@DateTimeFormat和@JsonFormat注解</a></p>
@@ -119,16 +119,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4501.htm" title="动物打疫苗 人还打吗多少钱 动物打疫苗 人还打吗多少钱一针">动物打疫苗 人还打吗多少钱 动物打疫苗 人还打吗多少钱一针</a></li>
-                        <li class="py-2"><a href="/html/category/article-3410.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-3398.htm" title="在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？">在MySQL中，SERIAL和AUTO_INCREMENT有什么区别？</a></li>
-                        <li class="py-2"><a href="/html/category/article-3751.htm" title="记一次RabbitMQ连接阻塞，全部队列不消费异常">记一次RabbitMQ连接阻塞，全部队列不消费异常</a></li>
+                        <li class="py-2"><a href="/html/category/article-4314.htm" title="活体猫运费一般要多少钱（猫活物邮费多少）">活体猫运费一般要多少钱（猫活物邮费多少）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3401.htm" title="petite-vue源码剖析-沙箱模型">petite-vue源码剖析-沙箱模型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3778.htm" title="vue 的ESlint .eslintrc.js 文件 常用配置和注释">vue 的ESlint .eslintrc.js 文件 常用配置和注释</a></li>
+                        <li class="py-2"><a href="/html/category/article-4145.htm" title="如何在Python中中断for循环？">如何在Python中中断for循环？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3445.htm" title="基于YARN HA集群的Spark HA集群">基于YARN HA集群的Spark HA集群</a></li>
                         <li class="py-2"><a href="/html/category/article-4536.htm" title="申请动物诊疗机构需要具备哪些条件和要求的条件（申办动物诊疗许可证的条件）">申请动物诊疗机构需要具备哪些条件和要求的条件（申办动物诊疗许可证的条件）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3392.htm" title="Python置换操作浅析(a, b=b, a)【Python】">Python置换操作浅析(a, b=b, a)【Python】</a></li>
-                        <li class="py-2"><a href="/html/category/article-4315.htm" title="1970年农历8月16日出生命运（1970年阴历8月16）">1970年农历8月16日出生命运（1970年阴历8月16）</a></li>
                         <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3414.htm" title="ZooKeeper之Java客户端API使用—读取数据。">ZooKeeper之Java客户端API使用—读取数据。</a></li>
-                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
+                        <li class="py-2"><a href="/html/category/article-4572.htm" title="电影:匆匆那年（播电视剧）怎么可以错过，">电影:匆匆那年（播电视剧）怎么可以错过，</a></li>
+                        <li class="py-2"><a href="/html/category/article-4315.htm" title="1970年农历8月16日出生命运（1970年阴历8月16）">1970年农历8月16日出生命运（1970年阴历8月16）</a></li>
+                        <li class="py-2"><a href="/html/category/article-5591.htm" title="狗粮挣钱吗 狗粮赚钱吗">狗粮挣钱吗 狗粮赚钱吗</a></li>
                     </ul>
     </div>
 </div>
@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

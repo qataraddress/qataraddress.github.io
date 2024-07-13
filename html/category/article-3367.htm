@@ -105,7 +105,7 @@ var _hmt = _hmt || [];
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <h1>引言</h1> <p>从实例出发</p> <pre class="has"><code class="language-python">#先导入TensorFlow import tensorflow as tf  # Create TensorFlow object called hello_constant hello_constant = tf.constant('Hello World!')  with tf.Session() as sess:     # Run the tf.constant operation in the session     output = sess.run(hello_constant)     print(output)</code></pre> <p>有人会奇怪为什么不直接输出“hello world”，其实在tensorflow里面有它自己的 一套。</p> <h1>正文</h1> <h3>1.tensor</h3> <p>在tensorflow中，数据是被封装在tensor对象中的。tensor是张量的意思，即包含从0到任意维度的张量。常数是0维度的张量，向量是1维度的张量，矩阵是二维度的张量，以及还有多维度的张量。</p> <pre class="has"><code class="language-python"># tensor1 是一个0维的 int32 tensor tensor1 = tf.constant(1234)  # tensor2 是一个1维的 int32 tensor tensor2 = tf.constant([123,456,789])   # tensor3 是一个二维的 int32 tensor tensor3 = tf.constant([ [123,456,789], [222,333,444] ])</code></pre> <h3>2.tf.constant</h3> <p>constant函数提供在tensorflow中定义常量(不可更改的张量)的方法</p> <p>如：</p> <pre class="has"><code class="language-python">tensor_constant = tf.constant([1,2,3,4)</code></pre> <h3>3.tf.Variable</h3> <p>tensorflow中的变量是通过Variable类来实现的。tensorflow中需要定义为变量的包括训练过程中的输入数据，输出数据，以及控制从输入到输出的学习机制，即网络参数。输入输出数据在tf中是用placeholder占位符来定义的，网络参数是用tf.Variable来定义的。</p> <h3>4.tf.placeholder</h3> <p>用于声明一个张量的数据格式，告诉系统这里会有一个这种格式的张量，但是还没有传入具体的值。</p> <p>如：</p> <p>X = tf.placeholder("float", shape=[None, 100])</p> <p>上面声明了一个张量X，数据类型是float，100列，行数不确定。</p> <p>5.tf.Session</p> <p>以上部分都是搭建一个计算图的代码，在tf中，先搭建好计算图，然后再启动session，运行定义好的图。</p> <pre class="has"><code class="language-python">import tensorflow as tf  x = tf.placeholder("string") with tf.Session() as sess:     output = sess.run(x, feed_dict={x : "run the map"})     print(output)</code></pre> <p>通过上面的例子我们明白了如何使用占位符，首先定义x为占位符，然后运行的时候将想要传入的值传给x。</p> <h1>结尾</h1> <h3>参考</h3> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/dcrmg/article/details/79016107"  rel="nofollow">https://blog.csdn.net/dcrmg/article/details/79016107</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/fei13971414170/article/details/73309106/"  rel="nofollow">https://blog.csdn.net/fei13971414170/article/details/73309106/</a></p> </p></div> 			
+                      				  				  				<div id="content_views" class="htmledit_views"> <h1>引言</h1> <p>从实例出发</p> <pre class="has"><code class="language-python">#先导入TensorFlow import tensorflow as tf  # Create TensorFlow object called hello_constant hello_constant = tf.constant('Hello World!')  with tf.Session() as sess:     # Run the tf.constant operation in the session     output = sess.run(hello_constant)     print(output)</code></pre> <p>有人会奇怪为什么不直接输出“hello world”，其实在tensorflow里面有它自己的 一套。</p> <h1>正文</h1> <h3>1.tensor</h3> <p>在tensorflow中，数据是被封装在tensor对象中的。tensor是张量的意思，即包含从0到任意维度的张量。常数是0维度的张量，向量是1维度的张量，矩阵是二维度的张量，以及还有多维度的张量。</p> <pre class="has"><code class="language-python"># tensor1 是一个0维的 int32 tensor tensor1 = tf.constant(1234)  # tensor2 是一个1维的 int32 tensor tensor2 = tf.constant([123,456,789])   # tensor3 是一个二维的 int32 tensor tensor3 = tf.constant([ [123,456,789], [222,333,444] ])</code></pre> <h3>2.tf.constant</h3> <p>constant函数提供在tensorflow中定义常量(不可更改的张量)的方法</p> <p>如：</p> <pre class="has"><code class="language-python">tensor_constant = tf.constant([1,2,3,4)</code></pre> <h3>3.tf.Variable</h3> <p>tensorflow中的变量是通过Variable类来实现的。tensorflow中需要定义为变量的包括训练过程中的输入数据，输出数据，以及控制从输入到输出的学习机制，即网络参数。输入输出数据在tf中是用placeholder占位符来定义的，网络参数是用tf.Variable来定义的。</p> <h3>4.tf.placeholder</h3> <p>用于声明一个张量的数据格式，告诉系统这里会有一个这种格式的张量，但是还没有传入具体的值。</p> <p>如：</p> <p>X = tf.placeholder("float", shape=[None, 100])</p> <p>上面声明了一个张量X，数据类型是float，100列，行数不确定。</p> <p>5.tf.Session</p> <p>以上部分都是搭建一个计算图的代码，在tf中，先搭建好计算图，然后再启动session，运行定义好的图。</p> <pre class="has"><code class="language-python">import tensorflow as tf  x = tf.placeholder("string") with tf.Session() as sess:     output = sess.run(x, feed_dict={x : "run the map"})     print(output)</code></pre> <p>通过上面的例子我们明白了如何使用占位符，首先定义x为占位符，然后运行的时候将想要传入的值传给x。</p> <h1>结尾</h1> <h3>参考</h3> <p>https://blog.csdn.net/dcrmg/article/details/79016107</p> <p>https://blog.csdn.net/fei13971414170/article/details/73309106/</p> </p></div> 			
                     <div class="clearfix"></div>
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3366.htm">golang goroutine 协程异常panic后怎么处理？返回什么样的结果？</a></p>
@@ -119,16 +119,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4345.htm" title="国产机油品牌有哪些牌子(国产润滑油十大名牌)">国产机油品牌有哪些牌子(国产润滑油十大名牌)</a></li>
-                        <li class="py-2"><a href="/html/category/article-3415.htm" title="浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法">浏览器禁用Cookie,基于Cookie的会话跟踪机制失效的解决的方法</a></li>
                         <li class="py-2"><a href="/html/category/article-3419.htm" title="redis之发布与订阅(publish/subscribe模式)">redis之发布与订阅(publish/subscribe模式)</a></li>
-                        <li class="py-2"><a href="/html/category/article-4146.htm" title="python类内部成员的访问及外部访问">python类内部成员的访问及外部访问</a></li>
-                        <li class="py-2"><a href="/html/category/article-4424.htm" title="动物疫苗龙头瑞普生物（瑞普生物禽流感疫苗）">动物疫苗龙头瑞普生物（瑞普生物禽流感疫苗）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3402.htm" title="微信小程序自定义顶部导航栏封装">微信小程序自定义顶部导航栏封装</a></li>
-                        <li class="py-2"><a href="/html/category/article-3417.htm" title="项目优化——路由懒加载">项目优化——路由懒加载</a></li>
-                        <li class="py-2"><a href="/html/category/article-4089.htm" title="springboot 2.X Jar包部署到阿里云 配置SSL证书 启用HTTPS  通过域名访问">springboot 2.X Jar包部署到阿里云 配置SSL证书 启用HTTPS  通过域名访问</a></li>
-                        <li class="py-2"><a href="/html/category/article-3397.htm" title="「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）">「Spring Boot 系列」05. Spring Boot Profiles（多环境配置）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3411.htm" title="wx.navigateTo/wx.redirectTo 不能跳转">wx.navigateTo/wx.redirectTo 不能跳转</a></li>
+                        <li class="py-2"><a href="/html/category/article-3777.htm" title="vue3+vite 实现自动导入路由+组件">vue3+vite 实现自动导入路由+组件</a></li>
+                        <li class="py-2"><a href="/html/category/article-3407.htm" title="关于Windows系列密码抓取">关于Windows系列密码抓取</a></li>
+                        <li class="py-2"><a href="/html/category/article-4536.htm" title="申请动物诊疗机构需要具备哪些条件和要求的条件（申办动物诊疗许可证的条件）">申请动物诊疗机构需要具备哪些条件和要求的条件（申办动物诊疗许可证的条件）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4117.htm" title="搭建vue3.0+Element Plus项目">搭建vue3.0+Element Plus项目</a></li>
+                        <li class="py-2"><a href="/html/category/article-3420.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/html/category/article-3422.htm" title="vue-cli项目添加骨架屏多种方式，自动生成骨架屏">vue-cli项目添加骨架屏多种方式，自动生成骨架屏</a></li>
+                        <li class="py-2"><a href="/html/category/article-3752.htm" title="CentOS7离线安装Nginx及配置">CentOS7离线安装Nginx及配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-3446.htm" title="CSS3 弹性布局弹性流（flex-flow）属性详解和实例">CSS3 弹性布局弹性流（flex-flow）属性详解和实例</a></li>
+                        <li class="py-2"><a href="/html/category/article-4465.htm" title="重庆哪里可以领养宠物猫的地方（重庆领养猫在哪领养）">重庆哪里可以领养宠物猫的地方（重庆领养猫在哪领养）</a></li>
                     </ul>
     </div>
 </div>
@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
